@@ -8,7 +8,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.boolean :show_gender
       t.string :gender_identity
       t.string :gender_interest
-      t.string :email
+      t.string :email, index: true
       t.string :url1
       t.text :about
       t.string :password_digest
