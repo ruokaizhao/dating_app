@@ -22,11 +22,11 @@ function Auth({ setShowAuth }) {
         )
       })
     }),
-    onsubmit: values => handleSubmit(values)
+    onSubmit: () => handleSubmit()
   })
 
-  function handleSubmit(e) {
-    e.preventDefault()
+  function handleSubmit() {
+    console.log(formik.values)
   }
 
 
@@ -37,7 +37,7 @@ function Auth({ setShowAuth }) {
       <div className="close-icon" onClick={() => setShowAuth(false)}>ⓧ</div>
       <h1>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h1>
       <p>By clicking Log In, you agree to our Terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
-      <form onsubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit}>
         <input type='email' name='email' id='email' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.email} />
         {formik.touched.email && formik.errors.email && <div>{formik.errors.email}</div>}
         <input type='password' name='password' id='password' onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.password} />
