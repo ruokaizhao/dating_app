@@ -10,14 +10,15 @@ function Home() {
 
 
   return (
-    <div className="home">
-      <NavBar />
-      <h1>Swipe Right®</h1>
-      <button className="primary-button" onClick={handleClick}>
-        {user.di ? 'Logout' : "Create account"}
-      </button>
-
-    </div>
+    <div className="background">
+      <NavBar user={user} />
+      <div className="home">      
+        <h1>Swipe Right®</h1>
+        <button className="primary-button" onClick={handleClick}>
+          {user.id ? 'Logout' : "Create account"}
+        </button>
+      </div>
+    </div>    
   )
 }
 

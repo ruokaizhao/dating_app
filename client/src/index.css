@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap");
+
+html body {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  font-family: "Readex Pro", sans-serif;
+}
+
+body {
+  text-align: center;
+}
+
+.primary-button {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+}
+
+.primary-button:hover {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+}
+
+/* ---------Home--------- */
+
+.background {
+  background: linear-gradient(
+    to bottom, 
+    rgba(0, 0, 0, 0.65) 0%, 
+    rgba(0, 0, 0, 0) 100%);
+}
+
+/* ---------NavBar--------- */
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .logo-container {
+  width: 170px;
+  margin: 15px;
+}
+
+nav .logo-container .logo {
+  width: 100%;
+}
+
+nav .nav-button {
+  color: rgb(254, 48, 114);
+  background-color: rgb(255, 255, 255);
+  font-size: 20px;
+  margin: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+}
+
