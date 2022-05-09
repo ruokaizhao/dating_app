@@ -10,6 +10,15 @@ html body {
   font-family: "Readex Pro", sans-serif;
 }
 
+h2 {
+  font-style: italic;
+}
+
+.primary-title {
+  font-size: 90px;
+  color: rgb(255, 255, 255);
+}
+
 .primary-button {
   color: #fff;
   text-transform: uppercase;
@@ -24,6 +33,10 @@ html body {
   background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
 }
 
+.errors {
+  color: red;
+}
+
 /* ---------Home--------- */
 
 .background {
@@ -33,7 +46,15 @@ html body {
   background: linear-gradient(
     to bottom, 
     rgba(0, 0, 0, 0.65) 0%, 
-    rgba(0, 0, 0, 0) 100%);
+    rgba(0, 0, 0, 0) 100%), 
+    url("./images/background.webp");
+}
+
+.dim-layer {
+  background-color: black;
+  height: 100vh;
+  opacity: 75%;
+  z-index: 1;
 }
 
 .home {
@@ -97,4 +118,35 @@ nav .nav-button:disabled {
 .close-icon:hover {
   color: rgb(0, 0, 0);
   cursor: pointer;
+}
+
+form .secondary-button {
+  color: rgb(121, 119, 119);
+  background-color: rgb(255, 255, 255);
+  font-weight: 500;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: solid 2px rgb(121, 119, 119);
+  margin: 6px;
+}
+
+form .secondary-button:hover {
+  color: rgb(48, 48, 48);
+  border: solid 2px rgb(48, 48, 48)
+}
+
+.auth form {
+  display: flex; 
+  flex-direction: column;
+}
+
+.auth input {
+  padding: 12px;
+  margin: 12px;
+  font-size: 17px;  
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
 }
