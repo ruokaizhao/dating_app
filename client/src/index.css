@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Readex+Pro:wght@200;300;400;500;600;700&display=swap");
 
-html body {
+html, body {
   margin: 0;
   padding: 0;
   text-align: center;
@@ -152,4 +152,87 @@ form .secondary-button:hover {
   border: 1px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
+}
+
+/* ---------Profiling--------- */
+
+.profiling form {
+  display: flex;
+  justify-content: center;
+}
+
+.profiling form section {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  width: 35%;
+  text-align: left;
+}
+
+.profiling form label {
+  margin: 10px 0px;
+}
+
+.profiling form input {
+  padding: 15px 30px;
+  margin: 10px 0px;
+  font-size: 15px;
+  border: solid 2px rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.profiling form input:focus {
+  outline: none;
+  border-color: #719ECE;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+.profiling form input::-webkit-outer-spin-button,
+.profiling form input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.profiling form .multiple-input-container {
+  display: flex;
+}
+
+.profiling form input[type="number"] {
+  width: 30%;
+}
+
+.profiling form .multiple-input-container input {
+  margin-right: 10px;
+}
+
+.profiling form .multiple-input-container label {
+  padding: 10px;
+  border: solid 2px rgb(144, 144, 144);
+  border-radius: 10px;
+  transition: all 0.3s;
+  margin-right: 10px;
+}
+
+.profiling form .multiple-input-container input[type="radio"] {
+  display: none;
+}
+
+.profiling form .multiple-input-container input[type="radio"]:checked + label {
+  border: solid 2px rgb(221, 39, 22)
+}
+
+.profiling form button {
+  padding: 15px 30px;
+  margin: 10px 0px;
+  font-size: 15px;
+  border: solid 2px rgb(219, 219, 219);
+  border-radius: 10px;
+}
+
+.profiling form button:hover {
+  background-color: rgb(235, 235, 235);
+}
+
+.profiling form button:active {
+  background-color: rgb(226, 115, 155);
 }
