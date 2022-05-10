@@ -2,8 +2,7 @@ import React, { useState } from 'react'
 import Auth from './Auth'
 import NavBar from './NavBar'
 
-function Home() {
-  const [user, setUser] = useState({})
+function Home({ user }) {
   const [showAuth, setShowAuth] = useState(false)
   const [isSignUp, setIsSignUp] = useState(null)
 
@@ -15,7 +14,7 @@ function Home() {
   return (
     <div className="background">
       <div className={showAuth ? "dim-layer" : ""}>
-        <NavBar user={user} showAuth={showAuth} setShowAuth={setShowAuth} setIsSignUp={setIsSignUp} />
+        <NavBar user={user} showAuth={showAuth} setShowAuth={setShowAuth} setIsSignUp={setIsSignUp} color={false} />
         <div className="home">      
           <h1 className="primary-title">Swipe Right®</h1>
           <button className="primary-button" onClick={handleClick}>

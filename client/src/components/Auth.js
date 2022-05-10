@@ -33,13 +33,14 @@ function Auth({ setShowAuth, isSignUp }) {
       <div className="close-icon" onClick={() => setShowAuth(false)}>ⓧ</div>
       <h1>{isSignUp ? "CREATE ACCOUNT" : "LOG IN"}</h1>
       <p>By clicking Submit, you agree to our Terms. Learn how we process your data in our Privacy Policy and Cookie Policy.</p>
-      <form onSubmit={formik.handleSubmit}>
 
+      <form onSubmit={formik.handleSubmit}>
         <input 
         type="email" 
         name="email" 
         id="email" 
         autoFocus
+        placeholder="Enter your email address..."
         onChange={formik.handleChange} 
         onBlur={formik.handleBlur} 
         value={formik.values.email} 
@@ -49,7 +50,8 @@ function Auth({ setShowAuth, isSignUp }) {
         <input 
         type="password" 
         name="password" 
-        id="password" 
+        id="password"
+        placeholder="Enter your password..." 
         onChange={formik.handleChange} 
         onBlur={formik.handleBlur} 
         value={formik.values.password} 
@@ -62,6 +64,7 @@ function Auth({ setShowAuth, isSignUp }) {
         type="password" 
         name="password2" 
         id="password2" 
+        placeholder="Confirm your password..."
         onChange={formik.handleChange} 
         onBlur={formik.handleBlur} 
         value={formik.values.password2} />}

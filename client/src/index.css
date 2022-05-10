@@ -121,6 +121,7 @@ nav .nav-button:disabled {
 }
 
 form .secondary-button {
+  width: 85%;
   color: rgb(121, 119, 119);
   background-color: rgb(255, 255, 255);
   font-weight: 500;
@@ -140,9 +141,11 @@ form .secondary-button:hover {
 .auth form {
   display: flex; 
   flex-direction: column;
+  align-items: center;
 }
 
 .auth input {
+  width: 85%;
   padding: 12px;
   margin: 12px;
   font-size: 17px;  
