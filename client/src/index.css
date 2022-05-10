@@ -149,12 +149,22 @@ form .secondary-button:hover {
   padding: 12px;
   margin: 12px;
   font-size: 17px;  
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   border-radius: 6px;
   box-sizing: border-box;
 }
 
+.auth input:focus {
+  outline: none;
+  border-color: rgb(113, 158, 206);
+  box-shadow: 0 0 10px rgb(113, 158, 206);
+}
+
 /* ---------Profiling--------- */
+
+.profiling {
+  border-top: solid 2px rgb(213, 213, 213);
+}
 
 .profiling form {
   display: flex;
@@ -183,8 +193,8 @@ form .secondary-button:hover {
 
 .profiling form input:focus {
   outline: none;
-  border-color: #719ECE;
-  box-shadow: 0 0 10px #719ECE;
+  border-color: rgb(113, 158, 206);
+  box-shadow: 0 0 10px rgb(113, 158, 206);
 }
 
 .profiling form input::-webkit-outer-spin-button,
@@ -235,4 +245,46 @@ form .secondary-button:hover {
 
 .profiling form button:active {
   background-color: rgb(226, 115, 155);
+}
+
+/* ---------Onboarding--------- */
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.swipe {
+  position: absolute;
+}
+
+.dashboard .swipe-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.dashboard .card-container {
+  width: 400px;
+  height: 650px;
+}
+
+.dashboard .card {
+  position: relative;
+  width: 400px;
+  height: 650px;
+  border-radius: 30px;
+  background-size: cover;
+  background-position: center;
+}
+
+.dashboard .card h3 {
+  margin: 0;
+}
+
+.dashboard .swipe-info {
+  
 }
