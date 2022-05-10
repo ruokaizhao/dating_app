@@ -6,13 +6,36 @@ import * as Yup from 'yup'
 function Profiling({ user }) {
   const formik = useFormik({
     initialValues: {
-
+      first_name: '',
+      dob_day: '',
+      dob_month: '',
+      dob_year: '',
+      show_gender: false,
+      gender_identity: '',
+      gender_interest: '',
+      url1: '',
+      about: ''
     },
     validationSchema: Yup.object({
 
     }),
-    onSubmit: () => console.log('submit')
+    onSubmit: () => handleSubmit()
   })
+
+  function handleSubmit() {
+    fetch(`/api/users/${user.id}`, {
+      method: 'PATCH',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formik.values)
+    })
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((data) => console.log(data))
+      }
+    })
+  }
 
 
 
@@ -21,15 +44,15 @@ function Profiling({ user }) {
       <NavBar user={user} color={true} />
       <div className="profiling">
         <h2>CREATE ACCOUNT</h2>
-        <form>
+        <form onSubmit={formik.handleSubmit}>
           <section>
             <label htmlFor="first_name">First Name</label>
             <input 
               id="first_name" 
-              name="firstName" 
+              name="first_name" 
               type="text" 
               placeholder="First Name" 
-              value={formik.values.firstName}
+              value={formik.values.first_name}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
@@ -37,28 +60,28 @@ function Profiling({ user }) {
             <div className="multiple-input-container">
               <input 
                 id="dob_day" 
-                name="day" 
+                name="dob_day" 
                 type="number" 
                 placeholder="DD" 
-                value={formik.values.day}
+                value={formik.values.dob_day}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
               <input 
                 id="dob_month" 
-                name="month" 
+                name="dob_month" 
                 type="number" 
                 placeholder="MM" 
-                value={formik.values.month}
+                value={formik.values.dob_month}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
               <input 
                 id="dob_year" 
-                name="year" 
+                name="dob_year" 
                 type="number" 
                 placeholder="YYYY" 
-                value={formik.values.year}
+                value={formik.values.dob_year}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
               />
@@ -68,29 +91,32 @@ function Profiling({ user }) {
             <div className="multiple-input-container">
               <input 
                 id="man-gender-identity" 
-                name="gender-identity" 
+                name="gender_identity" 
                 type="radio" 
                 value="man"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                checked={formik.values.gender_identity === 'man'}
               />
               <label htmlFor="man-gender-identity">Man</label>
               <input 
                 id="woman-gender-identity" 
-                name="gender-identity" 
+                name="gender_identity" 
                 type="radio" 
                 value="woman"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                checked={formik.values.gender_identity === 'woman'}
               />
               <label htmlFor="woman-gender-identity">Woman</label>
               <input 
                 id="more-gender-identity" 
-                name="gender-identity" 
+                name="gender_identity" 
                 type="radio" 
                 value="more"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
+                checked={formik.values.gender_identity === 'more'}
               />
               <label htmlFor="more-gender-identity">More</label>
             </div>
@@ -99,39 +125,42 @@ function Profiling({ user }) {
             <input
               id="show-gender"
               type="checkbox"
-              name="showGender"
+              name="show_gender"
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
-              checked={true}
+              checked={formik.values.show_gender}
             />
 
             <label>Show Me</label>
             <div className="multiple-input-container">
               <input 
                   id="man-gender-interest" 
-                  name="gender-interest" 
+                  name="gender_interest" 
                   type="radio" 
                   value="man"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
+                  checked={formik.values.gender_interest === 'man'}
                 />
                 <label htmlFor="man-gender-interest">Man</label>
                 <input 
                   id="woman-gender-interest" 
-                  name="gender-interest" 
+                  name="gender_interest" 
                   type="radio" 
                   value="woman"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
+                  checked={formik.values.gender_interest === 'woman'}
                 />
                 <label htmlFor="woman-gender-interest">Woman</label>
                 <input 
                   id="everyone-gender-interest" 
-                  name="gender-interest" 
+                  name="gender_interest" 
                   type="radio" 
                   value="everyone"
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
+                  checked={formik.values.gender_interest === 'everyone'}
                 />
                 <label htmlFor="everyone-gender-interest">Everyone</label>
 
@@ -155,11 +184,14 @@ function Profiling({ user }) {
             <input
               id="url"
               type="url"
-              name="url"
+              name="url1"
               value={formik.values.url}
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
+            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="profile-photo" />}
+            
+            
           </section>
           
 

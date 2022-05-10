@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
   def create
     user = User.create!(user_params)
     session[:user_id] = user.id
-    render json: user, status: :create
+    render json: user, status: :created
   end
 
   def show
@@ -12,7 +12,7 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    user = User.find(params[:user_id])
+    user = User.find(params[:id])
     user.update!(user_params)
     render json: user, status: :ok
   end
@@ -20,7 +20,19 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit()
+    params.permit(
+      :first_name, 
+      :dob_day, 
+      :dob_month, 
+      :dob_year, 
+      :show_gender, 
+      :gender_identity, 
+      :gender_interest, 
+      :email, 
+      :url1, 
+      :about, 
+      :password, 
+      :password_confirmation)
   end
 
 end

@@ -247,6 +247,10 @@ form .secondary-button:hover {
   background-color: rgb(226, 115, 155);
 }
 
+.profiling .profile-photo {
+  width: 100%;
+}
+
 /* ---------Onboarding--------- */
 
 .dashboard {

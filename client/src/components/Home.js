@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Auth from './Auth'
 import NavBar from './NavBar'
 
-function Home({ user }) {
+function Home({ user, setUser }) {
   const [showAuth, setShowAuth] = useState(false)
   const [isSignUp, setIsSignUp] = useState(null)
 
@@ -22,7 +22,7 @@ function Home({ user }) {
           </button>        
         </div>
       </div>      
-      {showAuth && <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} />}
+      {showAuth && <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} user={user} setUser={setUser} />}
     </div>    
   )
 }

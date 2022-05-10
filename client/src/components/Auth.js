@@ -1,8 +1,11 @@
 import React from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 
-function Auth({ setShowAuth, isSignUp }) {
+function Auth({ setShowAuth, isSignUp, user, setUser }) {
+
+  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -25,7 +28,26 @@ function Auth({ setShowAuth, isSignUp }) {
   })
 
   function handleSubmit() {
-    console.log(formik.values)
+    fetch('/api/signup', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email: formik.values.email,
+        password: formik.values.password,
+        password_confirmation: formik.values.password2
+      })
+    })
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((data) => {
+          setUser(data)
+          console.log(user)
+          navigate('/profiling')
+        })
+      }
+    })
   }  
 
   return (
