@@ -68,7 +68,7 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
         }
       })
     }
-  }  
+  }
 
   return (
     <div className="auth">

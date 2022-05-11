@@ -1,0 +1,25 @@
+import React, { useState } from 'react'
+
+function ChatInput() {
+  const [chatInput, setChatInput] = useState('')
+
+  function handleSubmit(e) {
+    e.preventDefault()
+  }
+
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <textarea 
+          name="chat_input" 
+          value={chatInput}
+          rows="5"
+          onchange={(e) => setChatInput(e.target.value)} />
+        <button className="secondary-button">Send</button>
+      </form>
+    </div>
+  )
+}
+
+export default ChatInput

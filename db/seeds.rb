@@ -11,7 +11,7 @@ require "faker"
     gender_identity: ["man", "woman", "more"].sample, 
     gender_interest: ["man", "woman", "everyone"].sample, 
     email: Faker::Internet.email, 
-    url1: "https://picsum.photos/400/650", 
+    url1: "https://source.unsplash.com/user/c_v_r", 
     about: Faker::Quote.most_interesting_man_in_the_world,
     password: "123456",   
     password_confirmation: "123456")

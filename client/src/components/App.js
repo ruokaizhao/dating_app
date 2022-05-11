@@ -11,7 +11,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Home user={user} setUser={setUser} />} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route path='/dashboard' element={<Dashboard user={user} />} />
         <Route path='/profiling' element={<Profiling user={user} />} />
       </Routes>
     </div>

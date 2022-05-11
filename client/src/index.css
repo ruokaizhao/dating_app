@@ -256,7 +256,7 @@ form .secondary-button:hover {
   width: 100%;
 }
 
-/* ---------Onboarding--------- */
+/* ---------Dashboard--------- */
 
 .dashboard {
   display: flex;
@@ -292,4 +292,39 @@ form .secondary-button:hover {
 
 .dashboard .card h3 {
   margin: 0;
+}
+
+/* ---------Chat Container--------- */
+
+.chat-container {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+  rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  width: 30%;
+  text-align: left;
+}
+
+.chat-container .chat-header {
+  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  height: 100px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chat-container .option {
+  border: none;
+  background-color: rbg(255, 255, 255);
+  border-bottom: solid 4px rgb(243, 33, 33);
+  font-size: 20px;
+  margin: 2px;
+  padding: 10px;
+}
+
+.chat-header .profile-photo {
+  margin-left: 10px;
+  margin-right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
 }

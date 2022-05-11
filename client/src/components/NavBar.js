@@ -13,13 +13,15 @@ function NavBar({ user, color, showAuth, setShowAuth, setIsSignUp }) {
   return (
     <nav>
       <div className="logo-container">
-        <img className="logo" src={color ? colorLogo : whiteLogo} onClick={() => navigate('/dashboard')} />
+        <img className="logo" src={color ? colorLogo : whiteLogo} onClick={() => navigate('/')} />
       </div>
-      {!user.id
-       && 
-      <button className="nav-button" disabled={showAuth} onClick={handleClick}>
-        Login
-      </button>}
+      {user.id ?
+        <button className="nav-button" disabled={showAuth} onClick={handleClick}>
+          Logout
+        </button> :
+        <button className="nav-button" disabled={showAuth} onClick={handleClick}>
+          Login
+        </button> }
     </nav>
   )
 }

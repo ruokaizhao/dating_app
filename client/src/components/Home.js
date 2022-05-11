@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Auth from './Auth'
 import NavBar from './NavBar'
 
 function Home({ user, setUser }) {
   const [showAuth, setShowAuth] = useState(false)
   const [isSignUp, setIsSignUp] = useState(null)
+  const navigate = useNavigate()
 
   function handleClick() {
     setIsSignUp(true)
@@ -17,8 +19,8 @@ function Home({ user, setUser }) {
         <NavBar user={user} showAuth={showAuth} setShowAuth={setShowAuth} setIsSignUp={setIsSignUp} color={false} />
         <div className="home">      
           <h1 className="primary-title">Swipe Right®</h1>
-          <button className="primary-button" onClick={handleClick}>
-            {user.id ? 'Logout' : "Create account"}
+          <button className="primary-button" onClick={user.id ? () => navigate('/dashboard') : handleClick}>
+            {user.id ? `Welcome, ${user.first_name}` : 'Create account'}
           </button>        
         </div>
       </div>      

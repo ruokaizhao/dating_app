@@ -1,31 +1,9 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import ChatContainer from './ChatContainer'
 
-const characters = [
-  {
-    name: 'Richard Hendricks',
-    url: 'https://i.imgur.com/oPj4A8u.jpeg'
-  },
-  {
-    name: 'Erlich Bachman',
-    url: 'https://i.imgur.com/oPj4A8u.jpeg'
-  },
-  {
-    name: 'Monica Hall',
-    url: 'https://i.imgur.com/oPj4A8u.jpeg'
-  },
-  {
-    name: 'Jared Dunn',
-    url: 'https://i.imgur.com/oPj4A8u.jpeg'
-  },
-  {
-    name: 'Dinesh Chugtai',
-    url: 'https://i.imgur.com/oPj4A8u.jpeg'
-  }
-]
-
-function Dashboard() {
+function Dashboard({ user }) {
+  const [characters, setCharacters] = useState([])
   const [lastDirection, setLastDirection] = useState()
 
   const swiped = (direction, nameToDelete) => {
@@ -37,15 +15,24 @@ function Dashboard() {
     console.log(name + ' left the screen!')
   }
 
+  useEffect(() => {
+    fetch('/api/users')
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setCharacters(data))
+      }
+    })
+  }, [])
+
   return (
     <div className="dashboard">
-      <ChatContainer />
+      <ChatContainer user={user} />
       <div className="swipe-container">
         <div className="card-container">
           {characters.map((character) =>
-            <TinderCard className="swipe" key={character.name} onSwipe={(dir) => swiped(dir, character.name)} onCardLeftScreen={() => outOfFrame(character.name)}>
-              <div style={{ backgroundImage: "url(" + character.url + ")" }} className="card">
-                <h3>{character.name}</h3>
+            <TinderCard className="swipe" key={character.id} onSwipe={(dir) => swiped(dir, character.first_name)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
+              <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">
+                <h3>{character.first_name}</h3>
               </div>
             </TinderCard>
           )}
