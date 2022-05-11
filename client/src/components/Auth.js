@@ -28,26 +28,46 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
   })
 
   function handleSubmit() {
-    fetch('/api/signup', {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        email: formik.values.email,
-        password: formik.values.password,
-        password_confirmation: formik.values.password2
-      })
-    })
-    .then((r) => {
-      if (r.ok) {
-        r.json().then((data) => {
-          setUser(data)
-          console.log(user)
-          navigate('/profiling')
+    if (isSignUp) {
+      fetch('/api/signup', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: formik.values.email,
+          password: formik.values.password,
+          password_confirmation: formik.values.password2
         })
-      }
-    })
+      })
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((data) => {
+            setUser(data)
+            navigate('/profiling')
+          })
+        }
+      })
+    } else {
+      fetch('/api/login', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: formik.values.email,
+          password: formik.values.password,
+        })
+      })
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((data) => {
+            setUser(data)
+            navigate('/dashboard')
+          })
+        }
+      })
+    }
   }  
 
   return (
