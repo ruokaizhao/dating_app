@@ -78,6 +78,11 @@ nav .logo-container .logo {
   width: 100%;
 }
 
+nav .logo-container .logo:hover {
+  cursor: pointer;
+  opacity: 50%;
+}
+
 nav .nav-button {
   color: rgb(254, 48, 114);
   background-color: rgb(255, 255, 255);
@@ -287,8 +292,4 @@ form .secondary-button:hover {
 
 .dashboard .card h3 {
   margin: 0;
-}
-
-.dashboard .swipe-info {
-  
 }

@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import colorLogo from '../images/color_logo.png'
 import whiteLogo from '../images/white_logo.png'
 
 function NavBar({ user, color, showAuth, setShowAuth, setIsSignUp }) {
+  const navigate = useNavigate()
 
   function handleClick() {
     setIsSignUp(false)
@@ -11,7 +13,7 @@ function NavBar({ user, color, showAuth, setShowAuth, setIsSignUp }) {
   return (
     <nav>
       <div className="logo-container">
-        <img className="logo" src={color ? colorLogo : whiteLogo} />
+        <img className="logo" src={color ? colorLogo : whiteLogo} onClick={() => navigate('/dashboard')} />
       </div>
       {!user.id
        && 
