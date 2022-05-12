@@ -15,7 +15,7 @@ function ChatInput() {
           name="chat_input" 
           value={chatInput}
           rows="5"
-          onchange={(e) => setChatInput(e.target.value)} />
+          onChange={(e) => setChatInput(e.target.value)} />
         <button className="secondary-button">Send</button>
       </form>
     </div>
