@@ -1,7 +1,8 @@
 class Api::UsersController < ApplicationController
 
   def index
-    users = User.all
+    user = User.find(params[:id])
+    users = user.get_users(params)
     render json: users, status: :ok
   end
 

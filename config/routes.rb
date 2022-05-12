@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   namespace :api do
 
-    resources :users, only: [:index, :update]
+    resources :users, only: [:update]
+
+    post "/users/:id", to: "users#index"
 
 
 
