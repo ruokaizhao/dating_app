@@ -5,14 +5,23 @@ import ChatContainer from './ChatContainer'
 function Dashboard({ user }) {
   const [characters, setCharacters] = useState([])
   const [lastDirection, setLastDirection] = useState()
+  const [matchUsers, setMatchUsers] = useState([])
 
-  const swiped = (direction, nameToDelete) => {
-    console.log('removing: ' + nameToDelete)
+  function swiped(direction, id) {
     setLastDirection(direction)
-  }
-
-  const outOfFrame = (name) => {
-    console.log(name + ' left the screen!')
+    if (direction === 'right' || direction === 'left') {
+      fetch('/api/matches', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          user_id: user.id,
+          browsed_user_id: id,
+          liked: direction === 'right' ? true : false
+        })
+      })
+    }
   }
 
   useEffect(() => {
@@ -35,11 +44,11 @@ function Dashboard({ user }) {
 
   return (
     <div className="dashboard">
-      <ChatContainer user={user} />
+      <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} />
       <div className="swipe-container">
         <div className="card-container">
           {characters.map((character) =>
-            <TinderCard className="swipe" key={character.id} onSwipe={(dir) => swiped(dir, character.first_name)} onCardLeftScreen={() => outOfFrame(character.first_name)}>
+            <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>
               <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">
                 <h3>{character.first_name}</h3>
               </div>

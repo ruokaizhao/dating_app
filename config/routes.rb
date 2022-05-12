@@ -2,8 +2,11 @@ Rails.application.routes.draw do
   namespace :api do
 
     resources :users, only: [:update]
+    resources :matches, only: [:create]
+
 
     post "/users/:id", to: "users#index"
+    get "/users/:id", to: "users#match_users"
 
 
 
