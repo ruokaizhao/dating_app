@@ -3,7 +3,7 @@ import ChatHeader from './ChatHeader'
 import ChatList from './ChatList'
 import MatchList from './MatchList'
 
-function ChatContainer({ user }) {
+function ChatContainer({ user, matchUsers, setMatchUsers }) {
   return (
     <div className="chat-container">
       <ChatHeader user={user} />
@@ -12,7 +12,7 @@ function ChatContainer({ user }) {
         <button className="option">Chat</button>
       </div>
       
-      <MatchList />
+      <MatchList user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} />
       <ChatList />
 
 

@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-function MatchList() {
+function MatchList({ user, matchUsers, setMatchUsers }) {
+
+  useEffect(() => {
+    fetch(`/api/users/${user.id}`)
+    .then((r) => {
+      if (r.ok) {
+        r.json().then((data) => setMatchUsers(data))
+      }
+    })
+  }, [])
+
   return (
-    <div>MatchList</div>
+    <div>
+      {matchUsers.map((matchUser) => {
+        return (
+          <p key={matchUser.id}>{matchUser.first_name}</p>
+        )
+      })}
+
+    </div>
   )
 }
 

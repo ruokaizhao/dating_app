@@ -21,6 +21,16 @@ function Dashboard({ user }) {
           liked: direction === 'right' ? true : false
         })
       })
+      .then((r) => {
+        if (r.ok) {
+          fetch(`/api/users/${user.id}`)
+          .then((r) => {
+            if (r.ok) {
+              r.json().then((data) => setMatchUsers(data))
+            }
+          })
+        }
+      })
     }
   }
 
