@@ -16,7 +16,7 @@ function Home({ user, setUser }) {
   return (
     <div className="background">
       <div className={showAuth ? "dim-layer" : ""}>
-        <NavBar user={user} showAuth={showAuth} setShowAuth={setShowAuth} setIsSignUp={setIsSignUp} color={false} />
+        <NavBar user={user} showAuth={showAuth} setShowAuth={setShowAuth} setIsSignUp={setIsSignUp} setUser={setUser} color={false} />
         <div className="home">      
           <h1 className="primary-title">Swipe Right®</h1>
           <button className="primary-button" onClick={user.id ? () => navigate('/dashboard') : handleClick}>
