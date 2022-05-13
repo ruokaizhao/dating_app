@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function ChatInput() {
+function ChatInput({ user, recipientId }) {
   const [chatInput, setChatInput] = useState('')
 
   function handleSubmit(e) {

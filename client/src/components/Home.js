@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Auth from './Auth'
+import Auth from './Auth/Auth'
 import NavBar from './NavBar'
 
 function Home({ user, setUser }) {

@@ -313,12 +313,22 @@ form .secondary-button:hover {
 }
 
 .chat-container .option {
+  width: 50%;
   border: none;
-  background-color: rbg(255, 255, 255);
+  border-left: solid 1px rgb(181, 181, 181);
+  background-color: rgb(255, 255, 255);
   border-bottom: solid 4px rgb(243, 33, 33);
   font-size: 20px;
-  margin: 2px;
   padding: 10px;
+}
+
+.chat-container .option:hover {
+  cursor: pointer;
+  background-color: rgb(181, 181, 181);
+}
+
+.chat-container .option:active {
+  background-color: rgb(200, 200, 200);
 }
 
 .chat-header .profile-photo {
@@ -333,12 +343,12 @@ form .secondary-button:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  cursor: pointer;
 }
 
 .match-list .profile-photo {
-  margin-left: 10px;
-  margin-right: 20px;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
+  margin: 10px 20px 0px 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
 }
