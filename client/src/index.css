@@ -328,3 +328,17 @@ form .secondary-button:hover {
   height: 60px;
   border-radius: 30px;
 }
+
+.match-list .match-users {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.match-list .profile-photo {
+  margin-left: 10px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+}

@@ -35,22 +35,24 @@ function Dashboard({ user }) {
   }
 
   useEffect(() => {
-    fetch(`/api/users/${user.id}`, {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        gender_identity: user.gender_identity,
-        gender_interest: user.gender_interest
+    if (user.id) {
+      fetch(`/api/users/${user.id}`, {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          gender_identity: user.gender_identity,
+          gender_interest: user.gender_interest
+        })
       })
-    })
-    .then((r) => {
-      if (r.ok) {
-        r.json().then((data) => setCharacters(data))
-      }
-    })
-  }, [])
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((data) => setCharacters(data))
+        }
+      })
+    }    
+  }, [user.id])
 
   return (
     <div className="dashboard">
