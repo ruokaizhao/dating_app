@@ -82,7 +82,7 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
         name="email" 
         id="email" 
         autoFocus
-        spellcheck="false"
+        spellCheck="false"
         placeholder="Enter your email address..."
         onChange={formik.handleChange} 
         onBlur={formik.handleBlur} 
@@ -94,7 +94,7 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
         type="password" 
         name="password" 
         id="password"
-        spellcheck="false"
+        spellCheck="false"
         placeholder="Enter your password..." 
         onChange={formik.handleChange} 
         onBlur={formik.handleBlur} 
@@ -108,7 +108,7 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
         type="password" 
         name="password2" 
         id="password2" 
-        spellcheck="false"
+        spellCheck="false"
         placeholder="Confirm your password..."
         onChange={formik.handleChange} 
         onBlur={formik.handleBlur} 

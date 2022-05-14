@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     post "/users/:id", to: "users#index"
     get "/users/:id", to: "users#match_users"
 
+    post "/users/:user_id/message_history", to: "messages#message_history"
+    post "/users/:user_id/create_message", to: "messages#create_message"
+
+
 
 
     

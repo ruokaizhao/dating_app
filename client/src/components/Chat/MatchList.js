@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
 
-function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRecipientId }) {
+function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRecipientId, setRecipientName }) {
 
-  function handleClick(id) {
+  function handleClick(id, name) {
     setMatchChatDisplay(2)
     setRecipientId(id)
+    setRecipientName(name)
   }
 
   useEffect(() => {
@@ -22,7 +23,7 @@ function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRe
     <div className="match-list">
       {matchUsers.map((matchUser) => {
         return (
-          <div key={matchUser.id} className="match-users" onClick={() => handleClick(matchUser.id)}>
+          <div key={matchUser.id} className="match-users" onClick={() => handleClick(matchUser.id, matchUser.first_name)}>
             <img className="profile-photo" src={matchUser.url1} alt="profile-photo" />
             <p>{matchUser.first_name}</p>
           </div>

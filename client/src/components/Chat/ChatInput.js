@@ -1,10 +1,43 @@
 import React, { useState } from 'react'
 
-function ChatInput({ user, recipientId }) {
+function ChatInput({ user, recipientId, setMessages }) {
   const [chatInput, setChatInput] = useState('')
 
   function handleSubmit(e) {
     e.preventDefault()
+    fetch(`/api/users/${user.id}/create_message`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        sender_id: user.id,
+        recipient_id: recipientId,
+        content: chatInput
+      })
+    })
+    .then((r) => {
+      if (r.ok) {
+        fetch(`/api/users/${user.id}/message_history`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            sender_id: user.id,
+            recipient_id: recipientId   
+          })
+        })
+        .then((r) => {
+          if (r.ok) {
+            r.json().then((data) => {
+              setChatInput('')
+              setMessages(data)
+            })
+          }
+        })
+      }
+    })
   }
 
 
