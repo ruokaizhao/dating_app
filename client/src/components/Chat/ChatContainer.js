@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Chat from './Chat'
 import ChatHeader from './ChatHeader'
 import ChatList from './ChatList'
 import MatchList from './MatchList'
 
-function ChatContainer({ user, matchUsers, setMatchUsers }) {
+function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(0)
   const [recipientId, setRecipientId] = useState(null)
   const [recipientName, setRecipientName] = useState(null)
+  const [messages, setMessages] = useState([])
+  const [channel, setChannel] = useState(null)
 
   function handleClick(option) {
     setMatchChatDisplay(option)
   }
-
-
 
   return (
     <div className="chat-container">
@@ -26,6 +26,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers }) {
       {matchChatDisplay === 0 && 
       <MatchList 
         user={user} 
+        cable={cable}
         matchUsers={matchUsers} 
         setMatchUsers={setMatchUsers} 
         setMatchChatDisplay={setMatchChatDisplay} 
@@ -39,7 +40,11 @@ function ChatContainer({ user, matchUsers, setMatchUsers }) {
       <Chat 
       user={user} 
       recipientId={recipientId} 
-      recipientName={recipientName}  />}
+      recipientName={recipientName}
+      channel={channel}
+      messages={messages}
+      cable={cable}
+      setMessages={setMessages} />}
 
 
       

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import ChatContainer from './Chat/ChatContainer'
 
-function Dashboard({ user }) {
+function Dashboard({ user, cable }) {
   const [characters, setCharacters] = useState([])
   const [lastDirection, setLastDirection] = useState()
   const [matchUsers, setMatchUsers] = useState([])
@@ -56,7 +56,7 @@ function Dashboard({ user }) {
 
   return (
     <div className="dashboard">
-      <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} />
+      <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
       <div className="swipe-container">
         <div className="card-container">
           {characters.map((character) =>

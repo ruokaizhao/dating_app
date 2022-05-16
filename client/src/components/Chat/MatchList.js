@@ -1,12 +1,34 @@
 import React, { useEffect } from 'react'
 
-function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRecipientId, setRecipientName }) {
+function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRecipientId, setRecipientName, cable }) {
 
   function handleClick(id, name) {
     setMatchChatDisplay(2)
     setRecipientId(id)
     setRecipientName(name)
   }
+
+  useEffect(() => {
+    if (user.id) {
+      cable.subscriptions.create
+      (
+        {
+          channel: 'UserMatchChannel',
+          user_id: user.id
+        },
+        {
+          received: () => {
+            fetch(`/api/users/${user.id}`)
+            .then((r) => {
+              if (r.ok) {
+                r.json().then((data) => setMatchUsers(data))
+              }
+            })  
+          }
+        }
+      )
+    }    
+  }, [user.id])
 
   useEffect(() => {
     if (user.id) {
