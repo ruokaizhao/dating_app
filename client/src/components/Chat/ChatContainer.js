@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Chat from './Chat'
 import ChatHeader from './ChatHeader'
-import ChatList from './ChatList'
+import ChatLists from './ChatLists'
 import MatchList from './MatchList'
 
 function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
@@ -10,22 +10,18 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [messages, setMessages] = useState([])
   const [displayChat, setDisplayChat] = useState(false)
 
-  function handleClick(option) {
-    setMatchChatDisplay(option)
-  }
-
   return (
     <div className="chat-container">
       <ChatHeader user={user} />
       <div>
-        <button className="option" onClick={() => handleClick(0)}>Matches</button>
-        <button className="option" onClick={() => handleClick(1)}>Chat</button>
+        <button className="option" onClick={() => setMatchChatDisplay(false)}>Matches</button>
+        <button className="option" onClick={() => setMatchChatDisplay(true)}>Chat</button>
       </div>
 
       <div className="match-chat-list-container">
         {matchChatDisplay 
         ? 
-        <ChatList />
+        <ChatLists user={user} />
         :
         <MatchList 
           user={user} 
