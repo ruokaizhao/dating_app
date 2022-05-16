@@ -4,7 +4,7 @@ import Dashboard from './Dashboard'
 import Profiling from './Profiling'
 import { Route, Routes } from 'react-router-dom'
 
-function App() {
+function App({ cable }) {
   const [user, setUser] = useState({})
 
   useEffect(() => {
@@ -20,7 +20,7 @@ function App() {
     <div>
       <Routes>
         <Route path='/' element={<Home user={user} setUser={setUser} />} />
-        <Route path='/dashboard' element={<Dashboard user={user} />} />
+        <Route path='/dashboard' element={<Dashboard user={user} cable={cable} />} />
         <Route path='/profiling' element={<Profiling user={user} />} />
       </Routes>
     </div>
