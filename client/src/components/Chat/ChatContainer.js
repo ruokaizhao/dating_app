@@ -21,7 +21,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
       <div className="match-chat-list-container">
         {matchChatDisplay 
         ? 
-        <ChatLists user={user} />
+        <ChatLists user={user} matchUsers={matchUsers} />
         :
         <MatchList 
           user={user} 

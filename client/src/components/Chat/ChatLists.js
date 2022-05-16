@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ChatList from './ChatList'
 
-function ChatLists({ user }) {
+function ChatLists({ user, matchUsers }) {
   const [listMessages, setListMessages] = useState([])
 
   useEffect(() => {
@@ -15,20 +15,14 @@ function ChatLists({ user }) {
     }    
   }, [user.id])
 
-  console.log(listMessages)
-
-  listMessages.map((e) => {
-    console.log(e)
-  })
-
-
 
 
   return (
     <div>
       {listMessages.map((listMessage, index) => {
-        // <ChatList key={index} listMessage={listMessage} />
-        <p>hhh</p>
+        return (
+          <ChatList key={index} listMessage={listMessage} matchUsers={matchUsers} />
+        )
       })}
     </div>
   )
