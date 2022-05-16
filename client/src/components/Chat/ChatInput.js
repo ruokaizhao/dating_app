@@ -40,7 +40,6 @@ function ChatInput({ user, recipientId, setMessages }) {
     })
   }
 
-
   return (
     <div>
       <form onSubmit={handleSubmit}>

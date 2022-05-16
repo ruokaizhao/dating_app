@@ -9,7 +9,6 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [recipientId, setRecipientId] = useState(null)
   const [recipientName, setRecipientName] = useState(null)
   const [messages, setMessages] = useState([])
-  const [channel, setChannel] = useState(null)
 
   function handleClick(option) {
     setMatchChatDisplay(option)
@@ -41,7 +40,6 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
       user={user} 
       recipientId={recipientId} 
       recipientName={recipientName}
-      channel={channel}
       messages={messages}
       cable={cable}
       setMessages={setMessages} />}
