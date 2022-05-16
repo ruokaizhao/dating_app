@@ -27,12 +27,12 @@ function ChatInput({ user, recipientId, messages, setMessages }) {
   }
 
   return (
-    <div>
+    <div className="chat-input">
       <form onSubmit={handleSubmit}>
         <textarea 
           name="chat_input" 
           value={chatInput}
-          rows="5"
+          rows="2"
           onChange={(e) => setChatInput(e.target.value)} />
         <button className="secondary-button">Send</button>
       </form>
