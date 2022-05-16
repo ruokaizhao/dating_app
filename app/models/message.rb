@@ -12,4 +12,17 @@ class Message < ApplicationRecord
     Message.all.where(pair_id: pair_id)
   end
 
+  def self.list_messages(user, matched_users)
+    pair_ids = matched_users.map do |matched_user|
+      Match.all.where(user_id: user[:id]).where(browsed_user_id: matched_user[:id])[0][:pair_id]
+    end
+    pair_ids.map do |pair_id|
+      Message.all.where(pair_id: pair_id).map do |message|
+        ActiveModelSerializers::Adapter::Json.new(
+          ListMessagesSerializer.new(message)
+        ).serializable_hash
+      end
+    end
+  end
+
 end
