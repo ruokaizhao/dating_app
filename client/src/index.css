@@ -393,3 +393,38 @@ form .secondary-button:hover {
   height: 60vh;
   overflow-y: auto;
 }
+
+.chat-display .sender_message-card {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.chat-display .recipient-message-card {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.chat-display .sender_message-card .chat-photo {
+  width: 40px;
+  height: 40px;
+  margin: 0px 2px 0px 8px;
+  border-radius: 20px;
+}
+
+.chat-display .recipient-message-card .chat-photo {
+  width: 40px;
+  height: 40px;
+  margin: 0px 8px 0px 2px;
+  border-radius: 20px;
+}
+
+.chat-display .message-list p {
+  color: rgb(255, 255, 255);
+  background-color: rgb(25, 130, 252);
+  padding: 10px;
+  border-radius: 25px;
+  overflow-wrap: break-word;
+  max-width: 75%;
+}

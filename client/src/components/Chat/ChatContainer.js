@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Chat from './Chat'
 import ChatHeader from './ChatHeader'
 import ChatList from './ChatList'
@@ -6,8 +6,7 @@ import MatchList from './MatchList'
 
 function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(false)
-  const [recipientId, setRecipientId] = useState(null)
-  const [recipientName, setRecipientName] = useState(null)
+  const [recipient, setRecipient] = useState({})
   const [messages, setMessages] = useState([])
   const [displayChat, setDisplayChat] = useState(false)
 
@@ -34,18 +33,16 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
           matchUsers={matchUsers} 
           setMatchUsers={setMatchUsers} 
           setDisplayChat={setDisplayChat}
-          setRecipientId={setRecipientId} 
-          setRecipientName={setRecipientName} />}
+          setRecipient={setRecipient} />}
 
         {displayChat && 
         <Chat 
-        user={user} 
-        setDisplayChat={setDisplayChat}
-        recipientId={recipientId} 
-        recipientName={recipientName}
-        messages={messages}
-        cable={cable}
-        setMessages={setMessages} />}  
+          user={user} 
+          setDisplayChat={setDisplayChat}
+          recipient={recipient} 
+          messages={messages}
+          cable={cable}
+          setMessages={setMessages} />}  
       </div>
     </div>
   )
