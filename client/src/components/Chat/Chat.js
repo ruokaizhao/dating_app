@@ -1,7 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import ChatInput from './ChatInput'
 
 function Chat({ user, recipientId, recipientName, cable, messages, setMessages, setDisplayChat }) {
+  const endMessageRef = useRef(null)
+
+  useEffect(() => {
+    endMessageRef.current.scrollIntoView({ behavior: 'smooth' })
+  }, [messages])
 
   useEffect(() => {
     if (user.id) {
@@ -64,7 +69,7 @@ function Chat({ user, recipientId, recipientName, cable, messages, setMessages, 
             <p key={index}>{message.content}</p>
           )
         })}
-
+        <div ref={endMessageRef} />
       </div>
 
       <ChatInput user={user} recipientId={recipientId} messages={messages} setMessages={setMessages} cable={cable} />
