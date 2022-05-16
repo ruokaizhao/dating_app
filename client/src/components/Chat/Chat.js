@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import ChatInput from './ChatInput'
 
-function Chat({ user, recipientId, recipientName, cable, messages, setMessages }) {
+function Chat({ user, recipientId, recipientName, cable, messages, setMessages, setDisplayChat }) {
 
   useEffect(() => {
     if (user.id) {
@@ -21,7 +21,7 @@ function Chat({ user, recipientId, recipientName, cable, messages, setMessages }
         }
       })
     }    
-  }, [user.id])
+  }, [user.id, recipientId])
 
   useEffect(() => {
     if (user.id) {
@@ -52,18 +52,21 @@ function Chat({ user, recipientId, recipientName, cable, messages, setMessages }
         }
       )
     }
-  }, [user.id])
-
-
-
+  }, [user.id, cable.subscriptions])
 
   return (
-    <div>
-      {messages.map((message, index) => {
-        return (
-          <p key={index}>{message.content}</p>
-        )
-      })}
+    <div className="chat-display">
+      <div className="close-icon" onClick={() => setDisplayChat(false)}>ⓧ</div>
+
+      <div className="message-list">
+        {messages.map((message, index) => {
+          return (
+            <p key={index}>{message.content}</p>
+          )
+        })}
+
+      </div>
+
       <ChatInput user={user} recipientId={recipientId} messages={messages} setMessages={setMessages} cable={cable} />
     </div>
   )

@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 
-function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRecipientId, setRecipientName, cable }) {
+function MatchList({ user, matchUsers, setMatchUsers, setRecipientId, setRecipientName, setDisplayChat, cable }) {
 
   function handleClick(id, name) {
-    setMatchChatDisplay(2)
+    setDisplayChat(true)
     setRecipientId(id)
     setRecipientName(name)
   }
@@ -28,7 +28,7 @@ function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRe
         }
       )
     }    
-  }, [user.id])
+  }, [user.id, setMatchUsers, cable.subscriptions])
 
   useEffect(() => {
     if (user.id) {
@@ -39,17 +39,16 @@ function MatchList({ user, matchUsers, setMatchUsers, setMatchChatDisplay, setRe
         }
       })
     }    
-  }, [user.id])
+  }, [user.id, setMatchUsers])
 
   return (
     <div className="match-list">
       {matchUsers.map((matchUser) => {
         return (
           <div key={matchUser.id} className="match-users" onClick={() => handleClick(matchUser.id, matchUser.first_name)}>
-            <img className="profile-photo" src={matchUser.url1} alt="profile-photo" />
+            <img className="profile-photo" src={matchUser.url1} alt="profile" />
             <p>{matchUser.first_name}</p>
-          </div>
-          
+          </div>          
         )
       })}
 

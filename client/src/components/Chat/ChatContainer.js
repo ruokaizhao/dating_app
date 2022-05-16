@@ -5,10 +5,11 @@ import ChatList from './ChatList'
 import MatchList from './MatchList'
 
 function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
-  const [matchChatDisplay, setMatchChatDisplay] = useState(0)
+  const [matchChatDisplay, setMatchChatDisplay] = useState(false)
   const [recipientId, setRecipientId] = useState(null)
   const [recipientName, setRecipientName] = useState(null)
   const [messages, setMessages] = useState([])
+  const [displayChat, setDisplayChat] = useState(false)
 
   function handleClick(option) {
     setMatchChatDisplay(option)
@@ -21,33 +22,31 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
         <button className="option" onClick={() => handleClick(0)}>Matches</button>
         <button className="option" onClick={() => handleClick(1)}>Chat</button>
       </div>
-      
-      {matchChatDisplay === 0 && 
-      <MatchList 
+
+      <div className="match-chat-list-container">
+        {matchChatDisplay 
+        ? 
+        <ChatList />
+        :
+        <MatchList 
+          user={user} 
+          cable={cable}
+          matchUsers={matchUsers} 
+          setMatchUsers={setMatchUsers} 
+          setDisplayChat={setDisplayChat}
+          setRecipientId={setRecipientId} 
+          setRecipientName={setRecipientName} />}
+
+        {displayChat && 
+        <Chat 
         user={user} 
+        setDisplayChat={setDisplayChat}
+        recipientId={recipientId} 
+        recipientName={recipientName}
+        messages={messages}
         cable={cable}
-        matchUsers={matchUsers} 
-        setMatchUsers={setMatchUsers} 
-        setMatchChatDisplay={setMatchChatDisplay} 
-        setRecipientId={setRecipientId} 
-        setRecipientName={setRecipientName} />}
-
-      {matchChatDisplay === 1 && 
-      <ChatList />}
-
-      {matchChatDisplay === 2 && 
-      <Chat 
-      user={user} 
-      recipientId={recipientId} 
-      recipientName={recipientName}
-      messages={messages}
-      cable={cable}
-      setMessages={setMessages} />}
-
-
-      
-      
-
+        setMessages={setMessages} />}  
+      </div>
     </div>
   )
 }

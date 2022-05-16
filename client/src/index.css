@@ -116,13 +116,17 @@ nav .nav-button:disabled {
 
 .close-icon {
   color: rgb(180, 180, 180);
-  float: right;
+  text-align: right;
   font-size: 35px;
 }
 
 .close-icon:hover {
   color: rgb(0, 0, 0);
   cursor: pointer;
+}
+
+.auth h1 {
+  margin: 0;
 }
 
 form .secondary-button {
@@ -268,8 +272,8 @@ form .secondary-button:hover {
 }
 
 .dashboard .swipe-container {
-  width: 70%;
   display: flex;
+  width: 70%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -339,6 +343,10 @@ form .secondary-button:hover {
   border-radius: 30px;
 }
 
+.match-list {
+  min-width: 40%;
+}
+
 .match-list .match-users {
   display: flex;
   justify-content: flex-start;
@@ -351,4 +359,23 @@ form .secondary-button:hover {
   width: 60px;
   height: 60px;
   border-radius: 30px;
+}
+
+.match-chat-list-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.chat-display {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+  rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.chat-display .message-list {
+  height: 60vh;
+  overflow-y: auto;
 }
