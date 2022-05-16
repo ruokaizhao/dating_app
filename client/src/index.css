@@ -104,10 +104,10 @@ nav .nav-button:disabled {
   position: absolute;
   left: 0;
   right: 0;
-  top: 50px;
+  top: 150px;
   margin-left: auto;
   margin-right: auto;
-  max-width: 450px;
+  max-width: 500px;
   height: 600px;
   background-color: rgb(255, 255, 255);
   padding: 20px;
@@ -167,6 +167,20 @@ form .secondary-button:hover {
   outline: none;
   border-color: rgb(113, 158, 206);
   box-shadow: 0 0 10px rgb(113, 158, 206);
+}
+
+.auth .forgot-password {
+  display: flex;
+  justify-content: space-around;
+}
+
+.auth .forgot-password p {
+  color:rgb(126, 178, 233)
+}
+
+.auth .forgot-password p:hover {
+  color:rgb(70, 147, 229);
+  cursor: pointer
 }
 
 /* ---------Profiling--------- */

@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-function Auth({ setShowAuth, isSignUp, user, setUser }) {
+function Auth({ setShowAuth, isSignUp, user, setUser, setIsSignUp }) {
 
   const navigate = useNavigate()
 
@@ -81,7 +81,6 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
         type="email" 
         name="email" 
         id="email" 
-        autoFocus
         spellCheck="false"
         placeholder="Enter your email address..."
         onChange={formik.handleChange} 
@@ -116,8 +115,11 @@ function Auth({ setShowAuth, isSignUp, user, setUser }) {
         {formik.touched.password2 && formik.errors.password2 && <div className="errors">{formik.errors.password2}</div>}
         <button type="submit" className="secondary-button">Submit</button>
       </form>
+      <div className="forgot-password">
+        <p onClick={() => setIsSignUp((isSignUp) => !isSignUp)}>{isSignUp ? 'Already have an account?' : 'Don\' have an account?'}</p>
+        <p onClick={() => setIsSignUp(true)}>Forget your password?</p>
+      </div>
       <hr/>
-      <h2>GET THE APP</h2>
     </div>
   )
 }
