@@ -64,7 +64,7 @@ function Chat({ user, recipientId, recipientName, cable, messages, setMessages }
           <p key={index}>{message.content}</p>
         )
       })}
-      <ChatInput user={user} recipientId={recipientId} setMessages={setMessages} cable={cable} />
+      <ChatInput user={user} recipientId={recipientId} messages={messages} setMessages={setMessages} cable={cable} />
     </div>
   )
 }

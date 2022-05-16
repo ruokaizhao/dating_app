@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-function ChatInput({ user, recipientId, setMessages }) {
+function ChatInput({ user, recipientId, messages, setMessages }) {
   const [chatInput, setChatInput] = useState('')
 
   function handleSubmit(e) {
@@ -18,23 +18,9 @@ function ChatInput({ user, recipientId, setMessages }) {
     })
     .then((r) => {
       if (r.ok) {
-        fetch(`/api/users/${user.id}/message_history`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            sender_id: user.id,
-            recipient_id: recipientId   
-          })
-        })
-        .then((r) => {
-          if (r.ok) {
-            r.json().then((data) => {
-              setChatInput('')
-              setMessages(data)
-            })
-          }
+        r.json().then((data) => {
+          setChatInput('')
+          setMessages([...messages, data])
         })
       }
     })
