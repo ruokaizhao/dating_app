@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     post "/users/:user_id/message_history", to: "messages#message_history"
     post "/users/:user_id/create_message", to: "messages#create_message"
 
+    patch "/matches", to: "matches#update_last_read_at"
+
 
 
 

@@ -5,6 +5,11 @@ class Api::MatchesController < ApplicationController
     render json: match, status: :created
   end
 
+  def update_last_read_at
+    match = Match.where(user_id: params[:user_id]).where(browsed_user_id: params[:recipient_id])[0]
+    # match.update!(last_read_at: )
+  end
+
   # private
 
   # def match_params
