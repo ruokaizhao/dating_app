@@ -365,6 +365,9 @@ form .secondary-button:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.match-list .match-users:hover {
   cursor: pointer;
 }
 
@@ -378,6 +381,36 @@ form .secondary-button:hover {
 .match-chat-list-container {
   display: flex;
   justify-content: flex-start;
+}
+
+/* ---------Chat Lists--------- */
+
+.chat-lists {
+  width: 50%;
+}
+
+.chat-lists .chat-list {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom: solid 1px rgb(213, 213, 213);
+}
+
+.chat-lists .chat-list:hover {
+  cursor: pointer;
+}
+
+.chat-lists .chat-list .profile-photo {
+  margin: 10px 20px 0px 10px;
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+}
+
+.chat-lists .chat-list p {
+  color: rgb(181, 181, 181);
+  width: 70%;
+  overflow-wrap: break-word;
 }
 
 /* ---------Chat Display--------- */
