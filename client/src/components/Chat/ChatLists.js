@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ChatList from './ChatList'
 
-function ChatLists({ user, matchUsers, setDisplayChat, setRecipient }) {
+function ChatLists({ user, matchUsers, setDisplayChat, setRecipient, cable }) {
   const [listMessages, setListMessages] = useState([])
 
   useEffect(() => {
@@ -14,6 +14,28 @@ function ChatLists({ user, matchUsers, setDisplayChat, setRecipient }) {
       })
     }    
   }, [user.id])
+
+  useEffect(() => {
+    if (user.id) {
+      cable.subscriptions.create
+      (
+        {
+          channel: 'UserMatchChannel',
+          user_id: user.id
+        },
+        {
+          received: () => {
+            fetch(`/api/users/${user.id}/message_histories`)
+            .then((r) => {
+              if (r.ok) {
+                r.json().then((data) => setListMessages(data))
+              }
+            })
+          }
+        }
+      )
+    }    
+  }, [user.id, setListMessages, cable.subscriptions])
 
 
 

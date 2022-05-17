@@ -6,8 +6,9 @@ class Api::MatchesController < ApplicationController
   end
 
   def update_last_read_at
-    match = Match.where(user_id: params[:user_id]).where(browsed_user_id: params[:recipient_id])[0]
-    # match.update!(last_read_at: )
+    match = Match.where(user_id: params[:user_id]).where(browsed_user_id: params[:browsed_user_id])[0]
+    match.update!(last_read_at: params[:last_read_at])
+    render json: match, status: :ok
   end
 
   # private

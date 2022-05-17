@@ -14,6 +14,9 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
 
   const recipient = matchUsers.find((matchUser) => matchUser.id === recipientId)
 
+  const newMessages = listMessage.filter((message) => message.message.created_at > message.message.last_read_at).length
+  const numberOfUnReadMessages = newMessages === 100 ? "99+" : newMessages === 0 ? null : newMessages
+
   function handleClick() {
     setDisplayChat(true)
     setRecipient(recipient)
@@ -21,12 +24,14 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
 
   return (
     <div className="chat-list" onClick={handleClick}>
-      <img src={recipient.url1} className="profile-photo" alt="profile" />
-      <div>
-        <h3>{recipient.first_name}</h3>
-        <p>{listMessage[listMessage.length - 1]['message']['content']}</p>
-      </div>
-      
+      <div className="chat-list-img-name">
+        <img src={recipient.url1} className="profile-photo" alt="profile" />
+        <div>
+          <h3>{recipient.first_name}</h3>
+          <p>{listMessage[listMessage.length - 1]['message']['content']}</p>
+        </div>
+      </div>      
+      <p className="unread-messages">{numberOfUnReadMessages}</p>      
     </div>
   )
 }

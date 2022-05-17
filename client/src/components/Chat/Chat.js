@@ -18,11 +18,12 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
         },
         body: JSON.stringify({
           user_id: user.id,
-          browsed_user_id: recipient.id
+          browsed_user_id: recipient.id,
+          last_read_at: Date()
         })
       })
     }
-  })
+  }, [])
 
   useEffect(() => {
     if (user.id) {
@@ -33,7 +34,8 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
         },
         body: JSON.stringify({
           sender_id: user.id,
-          recipient_id: recipient.id   
+          recipient_id: recipient.id,
+          // page: 1   
         })
       })
       .then((r) => {
