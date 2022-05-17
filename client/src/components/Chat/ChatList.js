@@ -2,15 +2,19 @@ import React from 'react'
 
 function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient }) {
 
+
+  if (listMessage.length === 0) {
+    return null
+  }
+
   const recipientId = 
     listMessage[0]['message']['sender_id'] === user.id ? 
     listMessage[0]['message']['recipient_id'] : 
     listMessage[0]['message']['sender_id']
 
-  const recipient = matchUsers.find((matchUser) => matchUser.id = recipientId)
+  const recipient = matchUsers.find((matchUser) => matchUser.id === recipientId)
 
   function handleClick() {
-    setDisplayChat(false)
     setDisplayChat(true)
     setRecipient(recipient)
   }

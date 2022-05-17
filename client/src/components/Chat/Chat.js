@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import ChatInput from './ChatInput'
 
-function Chat({ user, recipient, cable, messages, setMessages, setDisplayChat }) {
+function Chat({ user, recipient, cable, setDisplayChat }) {
+  const [messages, setMessages] = useState([])
   const endMessageRef = useRef(null)
 
   useEffect(() => {
@@ -76,7 +77,10 @@ function Chat({ user, recipient, cable, messages, setMessages, setDisplayChat })
 
   return (
     <div className="chat-display">
-      <div className="close-icon" onClick={() => setDisplayChat(false)}>ⓧ</div>
+      <div className="chat-display-header">
+        <p>{recipient.first_name}</p>
+        <div className="close-icon" onClick={() => setDisplayChat(false)}>ⓧ</div>
+      </div>     
 
       <div className="message-list">
         {messages.map((message, index) => {

@@ -424,6 +424,17 @@ form .secondary-button:hover {
   rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
 
+.chat-display-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-display-header p {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
 .chat-display .message-list {
   height: 60vh;
   overflow-y: auto;
@@ -449,6 +460,15 @@ form .secondary-button:hover {
   border-radius: 20px;
 }
 
+.chat-display .sender_message-card p {
+  color: rgb(255, 255, 255);
+  background-color: rgb(25, 130, 252);
+  padding: 10px;
+  border-radius: 25px;
+  overflow-wrap: break-word;
+  max-width: 75%;
+}
+
 .chat-display .recipient-message-card .chat-photo {
   width: 40px;
   height: 40px;
@@ -456,9 +476,9 @@ form .secondary-button:hover {
   border-radius: 20px;
 }
 
-.chat-display .message-list p {
-  color: rgb(255, 255, 255);
-  background-color: rgb(25, 130, 252);
+.chat-display .recipient-message-card p {
+  color: rgb(0, 0, 0);
+  background-color: rgb(209, 204, 204);
   padding: 10px;
   border-radius: 25px;
   overflow-wrap: break-word;

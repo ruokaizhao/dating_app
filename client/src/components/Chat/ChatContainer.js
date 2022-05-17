@@ -6,8 +6,7 @@ import MatchList from './MatchList'
 
 function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(false)
-  const [recipient, setRecipient] = useState({})
-  const [messages, setMessages] = useState([])
+  const [recipient, setRecipient] = useState({})  
   const [displayChat, setDisplayChat] = useState(false)
 
   return (
@@ -40,10 +39,8 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
         <Chat 
           user={user} 
           setDisplayChat={setDisplayChat}
-          recipient={recipient} 
-          messages={messages}
-          cable={cable}
-          setMessages={setMessages} />}  
+          recipient={recipient}
+          cable={cable} />}  
       </div>
     </div>
   )
