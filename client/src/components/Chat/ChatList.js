@@ -22,13 +22,15 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
     setRecipient(recipient)
   }
 
+  console.log(newMessages)
+
   return (
     <div className="chat-list" onClick={handleClick}>
       <div className="chat-list-img-name">
         <img src={recipient.url1} className="profile-photo" alt="profile" />
         <div>
           <h3>{recipient.first_name}</h3>
-          <p>{listMessage[listMessage.length - 1]['message']['content']}</p>
+          <p>{listMessage[0]['message']['content']}</p>
         </div>
       </div>      
       <p className="unread-messages">{numberOfUnReadMessages}</p>      
