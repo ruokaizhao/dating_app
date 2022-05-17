@@ -9,7 +9,7 @@ class Message < ApplicationRecord
 
   def self.messages(params)
     pair_id = Match.all.where(user_id: params[:sender_id]).where(browsed_user_id: params[:recipient_id])[0][:pair_id]
-    Message.all.where(pair_id: pair_id)
+    Message.all.where(pair_id: pair_id).order(created_at: :desc).paginate(page: params[:page], per_page: 100)
   end
 
   def self.list_messages(user, matched_users)
