@@ -17,7 +17,7 @@ class Message < ApplicationRecord
       Match.all.where(user_id: user[:id]).where(browsed_user_id: matched_user[:id])[0][:pair_id]
     end
     pair_ids.map do |pair_id|
-      Message.all.where(pair_id: pair_id).map do |message|
+      Message.all.where(pair_id: pair_id).limit(10).map do |message|
         ActiveModelSerializers::Adapter::Json.new(
           ListMessagesSerializer.new(message)
         ).serializable_hash
