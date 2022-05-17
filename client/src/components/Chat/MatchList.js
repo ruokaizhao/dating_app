@@ -46,7 +46,10 @@ function MatchList({ user, matchUsers, setMatchUsers, setRecipient, setDisplayCh
         return (
           <div key={matchUser.id} className="match-users" onClick={() => handleClick(matchUser)}>
             <img className="profile-photo" src={matchUser.url1} alt="profile" />
-            <p>{matchUser.first_name}</p>
+            <div>
+              <h3>{matchUser.first_name}</h3>
+              <p>{matchUser.about}</p>
+            </div>
           </div>          
         )
       })}

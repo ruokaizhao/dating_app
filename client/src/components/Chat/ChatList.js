@@ -19,12 +19,14 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
     setRecipient(recipient)
   }
 
-
-
   return (
     <div className="chat-list" onClick={handleClick}>
       <img src={recipient.url1} className="profile-photo" alt="profile" />
-      <p>{listMessage[listMessage.length - 1]['message']['content']}</p>
+      <div>
+        <h3>{recipient.first_name}</h3>
+        <p>{listMessage[listMessage.length - 1]['message']['content']}</p>
+      </div>
+      
     </div>
   )
 }

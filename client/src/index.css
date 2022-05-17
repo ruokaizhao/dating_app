@@ -358,6 +358,8 @@ form .secondary-button:hover {
 }
 
 .match-list {
+  display: flex;
+  flex-direction: column;
   width: 50%;
 }
 
@@ -365,10 +367,20 @@ form .secondary-button:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  border-bottom: dashed 1px rgb(213, 213, 213);
 }
 
 .match-list .match-users:hover {
   cursor: pointer;
+}
+
+.match-list .match-users div {
+  display: flex;
+  flex-direction: column;
+}
+
+.match-list .match-users div p {
+  color: rgb(181, 181, 181);
 }
 
 .match-list .profile-photo {
@@ -380,12 +392,13 @@ form .secondary-button:hover {
 
 .match-chat-list-container {
   display: flex;
-  justify-content: flex-start;
 }
 
 /* ---------Chat Lists--------- */
 
 .chat-lists {
+  display: flex;
+  flex-direction: column;
   width: 50%;
 }
 
@@ -393,11 +406,20 @@ form .secondary-button:hover {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-bottom: solid 1px rgb(213, 213, 213);
+  border-bottom: dashed 1px rgb(213, 213, 213);
 }
 
 .chat-lists .chat-list:hover {
   cursor: pointer;
+}
+
+.chat-lists .chat-list div {
+  display: flex;
+  flex-direction: column; 
+}
+
+.chat-lists .chat-list div p {
+  color: rgb(181, 181, 181);
 }
 
 .chat-lists .chat-list .profile-photo {
@@ -405,12 +427,6 @@ form .secondary-button:hover {
   width: 60px;
   height: 60px;
   border-radius: 30px;
-}
-
-.chat-lists .chat-list p {
-  color: rgb(181, 181, 181);
-  width: 70%;
-  overflow-wrap: break-word;
 }
 
 /* ---------Chat Display--------- */
@@ -430,9 +446,8 @@ form .secondary-button:hover {
   align-items: center;
 }
 
-.chat-display-header p {
+.chat-display-header h3 {
   margin-left: 20px;
-  font-size: 20px;
 }
 
 .chat-display .message-list {
