@@ -15,14 +15,14 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
   const recipient = matchUsers.find((matchUser) => matchUser.id === recipientId)
 
   const newMessages = listMessage.filter((message) => message.message.created_at > message.message.last_read_at).length
-  const numberOfUnReadMessages = newMessages === 100 ? "99+" : newMessages === 0 ? null : newMessages
+  const numberOfUnReadMessages = newMessages === 100 ? "99+" : newMessages
 
   function handleClick() {
     setDisplayChat(true)
     setRecipient(recipient)
   }
 
-  console.log(newMessages)
+  console.log(listMessage[0].message.last_read_at)
 
   return (
     <div className="chat-list" onClick={handleClick}>
@@ -32,8 +32,9 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
           <h3>{recipient.first_name}</h3>
           <p>{listMessage[0]['message']['content']}</p>
         </div>
-      </div>      
-      <p className="unread-messages">{numberOfUnReadMessages}</p>      
+      </div> 
+      {newMessages !== 0 && <p className="unread-messages">{numberOfUnReadMessages}</p>}     
+            
     </div>
   )
 }
