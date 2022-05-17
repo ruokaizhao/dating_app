@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get "/users/:user_id/message_histories", to: "messages#message_histories"
 
     patch "/matches", to: "matches#update_last_read_at"
+    get "/users/:user_id/matches/:recipient_id", to: "matches#get_match"
 
 
 

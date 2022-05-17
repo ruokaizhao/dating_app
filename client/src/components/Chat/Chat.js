@@ -23,7 +23,7 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
         })
       })
     }
-  }, [])
+  }, [user.id, recipient.id])
 
   useEffect(() => {
     if (user.id) {

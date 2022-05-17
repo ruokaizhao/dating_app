@@ -1,11 +1,7 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient }) {
-
-
-  if (listMessage.length === 0) {
-    return null
-  }
+  const [lastReadAt, setLastReadAt] = useState('')
 
   const recipientId = 
     listMessage[0]['message']['sender_id'] === user.id ? 
@@ -14,15 +10,28 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
 
   const recipient = matchUsers.find((matchUser) => matchUser.id === recipientId)
 
-  const newMessages = listMessage.filter((message) => message.message.created_at > message.message.last_read_at).length
+  const newMessages = lastReadAt ? listMessage.filter((message) => message.message.created_at > lastReadAt).length : listMessage.length
   const numberOfUnReadMessages = newMessages === 100 ? "99+" : newMessages
+
+  useEffect(() => {
+    if (user.id) {
+      fetch(`/api/users/${user.id}/matches/${recipientId}`)
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((data) => setLastReadAt(data.last_read_at))
+        }
+      })
+    }    
+  }, [user.id, recipientId, setLastReadAt])
 
   function handleClick() {
     setDisplayChat(true)
     setRecipient(recipient)
   }
 
-  console.log(listMessage[0].message.last_read_at)
+  if (listMessage.length === 0) {
+    return null
+  }
 
   return (
     <div className="chat-list" onClick={handleClick}>

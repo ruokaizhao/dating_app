@@ -11,6 +11,11 @@ class Api::MatchesController < ApplicationController
     render json: match, status: :ok
   end
 
+  def get_match
+    match = Match.where(user_id: params[:user_id]).where(browsed_user_id: params[:recipient_id])[0]
+    render json: match, status: :ok
+  end
+
   # private
 
   # def match_params
