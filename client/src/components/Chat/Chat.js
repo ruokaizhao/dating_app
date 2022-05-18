@@ -47,6 +47,7 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
   }, [user.id, recipient.id, setMessages])
 
   useEffect(() => {
+    
     if (user.id) {
       cable.subscriptions.create
       (
@@ -55,27 +56,37 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
           user_id: user.id
         },
         {
-          received: () => {
-            fetch(`/api/users/${user.id}/message_history`, {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                sender_id: user.id,
-                recipient_id: recipient.id   
-              })
-            })
-            .then((r) => {
-              if (r.ok) {
-                r.json().then((data) => setMessages(data))
-              }
-            })   
+          received: (data) => {
+            setMessages([...messages, data])
+            // fetch(`/api/users/${user.id}/message_history`, {
+            //   method: 'POST',
+            //   headers: {
+            //     'Content-Type': 'application/json'
+            //   },
+            //   body: JSON.stringify({
+            //     sender_id: user.id,
+            //     recipient_id: recipient.id   
+            //   })
+            // })
+            // .then((r) => {
+            //   if (r.ok) {
+            //     r.json().then((data) => setMessages(data))
+            //   }
+            // })  
+            
           }
         }
       )
     }
-  }, [user.id, cable.subscriptions, recipient.id, setMessages])
+  // It's important to add messages in the dependency array, this had been bothering me for days! If messages is not in the dependency array, when component first
+  // renders, after user.id gets value, the line 28 useEffect starts fetch data and setMessages(data), but during this time, message is still with its initial value, which
+  // is [], and when you access messages in received(data), it is [], and for reasons beyond my understanding, the data within received stays unchanged unless
+  // the useEffect wrapping it gets re-called. So now, when you use messages to setMessages([...messages, data]), the messages will always be [], and setMessages
+  // will make messages become [data]. To solve this, messages needs to be added in the dependency array, in doing so, after line 28 useEffect sets messages with
+  // data coming from backend, the change of messages will cause the useEffect wrapping received re-run, so now, when messages is accessed within received, it's the
+  // correct value. And setMessages within received will change the messages, causing the useEffect wrapping received re-run, which causes the value of messages within
+  // received always be the correct value.
+  }, [user.id, cable.subscriptions, recipient.id, setMessages, messages])
 
   return (
     <div className="chat-display">
