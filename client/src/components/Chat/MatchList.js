@@ -16,18 +16,13 @@ function MatchList({ user, matchUsers, setMatchUsers, setRecipient, setDisplayCh
           user_id: user.id
         },
         {
-          received: () => {
-            fetch(`/api/users/${user.id}`)
-            .then((r) => {
-              if (r.ok) {
-                r.json().then((data) => setMatchUsers(data))
-              }
-            })  
+          received: (matchUser) => {
+            setMatchUsers([...matchUsers, matchUser])
           }
         }
       )
     }    
-  }, [user.id, setMatchUsers, cable.subscriptions])
+  }, [user.id, setMatchUsers, cable.subscriptions, matchUsers])
 
   useEffect(() => {
     if (user.id) {

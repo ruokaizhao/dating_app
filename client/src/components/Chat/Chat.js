@@ -47,6 +47,7 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
   }, [user.id, recipient.id, setMessages])
 
   useEffect(() => {
+    console.log(messages)
     
     if (user.id) {
       cable.subscriptions.create
@@ -56,24 +57,8 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
           user_id: user.id
         },
         {
-          received: (data) => {
-            setMessages([...messages, data])
-            // fetch(`/api/users/${user.id}/message_history`, {
-            //   method: 'POST',
-            //   headers: {
-            //     'Content-Type': 'application/json'
-            //   },
-            //   body: JSON.stringify({
-            //     sender_id: user.id,
-            //     recipient_id: recipient.id   
-            //   })
-            // })
-            // .then((r) => {
-            //   if (r.ok) {
-            //     r.json().then((data) => setMessages(data))
-            //   }
-            // })  
-            
+          received: (message) => {
+            setMessages([...messages, message])
           }
         }
       )
