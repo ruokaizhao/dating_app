@@ -3,8 +3,8 @@ import ChatInput from './ChatInput'
 
 function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setShowUnreadMessages }) {
   const [messages, setMessages] = useState([])
-  const endMessageRef = useRef(null)
   const [pairId, setPairId] = useState(null)
+  const endMessageRef = useRef(null)  
 
   useEffect(() => {
     endMessageRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -28,8 +28,6 @@ function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setS
       })
     }
   }, [user.id, recipient.id, pairId])
-
-  console.log(showUnreadMessages)
 
   useEffect(() => {
     if (user.id) {
@@ -55,8 +53,7 @@ function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setS
     }    
   }, [user.id, recipient.id, setMessages])
 
-  useEffect(() => {
-    
+  useEffect(() => {    
     if (user.id) {
       cable.subscriptions.create
       (
@@ -72,15 +69,16 @@ function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setS
         }
       )
     }
+  }, [user.id, cable.subscriptions, recipient.id, setMessages, messages])
+
   // It's important to add messages in the dependency array, this had been bothering me for days! If messages is not in the dependency array, when component first
-  // renders, after user.id gets value, the line 28 useEffect starts fetch data and setMessages(data), but during this time, message is still with its initial value, which
-  // is [], and when you access messages in received(data), it is [], and for reasons beyond my understanding, the data within received stays unchanged unless
+  // renders, after user.id gets value, the line 28 useEffect starts fetch data and setMessages(data), but during this time, message is still with its initial value,
+  // which is [], and when you access messages in received(data), it is [], and for reasons beyond my understanding, the data within received stays unchanged unless
   // the useEffect wrapping it gets re-called. So now, when you use messages to setMessages([...messages, data]), the messages will always be [], and setMessages
   // will make messages become [data]. To solve this, messages needs to be added in the dependency array, in doing so, after line 28 useEffect sets messages with
   // data coming from backend, the change of messages will cause the useEffect wrapping received re-run, so now, when messages is accessed within received, it's the
   // correct value. And setMessages within received will change the messages, causing the useEffect wrapping received re-run again, which causes the value of messages
-  // within received always be the correct value.
-  }, [user.id, cable.subscriptions, recipient.id, setMessages, messages])
+  // within received always be the correct value.  
 
   return (
     <div className="chat-display">
@@ -107,7 +105,6 @@ function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setS
         })}
         <div ref={endMessageRef} />
       </div>
-
       <ChatInput user={user} recipientId={recipient.id} messages={messages} setMessages={setMessages} cable={cable} />
     </div>
   )

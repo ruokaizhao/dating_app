@@ -24,7 +24,7 @@ function Home({ user, setUser }) {
           </button>        
         </div>
       </div>      
-      {showAuth && <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} user={user} setUser={setUser} setIsSignUp={setIsSignUp} />}
+      {showAuth && <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} setUser={setUser} setIsSignUp={setIsSignUp} />}
     </div>    
   )
 }

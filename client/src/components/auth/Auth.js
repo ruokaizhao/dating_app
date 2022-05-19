@@ -3,7 +3,7 @@ import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-function Auth({ setShowAuth, isSignUp, user, setUser, setIsSignUp }) {
+function Auth({ setShowAuth, isSignUp, setUser, setIsSignUp }) {
 
   const navigate = useNavigate()
 
