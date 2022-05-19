@@ -62,7 +62,8 @@ function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setS
       (
         {
           channel: 'ChatsChannel',
-          user_id: user.id
+          user_id: user.id,
+          recipient_id: recipient.id
         },
         {
           received: (message) => {

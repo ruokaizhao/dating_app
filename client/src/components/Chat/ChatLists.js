@@ -28,7 +28,7 @@ function ChatLists({ user, matchUsers, setDisplayChat, setRecipient, cable, show
       cable.subscriptions.create
       (
         {
-          channel: 'ChatsChannel',
+          channel: 'ChatlistsChannel',
           user_id: user.id
         },
         {
