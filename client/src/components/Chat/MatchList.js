@@ -32,7 +32,7 @@ function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages,
       </div>      
       <div>
         <button onClick={handleClick}>View Profile</button>
-        <button onClick={handleClick}>Send a Message</button>
+        <button onClick={handleClick}>Send Messages</button>
       </div>
     </div>
   )

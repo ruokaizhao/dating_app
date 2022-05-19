@@ -1,9 +1,9 @@
 import { useFormik } from 'formik'
 import React from 'react'
-import NavBar from './NavBar'
+import NavBar from '../NavBar'
 import * as Yup from 'yup'
 
-function Profiling({ user }) {
+function Onboarding({ user }) {
   const formik = useFormik({
     initialValues: {
       first_name: '',
@@ -42,7 +42,7 @@ function Profiling({ user }) {
   return (
     <div>
       <NavBar user={user} color={true} />
-      <div className="profiling">
+      <div className="onboarding">
         <h2>CREATE ACCOUNT</h2>
         <form onSubmit={formik.handleSubmit}>
           <section>
@@ -203,4 +203,4 @@ function Profiling({ user }) {
   )
 }
 
-export default Profiling
+export default Onboarding

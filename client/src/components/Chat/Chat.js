@@ -85,7 +85,7 @@ function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setS
   return (
     <div className="chat-display">
       <div className="chat-display-header">
-        <p>{recipient.first_name}</p>
+        <h3>{recipient.first_name}</h3>
         <div className="close-icon" onClick={() => setDisplayChat(false)}>ⓧ</div>
       </div>     
 

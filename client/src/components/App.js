@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Home from './Home'
 import Dashboard from './Dashboard'
-import Profiling from './Profiling'
+import Profiling from './auth/Onboarding'
 import { Route, Routes } from 'react-router-dom'
 
 function App({ cable }) {

@@ -4,11 +4,14 @@ import ChatContainer from './Chat/ChatContainer'
 
 function Dashboard({ user, cable }) {
   const [characters, setCharacters] = useState([])
-  const [lastDirection, setLastDirection] = useState()
+  const [lastDirection, setLastDirection] = useState(null)
   const [matchUsers, setMatchUsers] = useState([])
 
   function swiped(direction, id) {
     setLastDirection(direction)
+    setTimeout(() => {
+      setLastDirection(null)      
+    }, 3000)
     if (direction === 'right' || direction === 'left') {
       fetch('/api/matches', {
         method: 'POST',
@@ -26,7 +29,9 @@ function Dashboard({ user, cable }) {
           fetch(`/api/users/${user.id}`)
           .then((r) => {
             if (r.ok) {
-              r.json().then((data) => setMatchUsers(data))
+              r.json().then((data) => {
+                setMatchUsers(data)                
+              })
             }
           })
         }
@@ -53,12 +58,14 @@ function Dashboard({ user, cable }) {
       })
     }    
   }, [user.id])
+  console.log(characters)
 
   return (
     <div className="dashboard">
       <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
       <div className="swipe-container">
-        <div className="card-container">
+        <h4>Swipe right if like, swipe left if dislike, and swipe up or down to pass</h4>  
+        <div className="card-container">          
           {characters.map((character) =>
             <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>
               <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">

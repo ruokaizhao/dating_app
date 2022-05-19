@@ -183,18 +183,18 @@ form .secondary-button:hover {
   cursor: pointer
 }
 
-/* ---------Profiling--------- */
+/* ---------Onboarding--------- */
 
-.profiling {
+.onboarding {
   border-top: solid 2px rgb(213, 213, 213);
 }
 
-.profiling form {
+.onboarding form {
   display: flex;
   justify-content: center;
 }
 
-.profiling form section {
+.onboarding form section {
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -202,11 +202,11 @@ form .secondary-button:hover {
   text-align: left;
 }
 
-.profiling form label {
+.onboarding form label {
   margin: 10px 0px;
 }
 
-.profiling form input {
+.onboarding form input {
   padding: 15px 30px;
   margin: 10px 0px;
   font-size: 15px;
@@ -214,31 +214,31 @@ form .secondary-button:hover {
   border-radius: 10px;
 }
 
-.profiling form input:focus {
+.onboarding form input:focus {
   outline: none;
   border-color: rgb(113, 158, 206);
   box-shadow: 0 0 10px rgb(113, 158, 206);
 }
 
-.profiling form input::-webkit-outer-spin-button,
-.profiling form input::-webkit-inner-spin-button {
+.onboarding form input::-webkit-outer-spin-button,
+.onboarding form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.profiling form .multiple-input-container {
+.onboarding form .multiple-input-container {
   display: flex;
 }
 
-.profiling form input[type="number"] {
+.onboarding form input[type="number"] {
   width: 30%;
 }
 
-.profiling form .multiple-input-container input {
+.onboarding form .multiple-input-container input {
   margin-right: 10px;
 }
 
-.profiling form .multiple-input-container label {
+.onboarding form .multiple-input-container label {
   padding: 10px;
   border: solid 2px rgb(144, 144, 144);
   border-radius: 10px;
@@ -246,15 +246,15 @@ form .secondary-button:hover {
   margin-right: 10px;
 }
 
-.profiling form .multiple-input-container input[type="radio"] {
+.onboarding form .multiple-input-container input[type="radio"] {
   display: none;
 }
 
-.profiling form .multiple-input-container input[type="radio"]:checked + label {
+.onboarding form .multiple-input-container input[type="radio"]:checked + label {
   border: solid 2px rgb(221, 39, 22)
 }
 
-.profiling form button {
+.onboarding form button {
   padding: 15px 30px;
   margin: 10px 0px;
   font-size: 15px;
@@ -262,15 +262,15 @@ form .secondary-button:hover {
   border-radius: 10px;
 }
 
-.profiling form button:hover {
+.onboarding form button:hover {
   background-color: rgb(235, 235, 235);
 }
 
-.profiling form button:active {
+.onboarding form button:active {
   background-color: rgb(226, 115, 155);
 }
 
-.profiling .profile-photo {
+.onboarding .profile-photo {
   width: 100%;
 }
 
@@ -309,7 +309,12 @@ form .secondary-button:hover {
 }
 
 .dashboard .card h3 {
+  font-size: 25px;
   margin: 0;
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  opacity: 50%;
+  border-radius: 30px 30px 0 0;
 }
 
 /* ---------Chat Container--------- */
