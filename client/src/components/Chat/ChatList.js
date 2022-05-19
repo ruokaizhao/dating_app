@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 
-function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient }) {
+function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient, showUnreadMessages, setShowUnreadMessages }) {
   const [lastReadAt, setLastReadAt] = useState('')
+
+  const pair_id = listMessage[0]['message']['pair_id']
 
   const recipientId = 
     listMessage[0]['message']['sender_id'] === user.id ? 
@@ -22,9 +24,10 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
         }
       })
     }    
-  }, [user.id, recipientId, setLastReadAt])
+  }, [user.id, recipientId, setLastReadAt, listMessage, showUnreadMessages])
 
   function handleClick() {
+    setShowUnreadMessages({...showUnreadMessages, [pair_id]: false})
     setDisplayChat(true)
     setRecipient(recipient)
   }
@@ -42,7 +45,7 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient 
           <p>{listMessage[0]['message']['content']}</p>
         </div>
       </div> 
-      {newMessages !== 0 && <p className="unread-messages">{numberOfUnReadMessages}</p>}     
+      {showUnreadMessages[pair_id] && newMessages !== 0 && <p className="unread-messages">{numberOfUnReadMessages}</p>}     
             
     </div>
   )

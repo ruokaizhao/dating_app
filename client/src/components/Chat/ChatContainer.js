@@ -8,6 +8,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(false)
   const [recipient, setRecipient] = useState({})  
   const [displayChat, setDisplayChat] = useState(false)
+  const [showUnreadMessages, setShowUnreadMessages] = useState({})
 
   return (
     <div className="chat-container">
@@ -23,6 +24,8 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
         <ChatLists 
           user={user} 
           cable={cable}
+          showUnreadMessages={showUnreadMessages}
+          setShowUnreadMessages={setShowUnreadMessages}
           matchUsers={matchUsers} 
           setDisplayChat={setDisplayChat}
           setRecipient={setRecipient} />
@@ -38,6 +41,8 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
         {displayChat && 
         <Chat 
           user={user} 
+          showUnreadMessages={showUnreadMessages}
+          setShowUnreadMessages={setShowUnreadMessages}
           setDisplayChat={setDisplayChat}
           recipient={recipient}
           cable={cable} />}  

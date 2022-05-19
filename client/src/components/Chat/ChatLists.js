@@ -1,15 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import ChatList from './ChatList'
 
-function ChatLists({ user, matchUsers, setDisplayChat, setRecipient, cable }) {
+function ChatLists({ user, matchUsers, setDisplayChat, setRecipient, cable, showUnreadMessages, setShowUnreadMessages }) {
   const [listMessages, setListMessages] = useState([])
+  
 
   useEffect(() => {
     if (user.id) {
       fetch(`/api/users/${user.id}/message_histories`)
       .then((r) => {
         if (r.ok) {
-          r.json().then((data) => setListMessages(data))
+          r.json().then((data) => {
+            setListMessages(data)
+            data.forEach((listMessage) => {
+              setShowUnreadMessages({
+                ...showUnreadMessages, [listMessage[0].message.pair_id]: true
+              })
+            })
+          })
         }
       })
     }    
@@ -20,7 +28,7 @@ function ChatLists({ user, matchUsers, setDisplayChat, setRecipient, cable }) {
       cable.subscriptions.create
       (
         {
-          channel: 'UserMatchChannel',
+          channel: 'ChatsChannel',
           user_id: user.id
         },
         {
@@ -48,6 +56,8 @@ function ChatLists({ user, matchUsers, setDisplayChat, setRecipient, cable }) {
             listMessage={listMessage} 
             matchUsers={matchUsers} 
             user={user}
+            showUnreadMessages={showUnreadMessages}
+            setShowUnreadMessages={setShowUnreadMessages}
             setDisplayChat={setDisplayChat}
             setRecipient={setRecipient} />
         )

@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from 'react'
 import ChatInput from './ChatInput'
 
-function Chat({ user, recipient, cable, setDisplayChat }) {
+function Chat({ user, recipient, cable, setDisplayChat, showUnreadMessages, setShowUnreadMessages }) {
   const [messages, setMessages] = useState([])
   const endMessageRef = useRef(null)
+  const [pairId, setPairId] = useState(null)
 
   useEffect(() => {
     endMessageRef.current.scrollIntoView({ behavior: 'smooth' })
@@ -11,6 +12,9 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
 
   useEffect(() => {
     return function () {
+      if (pairId) {
+        setShowUnreadMessages({...showUnreadMessages, [pairId]: true})
+      }      
       fetch('/api/matches', {
         method: "PATCH",
         headers: {
@@ -23,7 +27,9 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
         })
       })
     }
-  }, [user.id, recipient.id])
+  }, [user.id, recipient.id, pairId])
+
+  console.log(showUnreadMessages)
 
   useEffect(() => {
     if (user.id) {
@@ -40,14 +46,16 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
       })
       .then((r) => {
         if (r.ok) {
-          r.json().then((data) => setMessages(data))
+          r.json().then((data) => {
+            setMessages(data)
+            setPairId(data[0]['pair_id'])
+          })
         }
       })
     }    
   }, [user.id, recipient.id, setMessages])
 
   useEffect(() => {
-    console.log(messages)
     
     if (user.id) {
       cable.subscriptions.create
@@ -69,8 +77,8 @@ function Chat({ user, recipient, cable, setDisplayChat }) {
   // the useEffect wrapping it gets re-called. So now, when you use messages to setMessages([...messages, data]), the messages will always be [], and setMessages
   // will make messages become [data]. To solve this, messages needs to be added in the dependency array, in doing so, after line 28 useEffect sets messages with
   // data coming from backend, the change of messages will cause the useEffect wrapping received re-run, so now, when messages is accessed within received, it's the
-  // correct value. And setMessages within received will change the messages, causing the useEffect wrapping received re-run, which causes the value of messages within
-  // received always be the correct value.
+  // correct value. And setMessages within received will change the messages, causing the useEffect wrapping received re-run again, which causes the value of messages
+  // within received always be the correct value.
   }, [user.id, cable.subscriptions, recipient.id, setMessages, messages])
 
   return (

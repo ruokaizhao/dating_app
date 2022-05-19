@@ -5,7 +5,6 @@ class Message < ApplicationRecord
     uuid = Match.where(user_id: params[:sender_id]).where(browsed_user_id: params[:recipient_id])[0][:pair_id]
     message = Message.create!(pair_id: uuid, sender_id: params[:sender_id], recipient_id: params[:recipient_id], content: params[:content])
     ActionCable.server.broadcast("chat_#{params[:recipient_id]}", message)
-    UserMatchChannel.broadcast_to(browsed_user, "Someone sent you a message.")
     return message
   end
 
@@ -19,7 +18,10 @@ class Message < ApplicationRecord
     pair_ids = matched_users.map do |matched_user|
       Match.all.where(user_id: user[:id]).where(browsed_user_id: matched_user[:id])[0][:pair_id]
     end
-    pair_ids.map do |pair_id|
+    not_empty_list_message_pair_ids = pair_ids.filter do |pair_id|
+      Message.all.where(pair_id: pair_id).length != 0
+    end
+    not_empty_list_message_pair_ids.map do |pair_id|
       Message.all.where(pair_id: pair_id).order(created_at: :desc).limit(100).map do |message|
         ActiveModelSerializers::Adapter::Json.new(
           ListMessagesSerializer.new(message)
