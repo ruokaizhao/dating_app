@@ -357,41 +357,63 @@ form .secondary-button:hover {
   border-radius: 30px;
 }
 
-.match-list {
+.match-chat-list-container {
+  display: flex;
+}
+
+/* ---------Match List--------- */
+
+.match-lists {
   display: flex;
   flex-direction: column;
   width: 50%;
 }
 
-.match-list .match-users {
+.match-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.match-list-content {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   border-bottom: dashed 1px rgb(213, 213, 213);
 }
 
-.match-list .match-users:hover {
-  cursor: pointer;
-}
-
-.match-list .match-users div {
-  display: flex;
-  flex-direction: column;
-}
-
-.match-list .match-users div p {
-  color: rgb(181, 181, 181);
-}
-
-.match-list .profile-photo {
+.match-list-content .profile-photo {
   margin: 10px 20px 0px 10px;
   width: 60px;
   height: 60px;
   border-radius: 30px;
 }
 
-.match-chat-list-container {
+.match-list-content div {
   display: flex;
+  flex-direction: column;
+}
+
+.match-list-content div p {
+  color: rgb(181, 181, 181);
+}
+
+.match-list button {
+  width: 50%;
+  border: none;
+  border-left: solid 1px rgb(181, 181, 181);
+  background-color: rgb(255, 255, 255);
+  border-bottom: solid 2px rgb(243, 33, 33);
+  font-size: 17px;
+  padding: 5px;
+}
+
+.match-list button:hover {
+  cursor: pointer;
+  background-color: rgb(181, 181, 181);
+}
+
+.match-list button:active {
+  background-color: rgb(200, 200, 200);
 }
 
 /* ---------Chat Lists--------- */

@@ -1,49 +1,39 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 
-function MatchList({ user, matchUsers, setMatchUsers, cable }) {
-
-  useEffect(() => {
-    if (user.id) {
-      cable.subscriptions.create
-      (
-        {
-          channel: 'UserMatchChannel',
-          user_id: user.id
-        },
-        {
-          received: (matchUser) => {
-            setMatchUsers([...matchUsers, matchUser])
-          }
-        }
-      )
-    }    
-  }, [user.id, setMatchUsers, cable.subscriptions, matchUsers])
+function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages, setDisplayChat, setRecipient }) {
+  const [pairId, setPairId] = useState(null)
 
   useEffect(() => {
     if (user.id) {
-      fetch(`/api/users/${user.id}`)
+      fetch(`/api/users/${user.id}/matches/${matchUser.id}`)
       .then((r) => {
         if (r.ok) {
-          r.json().then((data) => setMatchUsers(data))
+          r.json().then((data) => setPairId(data.pair_id))
         }
       })
     }    
-  }, [user.id, setMatchUsers])
+  }, [user, matchUser, pairId, setPairId])
+
+  function handleClick() {
+    setShowUnreadMessages({...showUnreadMessages, [pairId]: false})
+    setDisplayChat(true)
+    setRecipient(matchUser)
+  }
+
 
   return (
     <div className="match-list">
-      {matchUsers.map((matchUser) => {
-        return (
-          <div key={matchUser.id} className="match-users">
-            <img className="profile-photo" src={matchUser.url1} alt="profile" />
-            <div>
-              <h3>{matchUser.first_name}</h3>
-              <p>{matchUser.about}</p>
-            </div>
-          </div>          
-        )
-      })}
-
+      <div className="match-list-content">
+        <img className="profile-photo" src={matchUser.url1} alt="profile" />
+        <div>
+            <h3>{matchUser.first_name}</h3>
+            <p>{matchUser.about}</p>
+        </div>
+      </div>      
+      <div>
+        <button onClick={handleClick}>View Profile</button>
+        <button onClick={handleClick}>Send a Message</button>
+      </div>
     </div>
   )
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Chat from './Chat'
 import ChatHeader from './ChatHeader'
 import ChatLists from './ChatLists'
-import MatchList from './MatchList'
+import MatchLists from './MatchLists'
 
 function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(false)
@@ -30,12 +30,14 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
           setDisplayChat={setDisplayChat}
           setRecipient={setRecipient} />
         :
-        <MatchList 
+        <MatchLists
           user={user} 
           cable={cable}
+          setDisplayChat={setDisplayChat}
+          showUnreadMessages={showUnreadMessages}
+          setShowUnreadMessages={setShowUnreadMessages}
           matchUsers={matchUsers} 
           setMatchUsers={setMatchUsers} 
-          setDisplayChat={setDisplayChat}
           setRecipient={setRecipient} />}
 
         {displayChat && 
