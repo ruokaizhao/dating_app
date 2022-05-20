@@ -5,49 +5,51 @@ import ChatLists from './ChatLists'
 import MatchLists from './MatchLists'
 
 function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
-  const [matchChatDisplay, setMatchChatDisplay] = useState(false)
+  const [matchChatDisplay, setMatchChatDisplay] = useState(0)
   const [recipient, setRecipient] = useState({})  
-  const [displayChat, setDisplayChat] = useState(false)
   const [showUnreadMessages, setShowUnreadMessages] = useState({})
 
   return (
     <div className="chat-container">
       <ChatHeader user={user} />
       <div>
-        <button className="option" onClick={() => setMatchChatDisplay(false)}>Matches</button>
-        <button className="option" onClick={() => setMatchChatDisplay(true)}>Chat</button>
+        <button className="option" onClick={() => setMatchChatDisplay(0)}>Matches</button>
+        <button className="option" onClick={() => setMatchChatDisplay(1)}>Chat Lists</button>
       </div>
 
       <div className="match-chat-list-container">
-        {matchChatDisplay 
-        ? 
+      {matchChatDisplay === 0
+        &&
+        <MatchLists
+          user={user} 
+          cable={cable}
+          showUnreadMessages={showUnreadMessages}
+          setShowUnreadMessages={setShowUnreadMessages}
+          matchUsers={matchUsers} 
+          setMatchUsers={setMatchUsers} 
+          setMatchChatDisplay={setMatchChatDisplay}
+          setRecipient={setRecipient} />}
+        
+        {matchChatDisplay === 1 
+        &&
         <ChatLists 
           user={user} 
           cable={cable}
           showUnreadMessages={showUnreadMessages}
           setShowUnreadMessages={setShowUnreadMessages}
           matchUsers={matchUsers} 
-          setDisplayChat={setDisplayChat}
-          setRecipient={setRecipient} />
-        :
-        <MatchLists
-          user={user} 
-          cable={cable}
-          setDisplayChat={setDisplayChat}
-          showUnreadMessages={showUnreadMessages}
-          setShowUnreadMessages={setShowUnreadMessages}
-          matchUsers={matchUsers} 
-          setMatchUsers={setMatchUsers} 
+          setMatchChatDisplay={setMatchChatDisplay}
           setRecipient={setRecipient} />}
-
-        {displayChat && 
+        
+        {matchChatDisplay === 2
+        && 
         <Chat 
           user={user} 
           showUnreadMessages={showUnreadMessages}
           setShowUnreadMessages={setShowUnreadMessages}
-          setDisplayChat={setDisplayChat}
+          setMatchChatDisplay={setMatchChatDisplay}
           recipient={recipient}
-          cable={cable} />}  
+          cable={cable} />}
       </div>
     </div>
   )

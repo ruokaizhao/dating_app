@@ -399,6 +399,12 @@ form .secondary-button:hover {
   height: 100vh;
 }
 
+@media only screen and (max-width: 750px) {
+  .dashboard .swipe-container {
+    display: none;
+  }
+}
+
 .dashboard .card-container {
   width: 400px;
   height: 650px;
@@ -430,6 +436,16 @@ form .secondary-button:hover {
   rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
   width: 40%;
   text-align: left;
+}
+
+@media only screen and (max-width: 750px) {
+  .chat-container {
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    width: 100%;
+    text-align: left;
+  }
 }
 
 .chat-container .chat-header {
@@ -476,7 +492,7 @@ form .secondary-button:hover {
 .match-lists {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
 }
 
 .match-list {
@@ -531,7 +547,7 @@ form .secondary-button:hover {
 .chat-lists {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 100%;
 }
 
 .chat-lists .chat-list {
@@ -581,7 +597,7 @@ form .secondary-button:hover {
 /* ---------Chat Display--------- */
 
 .chat-display {
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: rgb(255, 255, 255);
@@ -620,7 +636,7 @@ form .secondary-button:hover {
 .chat-display .sender_message-card .chat-photo {
   width: 40px;
   height: 40px;
-  margin: 0px 2px 0px 8px;
+  margin: 0px 40px 0px 8px;
   border-radius: 20px;
 }
 
@@ -630,13 +646,13 @@ form .secondary-button:hover {
   padding: 10px;
   border-radius: 25px;
   overflow-wrap: break-word;
-  max-width: 75%;
+  max-width: 50%;
 }
 
 .chat-display .recipient-message-card .chat-photo {
   width: 40px;
   height: 40px;
-  margin: 0px 8px 0px 2px;
+  margin: 0px 8px 0px 40px;
   border-radius: 20px;
 }
 
@@ -646,7 +662,7 @@ form .secondary-button:hover {
   padding: 10px;
   border-radius: 25px;
   overflow-wrap: break-word;
-  max-width: 75%;
+  max-width: 50%;
 }
 
 /* ---------Chat Input--------- */

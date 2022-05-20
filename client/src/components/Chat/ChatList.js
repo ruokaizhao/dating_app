@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient, showUnreadMessages, setShowUnreadMessages }) {
+function ChatList({ listMessage, matchUsers, user, setMatchChatDisplay, setRecipient, showUnreadMessages, setShowUnreadMessages }) {
   const [lastReadAt, setLastReadAt] = useState('')
 
   const pair_id = listMessage[0]['message']['pair_id']
@@ -28,7 +28,7 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient,
 
   function handleClick() {
     setShowUnreadMessages({...showUnreadMessages, [pair_id]: false})
-    setDisplayChat(true)
+    setMatchChatDisplay(2)
     setRecipient(recipient)
   }
 
