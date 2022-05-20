@@ -26,13 +26,13 @@ function Home({ user, setUser }) {
           </button>        
         </div>
       </div>
-      {!isForgettingPassword 
+      {isForgettingPassword 
         ?
-        <ForgettingPassword /> 
+        <ForgettingPassword setShowAuth={setShowAuth} setIsForgettingPassword={setIsForgettingPassword} /> 
         :
         showAuth 
         ? 
-        <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} setUser={setUser} setIsSignUp={setIsSignUp} />
+        <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} setUser={setUser} setIsSignUp={setIsSignUp} setIsForgettingPassword={setIsForgettingPassword} />
         :
         null}
     </div>    

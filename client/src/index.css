@@ -126,7 +126,7 @@ nav .nav-button:disabled {
 }
 
 .auth h1 {
-  margin: 0;
+  margin-top: 15px;
 }
 
 form .secondary-button {
@@ -169,18 +169,65 @@ form .secondary-button:hover {
   box-shadow: 0 0 10px rgb(113, 158, 206);
 }
 
-.auth .forgot-password {
+.auth .forgot-password-link {
   display: flex;
   justify-content: space-around;
 }
 
-.auth .forgot-password p {
+.auth .forgot-password-link p {
   color:rgb(126, 178, 233)
 }
 
-.auth .forgot-password p:hover {
+.auth .forgot-password-link p:hover {
   color:rgb(70, 147, 229);
   cursor: pointer
+}
+
+/* ---------Forget Password--------- */
+
+.forget-password {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  height: 600px;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.forget-password h1 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.forget-password form {
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+}
+
+.forget-password input {
+  width: 85%;
+  padding: 12px;
+  margin: 12px;
+  font-size: 17px;  
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+.forget-password input:focus {
+  outline: none;
+  border-color: rgb(113, 158, 206);
+  box-shadow: 0 0 10px rgb(113, 158, 206);
+}
+
+.forget-password hr {
+  margin-top:25px;
 }
 
 /* ---------Onboarding--------- */
