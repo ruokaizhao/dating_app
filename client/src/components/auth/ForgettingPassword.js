@@ -1,11 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useNavigate } from 'react-router-dom'
 
 function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
-
-  const navigate = useNavigate()
+  const [isResettingEmailSent, setIsResettingEmailSent] = useState(false)
 
   const formik = useFormik({
     initialValues: {
@@ -14,7 +12,7 @@ function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
     validationSchema: Yup.object({
       email: Yup.string().email('Email address is not valid').required('Email is required')
     }),
-    // onSubmit: () => handleSubmit()
+    onSubmit: () => handleSubmit()
   })
 
   function handleClick() {
@@ -22,68 +20,48 @@ function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
     setShowAuth(false)
   }
 
-  // function handleSubmit() {
-  //   if (isSignUp) {
-  //     fetch('/api/signup', {
-  //       method: "POST",
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({
-  //         email: formik.values.email,
-  //         password: formik.values.password,
-  //         password_confirmation: formik.values.password2
-  //       })
-  //     })
-  //     .then((r) => {
-  //       if (r.ok) {
-  //         r.json().then((data) => {
-  //           setUser(data)
-  //           navigate('/profiling')
-  //         })
-  //       }
-  //     })
-  //   } else {
-  //     fetch('/api/login', {
-  //       method: "POST",
-  //       headers: {
-  //         'Content-Type': 'application/json'
-  //       },
-  //       body: JSON.stringify({
-  //         email: formik.values.email,
-  //         password: formik.values.password,
-  //       })
-  //     })
-  //     .then((r) => {
-  //       if (r.ok) {
-  //         r.json().then((data) => {
-  //           setUser(data)
-  //           navigate('/dashboard')
-  //         })
-  //       }
-  //     })
-  //   }
-  // }
+  function handleSubmit() {
+    fetch('/api/forgot_password', {
+      method: 'POST',
+      headers: {
+        'Content-Type': "application/json"
+      },
+      body: JSON.stringify({
+        email: formik.values.email
+      })
+    })
+    .then((r) => {
+      if (r.ok) {
+        r.json().then(() => setIsResettingEmailSent(true))
+      } else {
+        r.json().then((errors) => formik.setErrors({email: errors.errors}))
+      }
+    })
+  }
 
   return (
     <div className="forget-password">
       <div className="close-icon" onClick={handleClick}>ⓧ</div>
-      <h1>ENTER YOUR EMAIL</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <input 
-        type="email" 
-        name="email" 
-        id="email" 
-        spellCheck="false"
-        placeholder="Enter your email address..."
-        onChange={formik.handleChange} 
-        onBlur={formik.handleBlur} 
-        value={formik.values.email} 
-        />
-        {formik.touched.email && formik.errors.email && <div className="errors">{formik.errors.email}</div>}
-        <button type="submit" className="secondary-button">Submit</button>
-      </form>
-      <hr/>
+      {!isResettingEmailSent ?
+      <>
+        <h1>ENTER YOUR EMAIL</h1>
+        <form onSubmit={formik.handleSubmit}>
+          <input 
+          type="email" 
+          name="email" 
+          id="email" 
+          spellCheck="false"
+          placeholder="Enter your email address..."
+          onChange={formik.handleChange} 
+          onBlur={formik.handleBlur} 
+          value={formik.values.email} 
+          />
+          {formik.touched.email && formik.errors.email && <div className="errors">{formik.errors.email}</div>}
+          <button type="submit" className="secondary-button">Submit</button>
+        </form>
+      </> :
+      <p>An email has been sent to your email address, follow the instruction to reset your password.</p>}  
+      <hr/>    
     </div>
   )
 }

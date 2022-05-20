@@ -230,6 +230,12 @@ form .secondary-button:hover {
   margin-top:25px;
 }
 
+.forget-password p {
+  text-align: start;
+  font-size: 18px;
+  margin: 100px 30px 0 30px;
+}
+
 /* ---------Onboarding--------- */
 
 .onboarding {
