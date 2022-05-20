@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import React from 'react'
-import NavBar from '../NavBar'
+import NavBar from './NavBar'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 

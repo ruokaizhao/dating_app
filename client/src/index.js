@@ -7,9 +7,8 @@ import actionCable from 'actioncable'
 
 const CableApp = {}
 CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'))
+
 root.render(
   <BrowserRouter>
     <React.StrictMode>

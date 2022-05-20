@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Home from './Home'
 import Dashboard from './Dashboard'
-import Profiling from './auth/Onboarding'
+import Onboarding from './Onboarding'
 import { Route, Routes } from 'react-router-dom'
 import ResettingPassword from './auth/ResettingPassword'
 
@@ -22,7 +22,7 @@ function App({ cable }) {
       <Routes>
         <Route path='/' element={<Home user={user} setUser={setUser} />} />
         <Route path='/dashboard' element={<Dashboard user={user} cable={cable} />} />
-        <Route path='/onboarding' element={<Profiling user={user} />} />
+        <Route path='/onboarding' element={<Onboarding user={user} />} />
         <Route path='/reset_password/:token' element={<ResettingPassword setUser={setUser} />} />
       </Routes>
     </div>

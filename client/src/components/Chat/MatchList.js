@@ -20,7 +20,6 @@ function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages,
     setRecipient(matchUser)
   }
 
-
   return (
     <div className="match-list">
       <div className="match-list-content">

@@ -49,7 +49,7 @@ function ResettingPassword({ setUser }) {
           setIsPasswordReset(true)
           setTimeout(() => {
             navigate('/')
-          }, 3000);
+          }, 2000);
         })
       }
     })

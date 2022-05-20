@@ -32,10 +32,6 @@ function ChatList({ listMessage, matchUsers, user, setDisplayChat, setRecipient,
     setRecipient(recipient)
   }
 
-  if (listMessage.length === 0) {
-    return null
-  }
-
   return (
     <div className="chat-list" onClick={handleClick}>
       <div className="chat-list-img-name">
