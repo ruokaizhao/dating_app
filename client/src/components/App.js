@@ -3,7 +3,8 @@ import Home from './Home'
 import Dashboard from './Dashboard'
 import Onboarding from './Onboarding'
 import { Route, Routes } from 'react-router-dom'
-import ResettingPassword from './auth/ResettingPassword'
+import ResetPassword from './auth/ResetPassword'
+import UserProfile from './UserProfile'
 
 function App({ cable }) {
   const [user, setUser] = useState({})
@@ -23,7 +24,8 @@ function App({ cable }) {
         <Route path='/' element={<Home user={user} setUser={setUser} />} />
         <Route path='/dashboard' element={<Dashboard user={user} cable={cable} />} />
         <Route path='/onboarding' element={<Onboarding user={user} />} />
-        <Route path='/reset_password/:token' element={<ResettingPassword setUser={setUser} />} />
+        <Route path='/reset_password/:token' element={<ResetPassword setUser={setUser} />} />
+        <Route path='/user_profile' element={<UserProfile user={user} />} />
       </Routes>
     </div>
   )

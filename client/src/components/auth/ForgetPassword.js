@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 
-function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
+function ForgetPassword({ setShowAuth, setIsForgettingPassword }) {
   const [isResettingEmailSent, setIsResettingEmailSent] = useState(false)
 
   const formik = useFormik({
@@ -66,4 +66,4 @@ function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
   )
 }
 
-export default ForgettingPassword
+export default ForgetPassword

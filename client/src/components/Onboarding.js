@@ -191,9 +191,7 @@ function Onboarding({ user }) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
-            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="profile-photo" />}
-            
-            
+            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="profile" />}            
           </section>
         </form>
       </div>

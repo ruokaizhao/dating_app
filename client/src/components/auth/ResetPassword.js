@@ -4,7 +4,7 @@ import * as Yup from 'yup'
 import { useNavigate, useParams } from 'react-router-dom'
 import NavBar from '../NavBar'
 
-function ResettingPassword({ setUser }) {
+function ResetPassword({ setUser }) {
   const [isPasswordReset, setIsPasswordReset] = useState(false)
   const params = useParams()
   const navigate = useNavigate()
@@ -108,4 +108,4 @@ function ResettingPassword({ setUser }) {
   )
 }
 
-export default ResettingPassword
+export default ResetPassword

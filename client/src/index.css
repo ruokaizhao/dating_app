@@ -88,6 +88,12 @@ nav .nav-button {
   border: none;
 }
 
+nav .nav-button:hover {
+  cursor: pointer;
+  color: rgb(248, 19, 92);
+  background-color: rgb(233, 227, 227);
+}
+
 nav .nav-button:disabled {
   color: rgb(255, 60, 130);
   background-color: rgb(180, 180, 180);
@@ -99,7 +105,7 @@ nav .nav-button:disabled {
   position: absolute;
   left: 0;
   right: 0;
-  top: 150px;
+  top: 50px;
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
@@ -184,7 +190,7 @@ form .secondary-button:hover {
   position: absolute;
   left: 0;
   right: 0;
-  top: 150px;
+  top: 50px;
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
@@ -237,7 +243,7 @@ form .secondary-button:hover {
   position: absolute;
   left: 0;
   right: 0;
-  top: 150px;
+  top: 50px;
   margin-left: auto;
   margin-right: auto;
   max-width: 500px;
@@ -314,6 +320,11 @@ form .secondary-button:hover {
 .onboarding form input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+/* For Firefox to hide up and down arrows */
+.onboarding form input {
+  -moz-appearance:textfield;
 }
 
 .onboarding form .multiple-input-container {

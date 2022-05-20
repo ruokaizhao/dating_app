@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Auth from './auth/Auth'
-import ForgettingPassword from './auth/ForgettingPassword'
+import ForgetPassword from './auth/ForgetPassword'
 import NavBar from './NavBar'
 
 function Home({ user, setUser }) {
@@ -28,7 +28,7 @@ function Home({ user, setUser }) {
       </div>
       {isForgettingPassword 
         ?
-        <ForgettingPassword setShowAuth={setShowAuth} setIsForgettingPassword={setIsForgettingPassword} /> 
+        <ForgetPassword setShowAuth={setShowAuth} setIsForgettingPassword={setIsForgettingPassword} /> 
         :
         showAuth 
         ? 
