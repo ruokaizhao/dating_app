@@ -23,7 +23,7 @@ function App({ cable }) {
         <Route path='/' element={<Home user={user} setUser={setUser} />} />
         <Route path='/dashboard' element={<Dashboard user={user} cable={cable} />} />
         <Route path='/onboarding' element={<Profiling user={user} />} />
-        <Route path='/reset_password/:token' element={<ResettingPassword />} />
+        <Route path='/reset_password/:token' element={<ResettingPassword setUser={setUser} />} />
       </Routes>
     </div>
   )

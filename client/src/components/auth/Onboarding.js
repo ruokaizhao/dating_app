@@ -2,8 +2,10 @@ import { useFormik } from 'formik'
 import React from 'react'
 import NavBar from '../NavBar'
 import * as Yup from 'yup'
+import { useNavigate } from 'react-router-dom'
 
 function Onboarding({ user }) {
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       first_name: '',
@@ -32,12 +34,10 @@ function Onboarding({ user }) {
     })
     .then((r) => {
       if (r.ok) {
-        r.json().then((data) => console.log(data))
+        r.json().then(() =>navigate('/dashboard'))
       }
     })
   }
-
-
 
   return (
     <div>
@@ -121,15 +121,17 @@ function Onboarding({ user }) {
               <label htmlFor="more-gender-identity">More</label>
             </div>
 
-            <label htmlFor="show-gender">Show gender on my profile</label>
-            <input
-              id="show-gender"
-              type="checkbox"
-              name="show_gender"
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-              checked={formik.values.show_gender}
-            />
+            <div className="show-gender">              
+              <input
+                id="show-gender"
+                type="checkbox"
+                name="show_gender"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.show_gender}
+              />
+              <label htmlFor="show-gender">Show gender on my profile</label>
+            </div>            
 
             <label>Show Me</label>
             <div className="multiple-input-container">
@@ -193,12 +195,8 @@ function Onboarding({ user }) {
             
             
           </section>
-          
-
         </form>
-
       </div>
-
     </div>
   )
 }

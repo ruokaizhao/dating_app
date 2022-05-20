@@ -42,9 +42,9 @@ function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
   return (
     <div className="forget-password">
       <div className="close-icon" onClick={handleClick}>ⓧ</div>
+      <h1>ENTER YOUR EMAIL</h1>
       {!isResettingEmailSent ?
       <>
-        <h1>ENTER YOUR EMAIL</h1>
         <form onSubmit={formik.handleSubmit}>
           <input 
           type="email" 
@@ -60,7 +60,7 @@ function ForgettingPassword({ setShowAuth, setIsForgettingPassword }) {
           <button type="submit" className="secondary-button">Submit</button>
         </form>
       </> :
-      <p>An email has been sent to your email address, follow the instruction to reset your password.</p>}  
+      <p>An email has been sent to your email address, please follow the instruction to reset your password.</p>}  
       <hr/>    
     </div>
   )

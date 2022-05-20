@@ -44,9 +44,9 @@ function Auth({ setShowAuth, isSignUp, setUser, setIsSignUp, setIsForgettingPass
         if (r.ok) {
           r.json().then((data) => {
             setUser(data)
-            navigate('/profiling')
+            navigate('/onboarding')
           })
-        }
+        } 
       })
     } else {
       fetch('/api/login', {
@@ -65,6 +65,8 @@ function Auth({ setShowAuth, isSignUp, setUser, setIsSignUp, setIsForgettingPass
             setUser(data)
             navigate('/dashboard')
           })
+        } else {
+          r.json().then((errors) => formik.setErrors({password: errors.errors}))
         }
       })
     }
