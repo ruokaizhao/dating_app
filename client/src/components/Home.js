@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Auth from './auth/Auth'
+import ForgettingPassword from './auth/ForgettingPassword'
 import NavBar from './NavBar'
 
 function Home({ user, setUser }) {
   const [showAuth, setShowAuth] = useState(false)
   const [isSignUp, setIsSignUp] = useState(null)
+  const [isForgettingPassword, setIsForgettingPassword] = useState(false)
   const navigate = useNavigate()
 
   function handleClick() {
@@ -23,8 +25,16 @@ function Home({ user, setUser }) {
             {user.id ? `Welcome, ${user.first_name}` : 'Create account'}
           </button>        
         </div>
-      </div>      
-      {showAuth && <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} setUser={setUser} setIsSignUp={setIsSignUp} />}
+      </div>
+      {!isForgettingPassword 
+        ?
+        <ForgettingPassword /> 
+        :
+        showAuth 
+        ? 
+        <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} setUser={setUser} setIsSignUp={setIsSignUp} />
+        :
+        null}
     </div>    
   )
 }
