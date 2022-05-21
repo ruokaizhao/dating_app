@@ -25,7 +25,7 @@ function App({ cable }) {
         <Route path='/dashboard' element={<Dashboard user={user} cable={cable} />} />
         <Route path='/onboarding' element={<Onboarding user={user} />} />
         <Route path='/reset_password/:token' element={<ResetPassword setUser={setUser} />} />
-        <Route path='/user_profile' element={<UserProfile user={user} />} />
+        <Route path='/user-profile' element={<UserProfile user={user} />} />
       </Routes>
     </div>
   )

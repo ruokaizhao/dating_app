@@ -474,6 +474,10 @@ form .secondary-button:hover {
   border-radius: 30px;
 }
 
+.chat-header .profile-photo:hover {
+  cursor: pointer;
+}
+
 .chat-header .mobile-menu {
   display: flex;
   align-items: center;
@@ -830,4 +834,19 @@ form .secondary-button:hover {
   outline: none;
   border-color: rgb(113, 158, 206);
   box-shadow: 0 0 10px rgb(113, 158, 206);
+}
+
+/* ---------User Profile--------- */
+
+.user-profile {
+  display: flex;
+  justify-content: center;
+}
+
+.user-profile section {
+  width: 35%;
+}
+
+.user-profile .profile-photo {
+  width: 100%;
 }
