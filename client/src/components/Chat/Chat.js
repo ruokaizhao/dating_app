@@ -7,7 +7,7 @@ function Chat({ user, recipient, cable, setMatchChatDisplay, showUnreadMessages,
   const endMessageRef = useRef(null)  
 
   useEffect(() => {
-    endMessageRef.current.scrollIntoView({ behavior: 'smooth' })
+    endMessageRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
   }, [messages])
 
   useEffect(() => {

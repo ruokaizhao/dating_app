@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import ChatContainer from './Chat/ChatContainer'
+import ChatHeader from './Chat/ChatHeader'
 
 function Dashboard({ user, cable }) {
   const [characters, setCharacters] = useState([])
@@ -61,20 +62,23 @@ function Dashboard({ user, cable }) {
   console.log(characters)
 
   return (
-    <div className="dashboard">
-      <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
-      <div className="swipe-container">
-        <h4>Swipe right if like, swipe left if dislike, and swipe up or down to pass</h4>  
-        <div className="card-container">          
-          {characters.map((character) =>
-            <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>
-              <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">
-                <h3>{character.first_name}</h3>
-              </div>
-            </TinderCard>
-          )}
+    <div className="dashboard">      
+      <ChatHeader user={user} />
+      <div className="dashboard-body">
+        <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
+        <div className="swipe-container">
+          <h4>Swipe right if like, left if dislike, up or down to pass</h4>  
+          <div className="card-container">          
+            {characters.map((character) =>
+              <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>
+                <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">
+                  <h3>{character.first_name}</h3>
+                </div>
+              </TinderCard>
+            )}
+          </div>
+          {lastDirection ? <h2 className="swipe-info">You swiped {lastDirection}</h2> : <h2 className='infoText' />}
         </div>
-        {lastDirection ? <h2 className="swipe-info">You swiped {lastDirection}</h2> : <h2 className='infoText' />}
       </div>
     </div>
   )

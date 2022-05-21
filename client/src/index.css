@@ -383,6 +383,11 @@ form .secondary-button:hover {
 
 .dashboard {
   display: flex;
+  flex-direction: column;
+}
+
+.dashboard-body {
+  display: flex;
   justify-content: space-between;
 }
 
@@ -396,24 +401,29 @@ form .secondary-button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
 }
 
 @media only screen and (max-width: 750px) {
   .dashboard .swipe-container {
-    display: none;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
   }
 }
 
 .dashboard .card-container {
   width: 400px;
-  height: 650px;
+  height: 600px;
 }
 
 .dashboard .card {
   position: relative;
   width: 400px;
-  height: 650px;
+  height: 600px;
   border-radius: 30px;
   background-size: cover;
   background-position: center;
@@ -428,6 +438,36 @@ form .secondary-button:hover {
   border-radius: 30px 30px 0 0;
 }
 
+/* ---------Chat Header--------- */
+
+.chat-header {
+  position: sticky;
+  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-header .chat-header-photo-name {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@media only screen and (max-width: 750px) {
+  .chat-header .menu-icon div {
+    width: 35px;
+    height: 3px;
+    background-color: black;
+    margin: 6px 10px;
+  }
+
+  .chat-header .menu-icon div:hover {
+    cursor: pointer;
+  }
+}
+
 /* ---------Chat Container--------- */
 
 .chat-container {
@@ -440,38 +480,7 @@ form .secondary-button:hover {
 
 @media only screen and (max-width: 750px) {
   .chat-container {
-    background-color: rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
-    rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    width: 100%;
-    text-align: left;
-  }
-}
-
-.chat-header {
-  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
-  height: 100px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-container .chat-header .chat-header-photo-name {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
-@media only screen and (max-width: 800px) {
-  .chat-header .menu-icon div {
-    width: 35px;
-    height: 3px;
-    background-color: black;
-    margin: 6px 10px;
-  }
-
-  .chat-header .menu-icon div:hover {
-    cursor: pointer;
+    display: none;
   }
 }
 
@@ -547,7 +556,7 @@ form .secondary-button:hover {
   border: none;
   border-left: solid 1px rgb(181, 181, 181);
   background-color: rgb(255, 255, 255);
-  border-bottom: solid 2px rgb(243, 33, 33);
+  border-bottom: solid 2px rgb(213, 213, 213);
   font-size: 17px;
   padding: 5px;
 }
@@ -635,7 +644,7 @@ form .secondary-button:hover {
 }
 
 .chat-display .message-list {
-  height: 60vh;
+  height: 50vh;
   overflow-y: auto;
   border-top: solid 1px rgb(213, 213, 213);
 }
