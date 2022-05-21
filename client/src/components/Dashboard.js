@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import ChatContainer from './Chat/ChatContainer'
 import ChatHeader from './Chat/ChatHeader'
@@ -7,6 +7,8 @@ function Dashboard({ user, cable }) {
   const [characters, setCharacters] = useState([])
   const [lastDirection, setLastDirection] = useState(null)
   const [matchUsers, setMatchUsers] = useState([])
+  const chatContainerRef = useRef(null)
+  const swipeContainerRef = useRef(null)
 
   function swiped(direction, id) {
     setLastDirection(direction)
@@ -59,15 +61,13 @@ function Dashboard({ user, cable }) {
       })
     }    
   }, [user.id])
-  console.log(characters)
 
   return (
     <div className="dashboard">      
-      <ChatHeader user={user} />
+      <ChatHeader user={user} chatContainerRef={chatContainerRef} swipeContainerRef={swipeContainerRef} />
       <div className="dashboard-body">
-        <ChatContainer user={user} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
-        <div className="swipe-container">
-          <h4>Swipe right if like, left if dislike, up or down to pass</h4>  
+        <ChatContainer user={user} chatContainerRef={chatContainerRef} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
+        <div className="swipe-container" ref={swipeContainerRef}>
           <div className="card-container">          
             {characters.map((character) =>
               <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>

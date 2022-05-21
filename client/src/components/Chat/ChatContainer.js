@@ -3,13 +3,13 @@ import Chat from './Chat'
 import ChatLists from './ChatLists'
 import MatchLists from './MatchLists'
 
-function ChatContainer({ user, matchUsers, setMatchUsers, cable }) {
+function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRef }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(0)
   const [recipient, setRecipient] = useState({})  
   const [showUnreadMessages, setShowUnreadMessages] = useState({})
 
   return (
-    <div className="chat-container">
+    <div className="chat-container" ref={chatContainerRef}>
       <div>
         <button className="option" onClick={() => setMatchChatDisplay(0)}>Matches</button>
         <button className="option" onClick={() => setMatchChatDisplay(1)}>Chat Lists</button>
