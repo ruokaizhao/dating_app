@@ -448,12 +448,31 @@ form .secondary-button:hover {
   }
 }
 
-.chat-container .chat-header {
+.chat-header {
   background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
   height: 100px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-container .chat-header .chat-header-photo-name {
+  display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+  .chat-header .menu-icon div {
+    width: 35px;
+    height: 3px;
+    background-color: black;
+    margin: 6px 10px;
+  }
+
+  .chat-header .menu-icon div:hover {
+    cursor: pointer;
+  }
 }
 
 .chat-container .option {
