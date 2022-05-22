@@ -36,9 +36,15 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
     .then((r) => {
       if (r.ok) {
         if (isEditingProfile) {
-          r.json().then(() => navigate('/user-profile'))
+          r.json().then((data) => {
+            setUser(data)
+            navigate('/user-profile')
+          })
         } else {
-          r.json().then(() =>navigate('/dashboard'))
+          r.json().then((data) => {
+            setUser(data)
+            navigate('/dashboard')
+          })
         }       
       }
     })
