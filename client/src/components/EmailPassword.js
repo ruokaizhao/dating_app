@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
+import toast, { Toaster } from 'react-hot-toast'
 
 function EmailPassword({ user, setUser }) {
   const [emailOrPassword, setEmailOrPassword] = useState(0)
   const navigate = useNavigate()
+  const notify = () => toast.success('Your email address has been successfully changed.')
 
   const formik = useFormik({
     initialValues: {
@@ -21,12 +23,56 @@ function EmailPassword({ user, setUser }) {
         is: val => (val && val.length > 0 ? true : false),
         then: Yup.string().oneOf(
           [Yup.ref('password')],
-          'Password need to match'
+          'Passwords need to match'
         )
       })
     }),
-    // onSubmit: () => handleSubmit()
+    onSubmit: () => handleSubmit()
   })
+
+  function handleSubmit() {
+    if (emailOrPassword === 1) {
+      fetch(`/api/users/${user.id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          email: formik.values.email
+        })
+      })
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((data) => {
+            setUser(data)
+            notify()
+            setEmailOrPassword(0)
+          })
+        }
+      })
+    } else {
+      fetch('/api/change_password', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: user.id,
+          current_password: formik.values.currentPassword,
+          password: formik.values.password,
+          password_confirmation: formik.values.password2
+        })
+      })
+      .then((r) => {
+        if (r.ok) {
+          r.json().then((data) => {
+            setUser(data)
+            setEmailOrPassword(0)            
+          })
+        }
+      })
+    }
+  }
 
 
 
@@ -54,6 +100,7 @@ function EmailPassword({ user, setUser }) {
         />
         {formik.touched.email && formik.errors.email && <div className="errors">{formik.errors.email}</div>}
         <button type="submit">Submit</button>
+        <Toaster />
       </form>
       }
       

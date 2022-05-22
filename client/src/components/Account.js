@@ -19,7 +19,7 @@ function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser }) 
         ?
         <UserProfile user={user} setShowAuth={setShowAuth} setIsEditingProfile={setIsEditingProfile} />
         :
-        <EmailPassword user={user} />}        
+        <EmailPassword user={user} setUser={setUser} />}        
       </div>
     </div>    
   )

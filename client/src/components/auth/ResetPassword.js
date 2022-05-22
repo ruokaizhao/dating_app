@@ -22,7 +22,7 @@ function ResetPassword({ setUser }) {
         is: val => (val && val.length > 0 ? true : false),
         then: Yup.string().oneOf(
           [Yup.ref('password')],
-          'Password need to match'
+          'Passwords need to match'
         )
       })
     }),

@@ -50,9 +50,9 @@ function ChatHeader({ user, chatContainerRef, swipeContainerRef, setShowAuth }) 
           </button>
         </div>
         <div className="hamburger-button" onClick={handleHamburgerClick}>
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
         </div>
       </div>
     </div>

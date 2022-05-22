@@ -54,6 +54,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def change_password
+    user = User.find(params[:id])
+    if user&.authenticate(params[:current_password])
+      user.update!(password: params[:password], password_confirmation: params[:password2])
+      render json: user, status: :created
+    else
+      render json: { errors: ["Current password not correct"] }, status: :unauthorized
+    end
+  end
+
 
   private
 
