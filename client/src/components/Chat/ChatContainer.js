@@ -16,7 +16,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRe
       </div>
 
       <div className="match-chat-list-container">
-      {matchChatDisplay === 0
+        {matchChatDisplay === 0
         &&
         <MatchLists
           user={user} 

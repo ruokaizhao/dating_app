@@ -4,7 +4,7 @@ import Auth from './auth/Auth'
 import ForgetPassword from './auth/ForgetPassword'
 import NavBar from './NavBar'
 
-function Home({ user, setUser }) {
+function Home({ user, setUser, setIsEditingProfile }) {
   const [showAuth, setShowAuth] = useState(false)
   const [isSignUp, setIsSignUp] = useState(null)
   const [isForgettingPassword, setIsForgettingPassword] = useState(false)
@@ -18,7 +18,14 @@ function Home({ user, setUser }) {
   return (
     <div className="background">
       <div className={showAuth ? "dim-layer" : ""}>
-        <NavBar user={user} showAuth={showAuth} setShowAuth={setShowAuth} setIsSignUp={setIsSignUp} setUser={setUser} color={false} />
+        <NavBar 
+          user={user} 
+          showAuth={showAuth} 
+          setShowAuth={setShowAuth} 
+          setIsSignUp={setIsSignUp} 
+          setUser={setUser} 
+          color={false} 
+        />
         <div className="home">      
           <h1 className="primary-title">Swipe Right®</h1>
           <button className="primary-button" onClick={user.id ? () => navigate('/dashboard') : handleClick}>
@@ -32,7 +39,13 @@ function Home({ user, setUser }) {
         :
         showAuth 
         ? 
-        <Auth setShowAuth={setShowAuth} isSignUp={isSignUp} setUser={setUser} setIsSignUp={setIsSignUp} setIsForgettingPassword={setIsForgettingPassword} />
+        <Auth 
+          setShowAuth={setShowAuth} 
+          isSignUp={isSignUp} 
+          setUser={setUser} 
+          setIsSignUp={setIsSignUp} 
+          setIsForgettingPassword={setIsForgettingPassword} 
+        />
         :
         null}
     </div>    

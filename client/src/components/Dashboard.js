@@ -63,7 +63,7 @@ function Dashboard({ user, cable }) {
   }, [user.id])
 
   return (
-    <div className="dashboard">      
+    <div className="dashboard">  
       <ChatHeader user={user} chatContainerRef={chatContainerRef} swipeContainerRef={swipeContainerRef} />
       <div className="dashboard-body">
         <ChatContainer user={user} chatContainerRef={chatContainerRef} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />

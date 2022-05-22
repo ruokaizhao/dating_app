@@ -8,6 +8,7 @@ import UserProfile from './UserProfile'
 
 function App({ cable }) {
   const [user, setUser] = useState({})
+  const [isEditingProfile, setIsEditingProfile] = useState(true)
 
   useEffect(() => {
     fetch('/api/me')
@@ -23,9 +24,9 @@ function App({ cable }) {
       <Routes>
         <Route path='/' element={<Home user={user} setUser={setUser} />} />
         <Route path='/dashboard' element={<Dashboard user={user} cable={cable} />} />
-        <Route path='/onboarding' element={<Onboarding user={user} />} />
+        <Route path='/onboarding' element={<Onboarding user={user} isEditingProfile={isEditingProfile} />} />
         <Route path='/reset_password/:token' element={<ResetPassword setUser={setUser} />} />
-        <Route path='/user-profile' element={<UserProfile user={user} />} />
+        <Route path='/user-profile' element={<UserProfile user={user} setIsEditingProfile={setIsEditingProfile} />} />
       </Routes>
     </div>
   )

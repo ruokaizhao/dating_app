@@ -4,25 +4,26 @@ import NavBar from './NavBar'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-function Onboarding({ user }) {
+function Onboarding({ user, isEditingProfile }) {
   const navigate = useNavigate()
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      first_name: '',
-      dob_day: '',
-      dob_month: '',
-      dob_year: '',
-      show_gender: false,
-      gender_identity: '',
-      gender_interest: '',
-      url1: '',
-      about: ''
+      first_name: user.first_name || '',
+      dob_day: user.dob_day || '',
+      dob_month: user.dob_month || '',
+      dob_year: user.dob_year || '',
+      show_gender: user.show_gender || false,
+      gender_identity: user.gender_identity || '',
+      gender_interest: user.gender_interest || '',
+      url1: user.url1 || '',
+      about: user.about || ''
     },
     validationSchema: Yup.object({
 
     }),
     onSubmit: () => handleSubmit()
-  })
+  }, [user])
 
   function handleSubmit() {
     fetch(`/api/users/${user.id}`, {
@@ -34,7 +35,11 @@ function Onboarding({ user }) {
     })
     .then((r) => {
       if (r.ok) {
-        r.json().then(() =>navigate('/dashboard'))
+        if (isEditingProfile) {
+          r.json().then(() => navigate('/user-profile'))
+        } else {
+          r.json().then(() =>navigate('/dashboard'))
+        }       
       }
     })
   }
@@ -43,8 +48,20 @@ function Onboarding({ user }) {
     <div>
       <NavBar user={user} color={true} />
       <div className="onboarding">
-        <h2>CREATE ACCOUNT</h2>
+        <h2>{isEditingProfile ? 'EDIT PROFILE' : 'CREATE ACCOUNT'}</h2>
         <form onSubmit={formik.handleSubmit}>
+          <section>
+            <label>Profile Photo</label>
+            <input
+              id="url"
+              type="url"
+              name="url1"
+              value={formik.values.url1}
+              onBlur={formik.handleBlur}
+              onChange={formik.handleChange}
+            />
+            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="profile" />}            
+          </section>
           <section>
             <label htmlFor="first_name">First Name</label>
             <input 
@@ -164,34 +181,22 @@ function Onboarding({ user }) {
                   onChange={formik.handleChange}
                   checked={formik.values.gender_interest === 'everyone'}
                 />
-                <label htmlFor="everyone-gender-interest">Everyone</label>
-
-                
+                <label htmlFor="everyone-gender-interest">Everyone</label>                
             </div>  
+
             <label htmlFor="about">About Me</label>
-                <input
+                <textarea
                   id="about"
                   name="about"
                   type="text"
+                  rows={6}
+                  
                   placeholder="Something about you..."
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.about}
               /> 
             <button type="submit">Submit</button>         
-          </section>
-
-          <section>
-            <label>Profile Photo</label>
-            <input
-              id="url"
-              type="url"
-              name="url1"
-              value={formik.values.url}
-              onBlur={formik.handleBlur}
-              onChange={formik.handleChange}
-            />
-            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="profile" />}            
           </section>
         </form>
       </div>
