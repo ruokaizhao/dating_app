@@ -19,14 +19,16 @@ function UserProfile({ user, setShowAuth, setIsEditingProfile }) {
   return (
     <div className="user-profile">  
       <img className="profile-photo" src={user.url1} alt="profile" /> 
-      <div className="name-age">
-        <h2>{user.first_name}, </h2>
-        <h2>{result}</h2> 
-      </div>          
-      <p>Gender Identity: {user.show_gender ? user.gender_identity : 'I\'ll keep it as a secret'}</p> 
-      <p>Gender Interest: {user.gender_interest}</p> 
-      <p>Something about me: {user.about}</p>      
-      <button onClick={handleClick}>Edit Profile</button>
+      <div className="name-age-button">
+        <div className="name-age">
+          <h2>{user.first_name}, </h2>
+          <h2>{result}</h2> 
+        </div>  
+        <button onClick={handleClick}>Edit Profile</button>  
+      </div>            
+      <p id="p1">Gender Identity: {user.show_gender ? user.gender_identity : 'I\'ll keep it as a secret'}</p> 
+      <p id="p2">Gender Interest: {user.gender_interest}</p> 
+      <p id="p3">{user.about}</p>      
     </div>  
   )
 }
