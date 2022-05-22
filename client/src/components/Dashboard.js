@@ -3,7 +3,7 @@ import TinderCard from 'react-tinder-card'
 import ChatContainer from './Chat/ChatContainer'
 import ChatHeader from './Chat/ChatHeader'
 
-function Dashboard({ user, cable }) {
+function Dashboard({ user, cable, setShowAuth }) {
   const [characters, setCharacters] = useState([])
   const [lastDirection, setLastDirection] = useState(null)
   const [matchUsers, setMatchUsers] = useState([])
@@ -64,7 +64,7 @@ function Dashboard({ user, cable }) {
 
   return (
     <div className="dashboard">  
-      <ChatHeader user={user} chatContainerRef={chatContainerRef} swipeContainerRef={swipeContainerRef} />
+      <ChatHeader user={user} chatContainerRef={chatContainerRef} swipeContainerRef={swipeContainerRef} setShowAuth={setShowAuth} />
       <div className="dashboard-body">
         <ChatContainer user={user} chatContainerRef={chatContainerRef} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
         <div className="swipe-container" ref={swipeContainerRef}>

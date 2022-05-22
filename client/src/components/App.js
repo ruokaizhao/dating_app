@@ -4,7 +4,7 @@ import Dashboard from './Dashboard'
 import Onboarding from './Onboarding'
 import { Route, Routes } from 'react-router-dom'
 import ResetPassword from './auth/ResetPassword'
-import UserProfile from './UserProfile'
+import Account from './Account'
 
 function App({ cable }) {
   const [user, setUser] = useState({})
@@ -35,6 +35,7 @@ function App({ cable }) {
           <Dashboard 
             user={user} 
             cable={cable} 
+            setShowAuth={setShowAuth}
           />} 
         />
         <Route path='/onboarding' element={
@@ -50,8 +51,8 @@ function App({ cable }) {
             setUser={setUser} 
           />} 
         />
-        <Route path='/user-profile' element={
-          <UserProfile 
+        <Route path='/account' element={
+          <Account 
             user={user} 
             setIsEditingProfile={setIsEditingProfile} 
             showAuth={showAuth} 

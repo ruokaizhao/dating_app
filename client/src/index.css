@@ -32,6 +32,7 @@ h2 {
 
 .primary-button:hover {
   background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  cursor: pointer;
 }
 
 .errors {
@@ -858,20 +859,90 @@ form .secondary-button:hover {
   box-shadow: 0 0 10px rgb(113, 158, 206);
 }
 
-/* ---------User Profile--------- */
+/* ---------Account--------- */
 
-.user-profile {
+.account-body {
   display: flex;
   justify-content: center;
+  padding: 30px;
+  align-items: flex-start;
   border-top: solid 2px rgb(213, 213, 213);
 }
 
-.user-profile section {
+.account-button {
+  width: 35%;
   display: flex;
   flex-direction: column;
-  width: 35vw;
+  align-items: center;  
+}
+
+.account-button button {
+  width: 50%;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  margin: 5px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+}
+
+.account-button button:hover {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  cursor: pointer;
+}
+
+/* ---------User Profile--------- */
+
+.user-profile {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .user-profile .profile-photo {
-  width: 100%;
+  width: 500px;
+  height: 600px;
+  border-radius: 20px;
+}
+
+.user-profile .name-age {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.user-profile h2 {
+  margin: 5px 10px 2px 0;
+  font-style: normal;
+  font-weight: lighter;
+}
+
+.user-profile p {
+  margin: 0;
+  font-weight: lighter;
+}
+
+.user-profile button {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 15px;
+  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+}
+
+.user-profile button:hover {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  cursor: pointer;
+}
+
+/* ---------Email Password--------- */
+
+.email-password {
+  width: 50%;
 }

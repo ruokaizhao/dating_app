@@ -1,9 +1,14 @@
 import React, { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function ChatHeader({ user, chatContainerRef, swipeContainerRef }) {
+function ChatHeader({ user, chatContainerRef, swipeContainerRef, setShowAuth }) {
   const menuButtonRef = useRef(null)
   const navigate = useNavigate()
+
+  function handleClick() {
+    setShowAuth(false)
+    navigate('/account')
+  }
 
   function handleHamburgerClick() {
     menuButtonRef.current.classList.toggle('active')
@@ -28,7 +33,7 @@ function ChatHeader({ user, chatContainerRef, swipeContainerRef }) {
   return (
     <div className="chat-header">
       <div className="chat-header-photo-name">
-        <img className="profile-photo" src={user.url1} alt="profile" onClick={() => navigate('/user-profile')} />
+        <img className="profile-photo" src={user.url1} alt="profile" onClick={handleClick} />
         <h1>{user.first_name}</h1>    
       </div>
       <div className="mobile-menu">
