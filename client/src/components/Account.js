@@ -12,14 +12,14 @@ function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser }) 
       <NavBar user={user} color={true} showAuth={showAuth} setUser={setUser} />
       <div className="account-body">
         <div className="account-button">
-          <button onClick={() => setShowUserProfile(true)}>Profile</button>
+          <button autoFocus onClick={() => setShowUserProfile(true)}>Profile</button>
           <button onClick={() => setShowUserProfile(false)}>Security</button>
         </div>
         {showUserProfile 
         ?
         <UserProfile user={user} setShowAuth={setShowAuth} setIsEditingProfile={setIsEditingProfile} />
         :
-        <EmailPassword />}        
+        <EmailPassword user={user} />}        
       </div>
     </div>    
   )

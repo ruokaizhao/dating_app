@@ -880,19 +880,23 @@ form .secondary-button:hover {
 
 .account-button button {
   width: 75%;
-  color: #fff;
+  color: rgb(0, 0, 0);
   text-transform: uppercase;
   font-size: 15px;
-  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
   margin: 5px;
   padding: 12px 30px;
   border-radius: 30px;
   border: none;
+  outline: none;
 }
 
 .account-button button:hover {
   background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
   cursor: pointer;
+}
+
+.account-button button:focus {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
 }
 
 @media only screen and (max-width: 1200px) {
@@ -975,10 +979,9 @@ form .secondary-button:hover {
 }
 
 .user-profile button {
-  color: #fff;
+  color: rgb(0, 0, 0);
   text-transform: uppercase;
   font-size: 15px;
-  background: linear-gradient(45deg, rgb(254, 48, 114), rgb(255, 89, 64));
   padding: 12px 30px;
   border-radius: 30px;
   border: none;
@@ -1026,6 +1029,87 @@ form .secondary-button:hover {
 /* ---------Email Password--------- */
 
 .email-password {
+  text-align: left;
   margin-left: 100px;
   width: 70%;
+}
+
+.email-password .email-password-option {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.email-password button {
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  font-size: 15px;
+  padding: 12px 30px;
+  border-radius: 30px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+.email-password button:hover {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  cursor: pointer;
+}
+
+.email-password button:focus {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+}
+
+.email-password form {
+  display: flex;
+  flex-direction: column;
+}
+
+.email-password form label {
+  margin: 20px 0;
+}
+
+.email-password form button {
+  margin-top: 20px;
+  width: 50%;
+}
+
+.email-password input {
+  width: 50%;
+  padding: 12px;
+  font-size: 17px;  
+  border: 2px solid #ccc;
+  border-radius: 15px;
+  box-sizing: border-box;
+}
+
+.email-password input:focus {
+  outline: none;
+  border-color: rgb(113, 158, 206);
+  box-shadow: 0 0 10px rgb(113, 158, 206);
+}
+
+@media only screen and (max-width: 1200px) {
+  .email-password {
+    margin-left: 0;
+    width: 70%;
+  }
+
+  .email-password .email-password-option {
+    width: 100%;
+    font-size: 15px;
+  }
+  
+  .email-password form button {
+    width: 100%;
+  }
+
+  .email-password input {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .email-password {
+    width: 100%;
+  }
 }
