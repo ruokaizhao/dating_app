@@ -12,8 +12,8 @@ function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser }) 
       <NavBar user={user} color={true} showAuth={showAuth} setUser={setUser} />
       <div className="account-body">
         <div className="account-button">
-          <button onClick={() => setShowUserProfile(true)}>My Profile</button>
-          <button onClick={() => setShowUserProfile(false)}>Email and Password</button>
+          <button onClick={() => setShowUserProfile(true)}>Profile</button>
+          <button onClick={() => setShowUserProfile(false)}>Security</button>
         </div>
         {showUserProfile 
         ?
