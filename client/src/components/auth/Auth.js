@@ -44,7 +44,7 @@ function Auth({ setShowAuth, isSignUp, setUser, setIsSignUp, setIsForgettingPass
         if (r.ok) {
           r.json().then((data) => {
             setUser(data)
-            navigate('/onboarding')
+            navigate('/onboarding')            
           })
         } 
       })

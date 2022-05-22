@@ -4,7 +4,7 @@ import NavBar from './NavBar'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
 
-function Onboarding({ user, isEditingProfile }) {
+function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
   const navigate = useNavigate()
   const formik = useFormik({
     enableReinitialize: true,
@@ -46,7 +46,7 @@ function Onboarding({ user, isEditingProfile }) {
 
   return (
     <div>
-      <NavBar user={user} color={true} />
+      <NavBar user={user} color={true} showAuth={showAuth} setUser={setUser} />
       <div className="onboarding">
         <h2>{isEditingProfile ? 'EDIT PROFILE' : 'CREATE ACCOUNT'}</h2>
         <form onSubmit={formik.handleSubmit}>

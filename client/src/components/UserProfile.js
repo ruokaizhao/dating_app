@@ -1,13 +1,23 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import NavBar from './NavBar'
 
-function UserProfile({ user, setIsEditingProfile }) {
+function UserProfile({ user, showAuth, setShowAuth, setIsEditingProfile, setUser }) {
+  const navigate = useNavigate()
+
+  function handleClick() {
+    setIsEditingProfile(true)
+    setShowAuth(false)    
+    navigate('/onboarding')
+  }
+
   return (
     <>
-      <NavBar user={user} color={true} />
+      <NavBar user={user} color={true} showAuth={showAuth} setUser={setUser} />
       <div className="user-profile">
         <section>
           <img className="profile-photo" src={user.url1} alt="profile" />
+          <button onClick={handleClick}>Edit Profile</button>
         </section>
         <section>
           <p>Name: {user.first_name}</p>

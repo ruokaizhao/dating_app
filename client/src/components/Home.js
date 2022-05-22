@@ -4,8 +4,7 @@ import Auth from './auth/Auth'
 import ForgetPassword from './auth/ForgetPassword'
 import NavBar from './NavBar'
 
-function Home({ user, setUser, setIsEditingProfile }) {
-  const [showAuth, setShowAuth] = useState(false)
+function Home({ user, setUser, showAuth, setShowAuth, setIsEditingProfile }) {
   const [isSignUp, setIsSignUp] = useState(null)
   const [isForgettingPassword, setIsForgettingPassword] = useState(false)
   const navigate = useNavigate()

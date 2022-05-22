@@ -98,6 +98,7 @@ nav .nav-button:hover {
 nav .nav-button:disabled {
   color: rgb(255, 60, 130);
   background-color: rgb(180, 180, 180);
+  cursor: auto;
 }
 
 /* ---------Auth--------- */
