@@ -85,8 +85,7 @@ function Chat({ user, recipient, cable, setMatchChatDisplay, showUnreadMessages,
       <div className="chat-display-header">
         <h3>{recipient.first_name}</h3>
         <div className="close-icon" onClick={() => setMatchChatDisplay(prevMatchChatDisplay)}>ⓧ</div>
-      </div>     
-
+      </div>  
       <div className="message-list">
         {messages.map((message, index) => {
           return (            

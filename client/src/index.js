@@ -15,4 +15,4 @@ root.render(
       <App cable={CableApp.cable}/>
     </React.StrictMode>
   </BrowserRouter>  
-);
+)

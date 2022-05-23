@@ -46,8 +46,6 @@ function ChatLists({ user, matchUsers, setMatchChatDisplay, setRecipient, cable,
     }    
   }, [user.id, setListMessages, cable.subscriptions])
 
-
-
   return (
     <div className="chat-lists">
       {listMessages.map((listMessage, index) => {

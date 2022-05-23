@@ -45,14 +45,12 @@ function ChatList({ listMessage, matchUsers, user, setMatchChatDisplay, setRecip
           <p>{listMessage[0]['message']['content']}</p>
         </div>
       </div>
-      {pairId in showUnreadMessages 
+      {showUnreadMessages.hasOwnProperty(pairId) 
       ?
       showUnreadMessages[pairId] && newMessages !== 0 && <p className="unread-messages">{numberOfUnReadMessages}</p>
       :
       <p className="unread-messages">{numberOfUnReadMessages}</p>
-      }
-      
-            
+      }           
     </div>
   )
 }
