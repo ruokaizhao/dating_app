@@ -11,6 +11,10 @@ html, body {
   box-sizing: border-box;
 }
 
+.errors {
+  margin-top: 20px;
+}
+
 h2 {
   font-style: italic;
 }

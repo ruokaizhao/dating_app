@@ -49,7 +49,7 @@ function App({ cable }) {
             isEditingProfile={isEditingProfile} 
           />} 
         />
-        <Route path='/reset-password/:token' element={
+        <Route path='/reset_password/:token' element={
           <ResetPassword 
             setUser={setUser} 
           />} 

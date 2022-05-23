@@ -60,7 +60,7 @@ class Api::UsersController < ApplicationController
       user.update!(password: params[:password], password_confirmation: params[:password2])
       render json: user, status: :created
     else
-      render json: { errors: ["Current password not correct"] }, status: :unauthorized
+      render json: { errors: ["Current password is not correct"] }, status: :unauthorized
     end
   end
 

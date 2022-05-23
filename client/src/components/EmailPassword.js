@@ -4,6 +4,7 @@ import * as Yup from 'yup'
 
 function EmailPassword({ user, setUser }) {
   const [emailOrPassword, setEmailOrPassword] = useState(0)
+  const [successMessage, setSuccessMessage] = useState(null)
 
   const formik = useFormik({
     initialValues: {
@@ -42,6 +43,10 @@ function EmailPassword({ user, setUser }) {
           r.json().then((data) => {
             setUser(data)
             setEmailOrPassword(0)
+            setSuccessMessage('Your email address has been successfully changed.')
+            setTimeout(() => {
+              setSuccessMessage(null)
+            }, 2000);
           })
         }
       })
@@ -62,8 +67,14 @@ function EmailPassword({ user, setUser }) {
         if (r.ok) {
           r.json().then((data) => {
             setUser(data)
-            setEmailOrPassword(0)            
+            setEmailOrPassword(0)
+            setSuccessMessage('Your password has been successfully changed.')
+            setTimeout(() => {
+              setSuccessMessage(null)
+            }, 2000);            
           })
+        } else {
+          r.json().then((errors) => formik.setErrors({currentPassword: errors.errors}))
         }
       })
     }
@@ -77,6 +88,8 @@ function EmailPassword({ user, setUser }) {
         <button onClick={() => setEmailOrPassword(1)}>Change Email</button>
         <button onClick={() => setEmailOrPassword(2)}>Change Password</button>
       </div>
+      <h2>{successMessage}</h2>
+
       
       {emailOrPassword === 1 &&
       <form onSubmit={formik.handleSubmit}>
@@ -98,11 +111,11 @@ function EmailPassword({ user, setUser }) {
       
       {emailOrPassword === 2 &&
       <form onSubmit={formik.handleSubmit}>
-        <label htmlFor="currentPassword">Enter your current password:</label>
+        <label htmlFor="current-password">Enter your current password:</label>
         <input 
         type="password" 
         name="currentPassword" 
-        id="currentPassword"
+        id="current-password"
         spellCheck="false"
         placeholder="Enter your password..." 
         onChange={formik.handleChange} 
