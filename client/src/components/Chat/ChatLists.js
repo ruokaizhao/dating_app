@@ -4,6 +4,7 @@ import ChatList from './ChatList'
 function ChatLists({ user, matchUsers, setMatchChatDisplay, setRecipient, cable, showUnreadMessages, setShowUnreadMessages, setPrevMatchChatDisplay }) {
   const [listMessages, setListMessages] = useState([])
   
+  
 
   useEffect(() => {
     if (user.id) {
@@ -11,12 +12,12 @@ function ChatLists({ user, matchUsers, setMatchChatDisplay, setRecipient, cable,
       .then((r) => {
         if (r.ok) {
           r.json().then((data) => {
-            setListMessages(data)
+            setListMessages(data) 
+            const obj = {}           
             data.forEach((listMessage) => {
-              setShowUnreadMessages({
-                ...showUnreadMessages, [listMessage[0].message.pair_id]: true
-              })
+              obj[listMessage[0].message.pair_id] = true
             })
+            setShowUnreadMessages(obj)
           })
         }
       })

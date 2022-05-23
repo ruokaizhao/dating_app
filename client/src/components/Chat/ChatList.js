@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 function ChatList({ listMessage, matchUsers, user, setMatchChatDisplay, setRecipient, showUnreadMessages, setShowUnreadMessages, setPrevMatchChatDisplay }) {
   const [lastReadAt, setLastReadAt] = useState('')
-
-  const pair_id = listMessage[0]['message']['pair_id']
+  const [pairId, setPairId] = useState(null)
 
   const recipientId = 
     listMessage[0]['message']['sender_id'] === user.id ? 
@@ -14,6 +13,10 @@ function ChatList({ listMessage, matchUsers, user, setMatchChatDisplay, setRecip
 
   const newMessages = lastReadAt ? listMessage.filter((message) => message.message.created_at > lastReadAt).length : listMessage.length
   const numberOfUnReadMessages = newMessages === 100 ? "99+" : newMessages
+
+  useEffect(() => {
+    setPairId(listMessage[0]['message']['pair_id'])
+  }, [])
 
   useEffect(() => {
     if (user.id) {
@@ -27,7 +30,7 @@ function ChatList({ listMessage, matchUsers, user, setMatchChatDisplay, setRecip
   }, [user.id, recipientId, setLastReadAt, listMessage, showUnreadMessages])
 
   function handleClick() {
-    setShowUnreadMessages({...showUnreadMessages, [pair_id]: false})
+    setShowUnreadMessages({...showUnreadMessages, [pairId]: false})
     setPrevMatchChatDisplay(1)
     setMatchChatDisplay(2)
     setRecipient(recipient)
@@ -41,8 +44,14 @@ function ChatList({ listMessage, matchUsers, user, setMatchChatDisplay, setRecip
           <h3>{recipient.first_name}</h3>
           <p>{listMessage[0]['message']['content']}</p>
         </div>
-      </div> 
-      {showUnreadMessages[pair_id] && newMessages !== 0 && <p className="unread-messages">{numberOfUnReadMessages}</p>}     
+      </div>
+      {pairId in showUnreadMessages 
+      ?
+      showUnreadMessages[pairId] && newMessages !== 0 && <p className="unread-messages">{numberOfUnReadMessages}</p>
+      :
+      <p className="unread-messages">{numberOfUnReadMessages}</p>
+      }
+      
             
     </div>
   )
