@@ -426,7 +426,7 @@ form .secondary-button:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 85vh;
 }
 
 .dashboard .card-container {
@@ -455,18 +455,20 @@ form .secondary-button:hover {
 /* @media needs to be under the ones that it will overwrite */
 @media only screen and (max-width: 768px) {
   .dashboard .swipe-container {
-    width: 100%; 
-    height: 75vh;   
+    justify-content: flex-start;
+    padding-top: 25px;
+    width: 100%;  
   }
 
   .dashboard .card-container {
-    width: 300px;
-    height: 450px;
+    margin-top: 50px;
+    width: 400px;
+    height: 550px;
   }
 
   .dashboard .card {
-    width: 300px;
-    height: 450px;
+    width: 400px;
+    height: 550px;
   }
 
   .dashboard .swipe-container.inactive {
@@ -930,7 +932,8 @@ form .secondary-button:hover {
 }
 
 .dashboard .user-profile {
-  padding-left: 200px;
+  width: 100%;
+  padding-left: 150px;
 }
 
 .user-profile .close-icon {
@@ -938,8 +941,37 @@ form .secondary-button:hover {
   align-self: flex-start;
 }
 
+.dashboard .user-profile .close-icon {
+  width: 90%;
+  max-width: 768px;
+  align-self: flex-start;
+}
+
+#me-close-icon {
+  align-self: flex-start;
+  margin: 50px 0 5px 0;
+  padding: 8px;
+  font-size: 13px;
+}
+
+#me-close-icon:hover {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+  cursor: pointer;
+}
+
+#me-close-icon:focus {
+  background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
+}
+
 .user-profile .profile-photo {
   width: 75%;
+  max-height: 800px;
+  border-radius: 20px;
+}
+
+.dashboard .user-profile .profile-photo {
+  width: 90%;
+  max-width: 768px;
   max-height: 800px;
   border-radius: 20px;
 }
@@ -950,6 +982,11 @@ form .secondary-button:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.dashboard .user-profile .name-age-button {
+  width: 90%;
+  max-width: 768px;
 }
 
 .user-profile .name-age {
@@ -986,11 +1023,21 @@ form .secondary-button:hover {
   width: 75%;
 }
 
+.dashboard #p2 {
+  width: 90%;
+  max-width: 768px;
+}
+
+.dashboard #p3 {
+  width: 90%;
+  max-width: 768px;
+}
+
 .user-profile button {
   color: rgb(0, 0, 0);
   text-transform: uppercase;
   font-size: 15px;
-  padding: 12px 30px;
+  padding: 5px 20px;
   border-radius: 30px;
   border: none;
 }
@@ -998,6 +1045,12 @@ form .secondary-button:hover {
 .user-profile button:hover {
   background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
   cursor: pointer;
+}
+
+@media only screen and (max-width: 1440px) {
+  .dashboard .user-profile {
+    padding-left: 100px;
+  }
 }
 
 @media only screen and (max-width: 1200px) {
@@ -1014,7 +1067,15 @@ form .secondary-button:hover {
     width: 100%;
   }
 
+  .dashboard .user-profile .close-icon {
+    width: 100%;
+  }
+
   .user-profile .profile-photo {
+    width: 100%;
+  }
+
+  .dashboard .user-profile .profile-photo {
     width: 100%;
   }
   
@@ -1023,8 +1084,8 @@ form .secondary-button:hover {
   }
 
   .user-profile button {
-    font-size: 15px;
-    padding:  15px;
+    font-size: 13px;
+    padding:  12px;
   }
   
   #p2 {
@@ -1034,6 +1095,14 @@ form .secondary-button:hover {
   #p3 {
     width: 100%;
   }
+
+  .dashboard #p2 {
+    width: 100%;
+  }
+  
+  .dashboard #p3 {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1041,6 +1110,15 @@ form .secondary-button:hover {
     width: 100%;
     padding: 0 25px 25px 25px;
   }
+
+  .dashboard .user-profile {
+    width: 100%;
+    padding: 25px;
+  }
+
+  #me-close-icon {
+    margin: 10px 0 5px 0;
+  }  
 }
 
 /* ---------Email Password--------- */

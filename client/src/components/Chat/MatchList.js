@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages, setMatchChatDisplay, setRecipient, setShowViewedUser }) {
+function MatchList({ user, matchUser, showUnreadMessages, setPrevMatchChatDisplay, setShowUnreadMessages, chatContainerRef, swipeContainerRef, setMatchChatDisplay, setRecipient, setShowViewedUser }) {
   const [pairId, setPairId] = useState(null)
 
   useEffect(() => {
@@ -15,12 +15,15 @@ function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages,
   }, [user, matchUser, pairId, setPairId])
 
   function handleViewProfileClick() {
+    swipeContainerRef.current.classList.toggle('inactive')
+    chatContainerRef.current.classList.toggle('active')
     setShowViewedUser(true)
     setRecipient(matchUser)
   }
 
   function handleSendMessageClick() {
     setShowUnreadMessages({...showUnreadMessages, [pairId]: false})
+    setPrevMatchChatDisplay(0)
     setMatchChatDisplay(2)
     setRecipient(matchUser)
   }

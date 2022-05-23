@@ -3,8 +3,9 @@ import Chat from './Chat'
 import ChatLists from './ChatLists'
 import MatchLists from './MatchLists'
 
-function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRef, recipient, setRecipient, setShowViewedUser }) {
+function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRef, swipeContainerRef, recipient, setRecipient, setShowViewedUser }) {
   const [matchChatDisplay, setMatchChatDisplay] = useState(0) 
+  const [prevMatchChatDisplay, setPrevMatchChatDisplay] = useState(null)
   const [showUnreadMessages, setShowUnreadMessages] = useState({})
 
   return (
@@ -20,6 +21,9 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRe
         <MatchLists
           user={user} 
           cable={cable}
+          setPrevMatchChatDisplay={setPrevMatchChatDisplay}
+          chatContainerRef={chatContainerRef}
+          swipeContainerRef={swipeContainerRef}
           showUnreadMessages={showUnreadMessages}
           setShowUnreadMessages={setShowUnreadMessages}
           matchUsers={matchUsers} 
@@ -33,6 +37,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRe
         <ChatLists 
           user={user} 
           cable={cable}
+          setPrevMatchChatDisplay={setPrevMatchChatDisplay}
           showUnreadMessages={showUnreadMessages}
           setShowUnreadMessages={setShowUnreadMessages}
           matchUsers={matchUsers} 
@@ -43,6 +48,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRe
         && 
         <Chat 
           user={user} 
+          prevMatchChatDisplay={prevMatchChatDisplay}
           showUnreadMessages={showUnreadMessages}
           setShowUnreadMessages={setShowUnreadMessages}
           setMatchChatDisplay={setMatchChatDisplay}

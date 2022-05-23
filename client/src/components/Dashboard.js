@@ -62,7 +62,7 @@ function Dashboard({ user, cable, setShowAuth, showViewedUser, setShowViewedUser
         }
       })
     }    
-  }, [user.id])
+  }, [user.id, user.gender_identity, user.gender_interest])
 
   return (
     <div className="dashboard">  
@@ -76,29 +76,32 @@ function Dashboard({ user, cable, setShowAuth, showViewedUser, setShowViewedUser
         <ChatContainer 
           user={user} 
           chatContainerRef={chatContainerRef} 
+          swipeContainerRef={swipeContainerRef}
           matchUsers={matchUsers} 
           setMatchUsers={setMatchUsers} 
           cable={cable} 
           recipient={recipient} 
           setRecipient={setRecipient} 
           setShowViewedUser={setShowViewedUser} 
-        />
-        {showViewedUser 
-        ?
-        <UserProfile user={recipient} showViewedUser={showViewedUser} setShowViewedUser={setShowViewedUser} />
-        :
+        />     
         <div className="swipe-container" ref={swipeContainerRef}>
-          <div className="card-container">          
-            {characters.map((character) =>
-              <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>
-                <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">
-                  <h3>{character.first_name}</h3>
-                </div>
-              </TinderCard>
-            )}
-          </div>
-          {lastDirection ? <h2 className="swipe-info">You swiped {lastDirection}</h2> : <h2 className='infoText' />}
-        </div>}       
+          {showViewedUser 
+          ? 
+          <UserProfile user={recipient} showViewedUser={showViewedUser} setShowViewedUser={setShowViewedUser} />
+          :
+          <>          
+            <div className="card-container">          
+              {characters.map((character) =>
+                <TinderCard className="swipe" key={character.id} onSwipe={(direction) => swiped(direction, character.id)}>
+                  <div style={{ backgroundImage: "url(" + character.url1 + ")" }} className="card">
+                    <h3>{character.first_name}</h3>
+                  </div>
+                </TinderCard>
+              )}
+            </div>
+            {lastDirection ? <h2 className="swipe-info">You swiped {lastDirection}</h2> : null}
+          </>}         
+        </div>      
       </div>
     </div>
   )

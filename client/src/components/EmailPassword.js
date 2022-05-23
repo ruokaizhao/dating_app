@@ -1,11 +1,9 @@
 import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { useNavigate } from 'react-router-dom'
 
 function EmailPassword({ user, setUser }) {
   const [emailOrPassword, setEmailOrPassword] = useState(0)
-  const navigate = useNavigate()
 
   const formik = useFormik({
     initialValues: {
@@ -70,8 +68,6 @@ function EmailPassword({ user, setUser }) {
       })
     }
   }
-
-
 
   return (
     <div className="email-password">

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ChatList from './ChatList'
 
-function ChatLists({ user, matchUsers, setMatchChatDisplay, setRecipient, cable, showUnreadMessages, setShowUnreadMessages }) {
+function ChatLists({ user, matchUsers, setMatchChatDisplay, setRecipient, cable, showUnreadMessages, setShowUnreadMessages, setPrevMatchChatDisplay }) {
   const [listMessages, setListMessages] = useState([])
   
 
@@ -56,6 +56,7 @@ function ChatLists({ user, matchUsers, setMatchChatDisplay, setRecipient, cable,
             listMessage={listMessage} 
             matchUsers={matchUsers} 
             user={user}
+            setPrevMatchChatDisplay={setPrevMatchChatDisplay}
             showUnreadMessages={showUnreadMessages}
             setShowUnreadMessages={setShowUnreadMessages}
             setMatchChatDisplay={setMatchChatDisplay}

@@ -1,7 +1,19 @@
 import React, { useEffect } from 'react'
 import MatchList from './MatchList'
 
-function MatchLists({ user, matchUsers, setMatchUsers, cable, showUnreadMessages, setShowUnreadMessages, setMatchChatDisplay, setRecipient, setShowViewedUser }) {
+function MatchLists({ 
+  user, 
+  matchUsers, 
+  setMatchUsers, 
+  chatContainerRef, 
+  swipeContainerRef, 
+  cable, 
+  showUnreadMessages, 
+  setShowUnreadMessages, 
+  setPrevMatchChatDisplay, 
+  setMatchChatDisplay, 
+  setRecipient, 
+  setShowViewedUser }) {
 
   useEffect(() => {
     if (user.id) {
@@ -38,9 +50,12 @@ function MatchLists({ user, matchUsers, setMatchUsers, cable, showUnreadMessages
           <MatchList 
             key={matchUser.id} 
             user={user} 
+            chatContainerRef={chatContainerRef}
+            swipeContainerRef={swipeContainerRef}
             setShowViewedUser={setShowViewedUser}
             matchUser={matchUser}
             setMatchChatDisplay={setMatchChatDisplay}
+            setPrevMatchChatDisplay={setPrevMatchChatDisplay}
             setRecipient={setRecipient}
             showUnreadMessages={showUnreadMessages}
             setShowUnreadMessages={setShowUnreadMessages} />        

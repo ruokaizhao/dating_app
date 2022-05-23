@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react'
 import ChatInput from './ChatInput'
 
-function Chat({ user, recipient, cable, setMatchChatDisplay, showUnreadMessages, setShowUnreadMessages }) {
+function Chat({ user, recipient, cable, setMatchChatDisplay, showUnreadMessages, setShowUnreadMessages, prevMatchChatDisplay }) {
   const [messages, setMessages] = useState([])
   const [pairId, setPairId] = useState(null)
   const endMessageRef = useRef(null)  
@@ -84,7 +84,7 @@ function Chat({ user, recipient, cable, setMatchChatDisplay, showUnreadMessages,
     <div className="chat-display">
       <div className="chat-display-header">
         <h3>{recipient.first_name}</h3>
-        <div className="close-icon" onClick={() => setMatchChatDisplay(1)}>ⓧ</div>
+        <div className="close-icon" onClick={() => setMatchChatDisplay(prevMatchChatDisplay)}>ⓧ</div>
       </div>     
 
       <div className="message-list">

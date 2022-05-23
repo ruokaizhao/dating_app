@@ -22,7 +22,7 @@ function UserProfile({ user, setShowAuth, setIsEditingProfile, showViewedUser, s
       ? 
       <div className="close-icon" onClick={() => setShowViewedUser(false)}>ⓧ</div>
       :
-      <div className="close-icon" onClick={() => navigate('/dashboard')}>ⓧ</div>
+      <button id="me-close-icon" onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
       }
       <img className="profile-photo" src={user.url1} alt="profile" /> 
       <div className="name-age-button">
