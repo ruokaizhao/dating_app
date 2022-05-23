@@ -10,6 +10,7 @@ function App({ cable }) {
   const [user, setUser] = useState({})
   const [showAuth, setShowAuth] = useState(false)
   const [isEditingProfile, setIsEditingProfile] = useState(false)
+  const [showViewedUser, setShowViewedUser] = useState(false)
 
   useEffect(() => {
     fetch('/api/me')
@@ -36,6 +37,8 @@ function App({ cable }) {
             user={user} 
             cable={cable} 
             setShowAuth={setShowAuth}
+            showViewedUser={showViewedUser}
+            setShowViewedUser={setShowViewedUser}
           />} 
         />
         <Route path='/onboarding' element={
@@ -54,6 +57,8 @@ function App({ cable }) {
         <Route path='/account' element={
           <Account 
             user={user} 
+            showViewedUser={showViewedUser}
+            setShowViewedUser={setShowViewedUser}
             setIsEditingProfile={setIsEditingProfile} 
             showAuth={showAuth} 
             setShowAuth={setShowAuth} 

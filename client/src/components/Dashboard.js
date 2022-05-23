@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import TinderCard from 'react-tinder-card'
 import ChatContainer from './Chat/ChatContainer'
 import ChatHeader from './Chat/ChatHeader'
+import UserProfile from './UserProfile'
 
-function Dashboard({ user, cable, setShowAuth }) {
+function Dashboard({ user, cable, setShowAuth, showViewedUser, setShowViewedUser }) {
   const [characters, setCharacters] = useState([])
   const [lastDirection, setLastDirection] = useState(null)
   const [matchUsers, setMatchUsers] = useState([])
+  const [recipient, setRecipient] = useState({})  
   const chatContainerRef = useRef(null)
   const swipeContainerRef = useRef(null)
 
@@ -64,9 +66,27 @@ function Dashboard({ user, cable, setShowAuth }) {
 
   return (
     <div className="dashboard">  
-      <ChatHeader user={user} chatContainerRef={chatContainerRef} swipeContainerRef={swipeContainerRef} setShowAuth={setShowAuth} />
+      <ChatHeader 
+        user={user} 
+        chatContainerRef={chatContainerRef} 
+        swipeContainerRef={swipeContainerRef} 
+        setShowAuth={setShowAuth} 
+      />
       <div className="dashboard-body">
-        <ChatContainer user={user} chatContainerRef={chatContainerRef} matchUsers={matchUsers} setMatchUsers={setMatchUsers} cable={cable} />
+        <ChatContainer 
+          user={user} 
+          chatContainerRef={chatContainerRef} 
+          matchUsers={matchUsers} 
+          setMatchUsers={setMatchUsers} 
+          cable={cable} 
+          recipient={recipient} 
+          setRecipient={setRecipient} 
+          setShowViewedUser={setShowViewedUser} 
+        />
+        {showViewedUser 
+        ?
+        <UserProfile user={recipient} showViewedUser={showViewedUser} setShowViewedUser={setShowViewedUser} />
+        :
         <div className="swipe-container" ref={swipeContainerRef}>
           <div className="card-container">          
             {characters.map((character) =>
@@ -78,7 +98,7 @@ function Dashboard({ user, cable, setShowAuth }) {
             )}
           </div>
           {lastDirection ? <h2 className="swipe-info">You swiped {lastDirection}</h2> : <h2 className='infoText' />}
-        </div>
+        </div>}       
       </div>
     </div>
   )

@@ -2,12 +2,10 @@ import React, { useState } from 'react'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { useNavigate } from 'react-router-dom'
-import toast, { Toaster } from 'react-hot-toast'
 
 function EmailPassword({ user, setUser }) {
   const [emailOrPassword, setEmailOrPassword] = useState(0)
   const navigate = useNavigate()
-  const notify = () => toast.success('Your email address has been successfully changed.')
 
   const formik = useFormik({
     initialValues: {
@@ -45,7 +43,6 @@ function EmailPassword({ user, setUser }) {
         if (r.ok) {
           r.json().then((data) => {
             setUser(data)
-            notify()
             setEmailOrPassword(0)
           })
         }
@@ -100,7 +97,6 @@ function EmailPassword({ user, setUser }) {
         />
         {formik.touched.email && formik.errors.email && <div className="errors">{formik.errors.email}</div>}
         <button type="submit">Submit</button>
-        <Toaster />
       </form>
       }
       

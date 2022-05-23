@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages, setMatchChatDisplay, setRecipient }) {
+function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages, setMatchChatDisplay, setRecipient, setShowViewedUser }) {
   const [pairId, setPairId] = useState(null)
 
   useEffect(() => {
@@ -14,7 +14,12 @@ function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages,
     }    
   }, [user, matchUser, pairId, setPairId])
 
-  function handleClick() {
+  function handleViewProfileClick() {
+    setShowViewedUser(true)
+    setRecipient(matchUser)
+  }
+
+  function handleSendMessageClick() {
     setShowUnreadMessages({...showUnreadMessages, [pairId]: false})
     setMatchChatDisplay(2)
     setRecipient(matchUser)
@@ -30,8 +35,8 @@ function MatchList({ user, matchUser, showUnreadMessages, setShowUnreadMessages,
         </div>
       </div>      
       <div>
-        <button onClick={handleClick}>View Profile</button>
-        <button onClick={handleClick}>Send Messages</button>
+        <button onClick={handleViewProfileClick}>View Profile</button>
+        <button onClick={handleSendMessageClick}>Messages</button>
       </div>
     </div>
   )

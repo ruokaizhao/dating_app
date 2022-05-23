@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
-function UserProfile({ user, setShowAuth, setIsEditingProfile }) {
+function UserProfile({ user, setShowAuth, setIsEditingProfile, showViewedUser, setShowViewedUser }) {
   const navigate = useNavigate()
 
   let currentDate = new Date();
@@ -17,14 +17,20 @@ function UserProfile({ user, setShowAuth, setIsEditingProfile }) {
   }
 
   return (
-    <div className="user-profile">  
+    <div className="user-profile"> 
+      {showViewedUser 
+      ? 
+      <div className="close-icon" onClick={() => setShowViewedUser(false)}>ⓧ</div>
+      :
+      <div className="close-icon" onClick={() => navigate('/dashboard')}>ⓧ</div>
+      }
       <img className="profile-photo" src={user.url1} alt="profile" /> 
       <div className="name-age-button">
         <div className="name-age">
           <h2>{user.first_name}, </h2>
           <h2>{result}</h2> 
         </div>  
-        <button onClick={handleClick}>Edit Profile</button>  
+        {!showViewedUser && <button onClick={handleClick}>Edit Profile</button>}  
       </div>            
       <p id="p1">Gender Identity: {user.show_gender ? user.gender_identity : 'I\'ll keep it as a secret'}</p> 
       <p id="p2">Gender Interest: {user.gender_interest}</p> 

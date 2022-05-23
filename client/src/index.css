@@ -422,7 +422,7 @@ form .secondary-button:hover {
 
 .dashboard .swipe-container {
   display: flex;
-  width: 60%;
+  width: 70%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -601,7 +601,7 @@ form .secondary-button:hover {
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
   rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-  width: 40%;
+  width: 30%;
   text-align: left;
 }
 
@@ -738,14 +738,14 @@ form .secondary-button:hover {
 }
 
 .chat-lists .chat-list .unread-messages {
-  padding: 3px;
+  padding: 10px;
   text-align: center;
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   background-color: rgb(221, 39, 22);
   color: rgb(255, 255, 255);
-  border-radius: 15px;
-  margin-right: 15px;
+  border-radius: 20px;
+  margin-right: 20px;
 }
 
 .chat-lists .chat-list .profile-photo {
@@ -806,7 +806,7 @@ form .secondary-button:hover {
 .chat-display .sender_message-card .chat-photo {
   width: 40px;
   height: 40px;
-  margin: 0px 40px 0px 8px;
+  margin: 0px 20px 0px 8px;
   border-radius: 20px;
 }
 
@@ -822,7 +822,7 @@ form .secondary-button:hover {
 .chat-display .recipient-message-card .chat-photo {
   width: 40px;
   height: 40px;
-  margin: 0px 8px 0px 40px;
+  margin: 0px 8px 0px 20px;
   border-radius: 20px;
 }
 
@@ -865,13 +865,12 @@ form .secondary-button:hover {
 .account-body {
   display: flex;
   justify-content: center;
-  padding: 30px;
   align-items: flex-start;
   border-top: solid 2px rgb(213, 213, 213);
 }
 
 .account-button {
-  margin-left: 50px;
+  padding: 50px 0 0 50px;
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -901,12 +900,11 @@ form .secondary-button:hover {
 
 @media only screen and (max-width: 1200px) {
   .account-button {
-    margin-left: 0; 
     width: 30%;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .account-body {
     display: flex;
     flex-direction: column;
@@ -914,6 +912,7 @@ form .secondary-button:hover {
   }
 
   .account-button {
+    padding: 25px 25px 0 25px;
     width: 100%;
     flex-direction: row;
   }
@@ -922,12 +921,21 @@ form .secondary-button:hover {
 /* ---------User Profile--------- */
 
 .user-profile {
-  margin-left: 100px;
+  padding-left: 100px;
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+}
+
+.dashboard .user-profile {
+  padding-left: 200px;
+}
+
+.user-profile .close-icon {
+  width: 75%;
+  align-self: flex-start;
 }
 
 .user-profile .profile-photo {
@@ -994,8 +1002,16 @@ form .secondary-button:hover {
 
 @media only screen and (max-width: 1200px) {
   .user-profile {
-    margin-left: 0;
+    padding: 0 50px;
     width: 70%;
+  }
+
+  .dashboard .user-profile {
+    padding: 0 50px;
+  }
+
+  .user-profile .close-icon {
+    width: 100%;
   }
 
   .user-profile .profile-photo {
@@ -1020,9 +1036,10 @@ form .secondary-button:hover {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .user-profile {
     width: 100%;
+    padding: 0 25px 25px 25px;
   }
 }
 
@@ -1030,7 +1047,7 @@ form .secondary-button:hover {
 
 .email-password {
   text-align: left;
-  margin-left: 100px;
+  padding: 50px 0 0 100px;
   width: 70%;
 }
 
@@ -1090,7 +1107,7 @@ form .secondary-button:hover {
 
 @media only screen and (max-width: 1200px) {
   .email-password {
-    margin-left: 0;
+    padding-left: 50px;
     width: 70%;
   }
 
@@ -1108,8 +1125,9 @@ form .secondary-button:hover {
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 768px) {
   .email-password {
+    padding: 25px;
     width: 100%;
   }
 }

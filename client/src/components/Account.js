@@ -3,7 +3,7 @@ import EmailPassword from './EmailPassword'
 import NavBar from './NavBar'
 import UserProfile from './UserProfile'
 
-function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser }) {
+function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser, showViewedUser }) {
   const [showUserProfile, setShowUserProfile] = useState(true)
 
 
@@ -17,7 +17,7 @@ function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser }) 
         </div>
         {showUserProfile 
         ?
-        <UserProfile user={user} setShowAuth={setShowAuth} setIsEditingProfile={setIsEditingProfile} />
+        <UserProfile user={user} setShowAuth={setShowAuth} setIsEditingProfile={setIsEditingProfile} showViewedUser={showViewedUser} />
         :
         <EmailPassword user={user} setUser={setUser} />}        
       </div>

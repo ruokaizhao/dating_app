@@ -3,9 +3,8 @@ import Chat from './Chat'
 import ChatLists from './ChatLists'
 import MatchLists from './MatchLists'
 
-function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRef }) {
-  const [matchChatDisplay, setMatchChatDisplay] = useState(0)
-  const [recipient, setRecipient] = useState({})  
+function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRef, recipient, setRecipient, setShowViewedUser }) {
+  const [matchChatDisplay, setMatchChatDisplay] = useState(0) 
   const [showUnreadMessages, setShowUnreadMessages] = useState({})
 
   return (
@@ -25,6 +24,7 @@ function ChatContainer({ user, matchUsers, setMatchUsers, cable, chatContainerRe
           setShowUnreadMessages={setShowUnreadMessages}
           matchUsers={matchUsers} 
           setMatchUsers={setMatchUsers} 
+          setShowViewedUser={setShowViewedUser}
           setMatchChatDisplay={setMatchChatDisplay}
           setRecipient={setRecipient} />}
         
