@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://redistogo:88ab80ff031bd8e5583b90d3913d3580@sole.redistogo.com:10214/
-  channel_prefix: dating_app_production
+  url: "redis://redistogo:88ab80ff031bd8e5583b90d3913d3580@sole.redistogo.com:10214/"
+  # channel_prefix: dating_app_production
