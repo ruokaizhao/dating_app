@@ -457,6 +457,12 @@ form .secondary-button:hover {
 }
 
 /* @media needs to be under the ones that it will overwrite */
+@media only screen and (max-width: 1600px) {
+  .dashboard .swipe-container {
+    width: 60%;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .dashboard .swipe-container {
     justify-content: flex-start;
@@ -632,6 +638,12 @@ form .secondary-button:hover {
 
 .match-chat-list-container {
   display: flex;
+}
+
+@media only screen and (max-width: 1600px) {
+  .chat-container {
+    width: 40%;
+  }
 }
 
 @media only screen and (max-width: 768px) {
