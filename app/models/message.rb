@@ -1,4 +1,5 @@
 class Message < ApplicationRecord  
+  validates :content, presence: true
 
   def self.new_message(params)
     browsed_user = User.find(params[:recipient_id])

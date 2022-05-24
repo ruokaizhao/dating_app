@@ -2,6 +2,16 @@ class User < ApplicationRecord
   has_secure_password
   has_many :matches
   has_many :browsed_user, through: :matches
+  validates :first_name, presence: true
+  validates :dob_day, presence: true
+  validates :dob_month, presence: true
+  validates :dob_year, presence: true
+  validates :show_gender, presence: true
+  validates :gender_identity, presence: true
+  validates :gender_interest, presence: true
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :url1, presence: true
+  validates :about, presence: true
   validates :password, presence: true, length: {minimum: 6}, if: :password
 
   def get_users(params)

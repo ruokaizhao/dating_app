@@ -16,10 +16,4 @@ class Api::MatchesController < ApplicationController
     render json: match, status: :ok
   end
 
-  # private
-
-  # def match_params
-  #   params.permit(:user_id, :browsed_user_id, :liked)
-  # end
-
 end

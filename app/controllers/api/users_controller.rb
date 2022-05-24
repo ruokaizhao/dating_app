@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+  skip_before_action :authorize, only: [:create, :forgot_password, :reset_password]
 
   def index
     user = User.find(params[:id])
