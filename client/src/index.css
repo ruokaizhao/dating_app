@@ -472,13 +472,13 @@ form .secondary-button:hover {
 
   .dashboard .card-container {
     margin-top: 50px;
-    width: 400px;
-    height: 550px;
+    width: 350px;
+    height: 500px;
   }
 
   .dashboard .card {
-    width: 400px;
-    height: 550px;
+    width: 350px;
+    height: 500px;
   }
 
   .dashboard .swipe-container.inactive {
@@ -804,7 +804,7 @@ form .secondary-button:hover {
 }
 
 .chat-display .message-list {
-  height: 50vh;
+  height: 60vh;
   overflow-y: auto;
   border-top: solid 1px rgb(213, 213, 213);
 }
@@ -851,6 +851,12 @@ form .secondary-button:hover {
   border-radius: 25px;
   overflow-wrap: break-word;
   max-width: 50%;
+}
+
+@media only screen and (max-width: 768px) {
+  .chat-display .message-list {
+    height: 40vh;
+  }
 }
 
 /* ---------Chat Input--------- */
