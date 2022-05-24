@@ -27,7 +27,7 @@ function ForgetPassword({ setShowAuth, setIsForgettingPassword }) {
         'Content-Type': "application/json"
       },
       body: JSON.stringify({
-        email: formik.values.email
+        email: formik.values.email.toLocaleLowerCase()
       })
     })
     .then((r) => {

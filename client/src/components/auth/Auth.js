@@ -35,7 +35,7 @@ function Auth({ setShowAuth, isSignUp, setUser, setIsSignUp, setIsForgettingPass
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email: formik.values.email,
+          email: formik.values.email.toLocaleLowerCase(),
           password: formik.values.password,
           password_confirmation: formik.values.password2
         })
@@ -55,7 +55,7 @@ function Auth({ setShowAuth, isSignUp, setUser, setIsSignUp, setIsForgettingPass
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          email: formik.values.email,
+          email: formik.values.email.toLocaleLowerCase(),
           password: formik.values.password,
         })
       })

@@ -37,7 +37,7 @@ function ResetPassword({ setUser }) {
       },
       body: JSON.stringify({
         token: params['token'],
-        email: formik.values.email,
+        email: formik.values.email.toLocaleLowerCase(),
         password: formik.values.password,
         password_confirmation: formik.values.password2
       })
