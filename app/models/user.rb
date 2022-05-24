@@ -2,16 +2,17 @@ class User < ApplicationRecord
   has_secure_password
   has_many :matches
   has_many :browsed_user, through: :matches
-  validates :first_name, presence: true
-  validates :dob_day, presence: true
-  validates :dob_month, presence: true
-  validates :dob_year, presence: true
-  validates :show_gender, presence: true
-  validates :gender_identity, presence: true
-  validates :gender_interest, presence: true
-  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :url1, presence: true
-  validates :about, presence: true
+  # If all those data are submitted seperately, the if: :first_name is required, otherwise the create method won't pass validation
+  validates :first_name, presence: true, if: :first_name
+  validates :dob_day, presence: true, numericality: { in: 1..31 }, if: :dob_day
+  validates :dob_month, presence: true, numericality: { in: 1..12 }, if: :dob_month
+  validates :dob_year, presence: true, numericality: { in: 1900..2020 }, if: :dob_year
+  validates :show_gender, presence: true, if: :show_gender
+  validates :gender_identity, presence: true, if: :gender_identity
+  validates :gender_interest, presence: true, if: :gender_interest
+  validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }, if: :email
+  validates :url1, presence: true, if: :url1
+  validates :about, presence: true, if: :about
   validates :password, presence: true, length: {minimum: 6}, if: :password
 
   def get_users(params)

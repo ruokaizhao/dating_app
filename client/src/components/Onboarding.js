@@ -20,7 +20,15 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
       about: user.about || ''
     },
     validationSchema: Yup.object({
-
+      first_name: Yup.string().required('Name is required'),
+      dob_day: Yup.number().min(1, 'Day must be greater than 1').max(31, 'Day must be smaller than 31').required('Day is required'),
+      dob_month: Yup.number().min(1, 'Day must be greater than 1').max(12, 'Month must be smaller than 12').required('Month is required'),
+      dob_year: Yup.number().min(1900, 'Day must be greater than 1900').max(2020, 'Day must be smaller than 2020').required('Year is required'),
+      show_gender: Yup.boolean().required('The field is required'),
+      gender_identity: Yup.string().required('Gender identity is required'),
+      gender_interest: Yup.string().required('Gender interest is required'),
+      url1: Yup.string().url('The filed must contain a valid URL').required('Photo url is required'),
+      about: Yup.string().required('The field is required'),
     }),
     onSubmit: () => handleSubmit()
   }, [user])
@@ -66,7 +74,8 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
-            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="profile" />}            
+            {formik.touched.url1 && formik.errors.url1 && <div className="errors">{formik.errors.url1}</div>}
+            {formik.values.url1 && <img className="profile-photo" src={formik.values.url1} alt="" />}            
           </section>
           <section>
             <label htmlFor="first_name">First Name</label>
@@ -79,6 +88,7 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
               onBlur={formik.handleBlur}
               onChange={formik.handleChange}
             />
+            {formik.touched.first_name && formik.errors.first_name && <div className="errors">{formik.errors.first_name}</div>}
             <label>Date of Birth</label>
             <div className="multiple-input-container">
               <input 
@@ -89,7 +99,7 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 value={formik.values.dob_day}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-              />
+              />          
               <input 
                 id="dob_month" 
                 name="dob_month" 
@@ -109,6 +119,9 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 onChange={formik.handleChange}
               />
             </div>
+            {formik.touched.dob_day && formik.errors.dob_day && <div className="errors">{formik.errors.dob_day}</div>}
+            {formik.touched.dob_month && formik.errors.dob_month && <div className="errors">{formik.errors.dob_month}</div>}
+            {formik.touched.dob_year && formik.errors.dob_year && <div className="errors">{formik.errors.dob_year}</div>}
 
             <label>Gender</label>
             <div className="multiple-input-container">
@@ -141,8 +154,9 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 onChange={formik.handleChange}
                 checked={formik.values.gender_identity === 'more'}
               />
-              <label htmlFor="more-gender-identity">More</label>
+              <label htmlFor="more-gender-identity">More</label>              
             </div>
+            {formik.touched.gender_identity && formik.errors.gender_identity && <div className="errors">{formik.errors.gender_identity}</div>}
 
             <div className="show-gender">              
               <input
@@ -153,10 +167,11 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 onChange={formik.handleChange}
                 checked={formik.values.show_gender}
               />
-              <label htmlFor="show-gender">Show gender on my profile</label>
-            </div>            
-
+              <label htmlFor="show-gender">Show gender on my profile</label>              
+            </div>        
             <label>Show Me</label>
+            {formik.touched.show_gender && formik.errors.show_gender && <div className="errors">{formik.errors.show_gender}</div>}
+
             <div className="multiple-input-container">
               <input 
                   id="man-gender-interest" 
@@ -166,9 +181,9 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   checked={formik.values.gender_interest === 'man'}
-                />
-                <label htmlFor="man-gender-interest">Man</label>
-                <input 
+              />
+              <label htmlFor="man-gender-interest">Man</label>
+              <input 
                   id="woman-gender-interest" 
                   name="gender_interest" 
                   type="radio" 
@@ -176,9 +191,9 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   checked={formik.values.gender_interest === 'woman'}
-                />
-                <label htmlFor="woman-gender-interest">Woman</label>
-                <input 
+              />
+              <label htmlFor="woman-gender-interest">Woman</label>
+              <input 
                   id="everyone-gender-interest" 
                   name="gender_interest" 
                   type="radio" 
@@ -186,22 +201,23 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   checked={formik.values.gender_interest === 'everyone'}
-                />
-                <label htmlFor="everyone-gender-interest">Everyone</label>                
+              />
+              <label htmlFor="everyone-gender-interest">Everyone</label>                            
             </div>  
+            {formik.touched.gender_interest && formik.errors.gender_interest && <div className="errors">{formik.errors.gender_interest}</div>} 
 
             <label htmlFor="about">About Me</label>
                 <textarea
                   id="about"
                   name="about"
                   type="text"
-                  rows={6}
-                  
+                  rows={6}                  
                   placeholder="Something about you..."
                   onBlur={formik.handleBlur}
                   onChange={formik.handleChange}
                   value={formik.values.about}
               /> 
+              {formik.touched.about && formik.errors.about && <div className="errors">{formik.errors.about}</div>}
             <button type="submit">Submit</button>         
           </section>
         </form>
