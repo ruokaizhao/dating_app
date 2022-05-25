@@ -76,6 +76,8 @@ class Api::UsersController < ApplicationController
       :dob_year, 
       :show_gender, 
       :gender_identity, 
+      :show_sexual_orientation,
+      :sexual_orientation,      
       :gender_interest, 
       :email, 
       :url1, 

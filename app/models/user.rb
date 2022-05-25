@@ -21,9 +21,11 @@ class User < ApplicationRecord
     end
     user_browsed_user_ids.unshift(self.id)
     if params[:gender_interest] == "everyone"
-      return User.all.where.not(id: user_browsed_user_ids).and(User.all.where(gender_interest: params[:gender_identity]).or(User.all.where(gender_interest: "everyone")))
+      # return User.all.where.not(id: user_browsed_user_ids).and(User.all.where(gender_interest: params[:gender_identity]).or(User.all.where(gender_interest: "everyone")))
+      return User.all.where.not(id: user_browsed_user_ids)
     else
-      return User.all.where.not(id: user_browsed_user_ids).where(gender_identity: params[:gender_interest]).and(User.all.where(gender_interest: params[:gender_identity]).or(User.all.where(gender_interest: "everyone")))
+      # return User.all.where.not(id: user_browsed_user_ids).where(gender_identity: params[:gender_interest]).and(User.all.where(gender_interest: params[:gender_identity]).or(User.all.where(gender_interest: "everyone")))
+      return User.all.where.not(id: user_browsed_user_ids).where(gender_identity: params[:gender_interest])
     end
   end
 
