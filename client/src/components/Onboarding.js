@@ -35,7 +35,7 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
       about: Yup.string().required('The field is required'),
     }),
     onSubmit: () => handleSubmit()
-  }, [user])
+  })
 
   function handleSubmit() {
     fetch(`/api/users/${user.id}`, {

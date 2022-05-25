@@ -26,7 +26,7 @@ function Home({ user, setUser, showAuth, setShowAuth, setIsEditingProfile }) {
           color={false} 
         />
         <div className="home">      
-          <h1 className="primary-title">Swipe Right®</h1>
+          <h1 className="primary-title">Swipe Right</h1>
           <button className="primary-button" onClick={user.id ? () => navigate('/dashboard') : handleClick}>
             {user.id ? `Welcome, ${user.first_name}` : 'Create account'}
           </button>        
