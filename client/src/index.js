@@ -6,10 +6,10 @@ import { BrowserRouter } from 'react-router-dom'
 import actionCable from 'actioncable'
 
 const CableApp = {}
-// CableApp.cable = actionCable.createConsumer('wss://dating-app-react-ruby-on-rails.herokuapp.com/cable')
-CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
-const root = ReactDOM.createRoot(document.getElementById('root'))
+// CableApp.cable = actionCable.createConsumer('ws://localhost:3000/cable')
+CableApp.cable = actionCable.createConsumer('wss://dating-app-react-ruby-on-rails.herokuapp.com/cable')
 
+const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
   <BrowserRouter>
     <React.StrictMode>
