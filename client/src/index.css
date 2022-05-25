@@ -341,6 +341,11 @@ form .secondary-button:hover {
   display: flex;
 }
 
+.sexual-orientation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .onboarding form input[type="number"] {
   width: 30%;
 }
@@ -1032,6 +1037,10 @@ form .secondary-button:hover {
 }
 
 #p2 {
+  color: rgb(75, 75, 75);
+}
+
+#p3 {
   padding-bottom: 20px;
   text-align: left;
   width: 75%;
@@ -1039,18 +1048,18 @@ form .secondary-button:hover {
   border-bottom: solid 2px rgb(213, 213, 213);
 }
 
-#p3 {
+#p4 {
   margin-top: 20px;
   text-align: left;
   width: 75%;
 }
 
-.dashboard #p2 {
+.dashboard #p3 {
   width: 90%;
   max-width: 768px;
 }
 
-.dashboard #p3 {
+.dashboard #p4 {
   width: 90%;
   max-width: 768px;
 }
@@ -1110,19 +1119,19 @@ form .secondary-button:hover {
     padding:  12px;
   }
   
-  #p2 {
-    width: 100%;
-  }
-  
   #p3 {
     width: 100%;
   }
+  
+  #p4 {
+    width: 100%;
+  }
 
-  .dashboard #p2 {
+  .dashboard #p3 {
     width: 100%;
   }
   
-  .dashboard #p3 {
+  .dashboard #p4 {
     width: 100%;
   }
 }

@@ -13,8 +13,10 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
       dob_day: user.dob_day || '',
       dob_month: user.dob_month || '',
       dob_year: user.dob_year || '',
-      show_gender: user.show_gender || false,
+      show_gender: user.show_gender || '',
       gender_identity: user.gender_identity || '',
+      show_sexual_orientation: user.show_sexual_orientation || '',
+      sexual_orientation: user.sexual_orientation || '',
       gender_interest: user.gender_interest || '',
       url1: user.url1 || '',
       about: user.about || ''
@@ -24,8 +26,10 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
       dob_day: Yup.number().min(1, 'Day must be greater than 1').max(31, 'Day must be smaller than 31').required('Day is required'),
       dob_month: Yup.number().min(1, 'Day must be greater than 1').max(12, 'Month must be smaller than 12').required('Month is required'),
       dob_year: Yup.number().min(1900, 'Day must be greater than 1900').max(2020, 'Day must be smaller than 2020').required('Year is required'),
-      show_gender: Yup.boolean().required('The field is required'),
+      show_gender: Yup.boolean().required('Show gender is required'),
       gender_identity: Yup.string().required('Gender identity is required'),
+      show_sexual_orientation: Yup.boolean().required('Show sexual orientation is required'),
+      sexual_orientation: Yup.string().required('Sexual orientation is required'),
       gender_interest: Yup.string().required('Gender interest is required'),
       url1: Yup.string().url('The filed must contain a valid URL').required('Photo url is required'),
       about: Yup.string().required('The field is required'),
@@ -144,17 +148,7 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 onChange={formik.handleChange}
                 checked={formik.values.gender_identity === 'woman'}
               />
-              <label htmlFor="woman-gender-identity">Woman</label>
-              <input 
-                id="more-gender-identity" 
-                name="gender_identity" 
-                type="radio" 
-                value="more"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                checked={formik.values.gender_identity === 'more'}
-              />
-              <label htmlFor="more-gender-identity">More</label>              
+              <label htmlFor="woman-gender-identity">Woman</label>         
             </div>
             {formik.touched.gender_identity && formik.errors.gender_identity && <div className="errors">{formik.errors.gender_identity}</div>}
 
@@ -167,11 +161,119 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 onChange={formik.handleChange}
                 checked={formik.values.show_gender}
               />
-              <label htmlFor="show-gender">Show gender on my profile</label>              
-            </div>        
-            <label>Show Me</label>
-            {formik.touched.show_gender && formik.errors.show_gender && <div className="errors">{formik.errors.show_gender}</div>}
+              <label htmlFor="show-gender">Show gender on my profile</label>                        
+            </div>  
+            {formik.touched.show_gender && formik.errors.show_gender && <div className="errors">{formik.errors.show_gender}</div>} 
 
+            <label>Sexual Orientation</label>
+            <div className="multiple-input-container sexual-orientation">
+              <input 
+                id="straight-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="straight"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'straight'}
+              />
+              <label htmlFor="straight-sexual-orientation">Straight</label>
+              <input 
+                id="gay-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="gay"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'gay'}
+              />
+              <label htmlFor="gay-sexual-orientation">Gay</label>
+              <input 
+                id="lesbian-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="lesbian"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'lesbian'}
+              />
+              <label htmlFor="lesbian-sexual-orientation">Lesbian</label>    
+              <input 
+                id="bisexual-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="bisexual"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'bisexual'}
+              />
+              <label htmlFor="bisexual-sexual-orientation">Bisexual</label>
+              <input 
+                id="asexual-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="asexual"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'asexual'}
+              />
+              <label htmlFor="asexual-sexual-orientation">Asexual</label>
+              <input 
+                id="demisexual-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="demisexual"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'demisexual'}
+              />
+              <label htmlFor="demisexual-sexual-orientation">Demisexual</label> 
+              <input 
+                id="pansexual-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="pansexual"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'pansexual'}
+              />
+              <label htmlFor="pansexual-sexual-orientation">Pansexual</label>
+              <input 
+                id="queer-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="queer"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'queer'}
+              />
+              <label htmlFor="queer-sexual-orientation">Queer</label>
+              <input 
+                id="questioning-sexual-orientation" 
+                name="sexual_orientation" 
+                type="radio" 
+                value="questioning"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.sexual_orientation === 'questioning'}
+              />
+              <label htmlFor="questioning-sexual-orientation">Questioning</label>           
+            </div>
+            {formik.touched.sexual_orientation && formik.errors.sexual_orientation && <div className="errors">{formik.errors.sexual_orientation}</div>}
+
+            <div className="show-sexual-orientation">              
+              <input
+                id="show-sexual-orientation"
+                type="checkbox"
+                name="show_sexual_orientation"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                checked={formik.values.show_sexual_orientation}
+              />
+              <label htmlFor="show-sexual-orientation">Show sexual orientation on my profile</label>              
+            </div> 
+            {formik.touched.show_sexual_orientation && formik.errors.show_sexual_orientation && <div className="errors">{formik.errors.show_sexual_orientation}</div>}  
+
+            <label>Show Me</label>
             <div className="multiple-input-container">
               <input 
                   id="man-gender-interest" 

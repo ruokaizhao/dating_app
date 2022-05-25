@@ -33,8 +33,9 @@ function UserProfile({ user, setShowAuth, setIsEditingProfile, showViewedUser, s
         {!showViewedUser && <button onClick={handleClick}>Edit Profile</button>}  
       </div>            
       <p id="p1">Gender Identity: {user.show_gender ? user.gender_identity : 'I\'ll keep it as a secret'}</p> 
-      <p id="p2">Gender Interest: {user.gender_interest}</p> 
-      <p id="p3">{user.about}</p>      
+      <p id="p2">Sexual Orientation: {user.show_sexual_orientation ? user.sexual_orientation : 'I\'ll keep it as a secret'}</p>
+      <p id="p3">Gender Interest: {user.gender_interest}</p> 
+      <p id="p4">{user.about}</p>      
     </div>  
   )
 }
