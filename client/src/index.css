@@ -67,6 +67,12 @@ h2 {
   margin-top: 30vh;
 }
 
+@media only screen and (max-width: 768px) {
+  .background {
+    background-size: cover;
+  }
+}
+
 /* ---------NavBar--------- */
 
 nav {
