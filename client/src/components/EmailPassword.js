@@ -82,8 +82,10 @@ function EmailPassword({ user, setUser }) {
 
   return (
     <div className="email-password">
-      <h4>Email:</h4>
-      <h4>{user.email}</h4>
+      <div className="email-password-email">
+        <h4>Email:</h4>
+        <h4>{user.email}</h4>
+      </div>
       <div className="email-password-option">
         <button onClick={() => setEmailOrPassword(1)}>Change Email</button>
         <button onClick={() => setEmailOrPassword(2)}>Change Password</button>

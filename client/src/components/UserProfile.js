@@ -22,9 +22,9 @@ function UserProfile({ user, setShowAuth, setIsEditingProfile, showViewedUser, s
       ? 
       <div className="close-icon" onClick={() => setShowViewedUser(false)}>ⓧ</div>
       :
-      <button id="me-close-icon" onClick={() => navigate('/dashboard')}>Back to Dashboard</button>
+      <div id="me-close-icon" onClick={() => navigate('/dashboard')}>Back to Dashboard</div>
       }
-      <img className="profile-photo" src={user.url1} alt="profile" /> 
+      <div style={{ backgroundImage: "url(" + user.url1 + ")" }} className="profile-photo" /> 
       <div className="name-age-button">
         <div className="name-age">
           <h2>{user.first_name}, </h2>

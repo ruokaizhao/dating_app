@@ -899,7 +899,7 @@ form .secondary-button:hover {
 
 .account-body {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: flex-start;
   border-top: solid 2px rgb(213, 213, 213);
 }
@@ -910,6 +910,16 @@ form .secondary-button:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;  
+}
+
+.account-content {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+}
+
+.account-content .user-profile {
+  top: 125px;
 }
 
 .account-button button {
@@ -946,6 +956,10 @@ form .secondary-button:hover {
     align-items: center;
   }
 
+  .account-content .user-profile {
+    top: 165px;
+  }
+
   .account-button {
     padding: 25px 25px 0 25px;
     width: 100%;
@@ -956,35 +970,27 @@ form .secondary-button:hover {
 /* ---------User Profile--------- */
 
 .user-profile {
-  padding-left: 100px;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  position: absolute;
+  width: 400px;
+  height: 600px;
+  top: 100px;
 }
 
-.dashboard .user-profile {
-  width: 100%;
-  padding-left: 150px;
-}
-
-.user-profile .close-icon {
-  width: 75%;
-  align-self: flex-start;
-}
-
-.dashboard .user-profile .close-icon {
-  width: 90%;
-  max-width: 768px;
-  align-self: flex-start;
+.user-profile .profile-photo {
+  width: 400px;
+  height: 600px;
+  background-size: cover;
+  border-radius: 30px;
+  background-position: center;
 }
 
 #me-close-icon {
-  align-self: flex-start;
-  margin: 50px 0 5px 0;
+  margin: 5px 0 5px 0;
+  background-color: rgb(235, 235, 235);
+  border-radius: 15px;
+  width: 161px;
+  text-align: start;
   padding: 8px;
-  font-size: 13px;
 }
 
 #me-close-icon:hover {
@@ -996,30 +1002,11 @@ form .secondary-button:hover {
   background: linear-gradient(260deg, rgb(254, 48, 114), rgb(255, 89, 64));
 }
 
-.user-profile .profile-photo {
-  width: 75%;
-  max-height: 800px;
-  border-radius: 20px;
-}
-
-.dashboard .user-profile .profile-photo {
-  width: 90%;
-  max-width: 768px;
-  max-height: 800px;
-  border-radius: 20px;
-}
-
 .user-profile .name-age-button {
-  margin-top: 5px;
-  width: 75%;
+  margin: 5px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.dashboard .user-profile .name-age-button {
-  width: 90%;
-  max-width: 768px;
 }
 
 .user-profile .name-age {
@@ -1034,48 +1021,32 @@ form .secondary-button:hover {
 }
 
 .user-profile p {
+  text-align: start;
   margin: 0;
   font-weight: lighter;
 }
 
-#p1 {
-  color: rgb(75, 75, 75);
-}
-
-#p2 {
+#p1, #p2, #p3 {
   color: rgb(75, 75, 75);
 }
 
 #p3 {
   padding-bottom: 20px;
   text-align: left;
-  width: 75%;
-  color: rgb(75, 75, 75);
   border-bottom: solid 2px rgb(213, 213, 213);
 }
 
 #p4 {
   margin-top: 20px;
+  margin-bottom: 50px;
   text-align: left;
-  width: 75%;
-}
-
-.dashboard #p3 {
-  width: 90%;
-  max-width: 768px;
-}
-
-.dashboard #p4 {
-  width: 90%;
-  max-width: 768px;
 }
 
 .user-profile button {
   color: rgb(0, 0, 0);
-  text-transform: uppercase;
-  font-size: 15px;
   padding: 5px 20px;
   border-radius: 30px;
+  font-size: 20px;
   border: none;
 }
 
@@ -1084,90 +1055,20 @@ form .secondary-button:hover {
   cursor: pointer;
 }
 
-@media only screen and (max-width: 1440px) {
-  .dashboard .user-profile {
-    padding-left: 100px;
-  }
-}
-
-@media only screen and (max-width: 1200px) {
-  .user-profile {
-    padding: 0 50px;
-    width: 70%;
-  }
-
-  .dashboard .user-profile {
-    padding: 0 50px;
-  }
-
-  .user-profile .close-icon {
-    width: 100%;
-  }
-
-  .dashboard .user-profile .close-icon {
-    width: 100%;
-  }
-
-  .user-profile .profile-photo {
-    width: 100%;
-  }
-
-  .dashboard .user-profile .profile-photo {
-    width: 100%;
-  }
-  
-  .user-profile .name-age-button {
-    width: 100%;
-  }
-
-  .user-profile button {
-    font-size: 13px;
-    padding:  12px;
-  }
-  
-  #p3 {
-    width: 100%;
-  }
-  
-  #p4 {
-    width: 100%;
-  }
-
-  .dashboard #p3 {
-    width: 100%;
-  }
-  
-  .dashboard #p4 {
-    width: 100%;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .user-profile {
-    width: 100%;
-    padding: 0 25px 25px 25px;
-  }
-
-  .dashboard .user-profile {
-    width: 100%;
-    padding: 25px;
-  }
-
-  #me-close-icon {
-    margin: 10px 0 5px 0;
-  }  
-}
-
 /* ---------Email Password--------- */
 
 .email-password {
-  text-align: left;
-  padding: 50px 0 0 100px;
-  width: 70%;
+  text-align: start;
+  margin-top: 40px;
+  position: absolute;  
+}
+
+.email-password .email-password-email {
+  display: flex;
+  gap: 10px;
 }
 
 .email-password .email-password-option {
-  width: 50%;
   display: flex;
   justify-content: flex-start;
 }
@@ -1202,11 +1103,9 @@ form .secondary-button:hover {
 
 .email-password form button {
   margin-top: 20px;
-  width: 50%;
 }
 
 .email-password input {
-  width: 50%;
   padding: 12px;
   font-size: 17px;  
   border: 2px solid #ccc;
@@ -1220,29 +1119,8 @@ form .secondary-button:hover {
   box-shadow: 0 0 10px rgb(113, 158, 206);
 }
 
-@media only screen and (max-width: 1200px) {
-  .email-password {
-    padding-left: 50px;
-    width: 70%;
-  }
-
-  .email-password .email-password-option {
-    width: 100%;
-    font-size: 15px;
-  }
-  
-  .email-password form button {
-    width: 100%;
-  }
-
-  .email-password input {
-    width: 100%;
-  }
-}
-
 @media only screen and (max-width: 768px) {
   .email-password {
-    padding: 25px;
-    width: 100%;
+    margin-top: 10px;  
   }
 }

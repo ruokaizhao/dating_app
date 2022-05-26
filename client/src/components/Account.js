@@ -15,11 +15,13 @@ function Account({ user, showAuth, setShowAuth, setIsEditingProfile, setUser, sh
           <button autoFocus onClick={() => setShowUserProfile(true)}>Profile</button>
           <button onClick={() => setShowUserProfile(false)}>Security</button>
         </div>
-        {showUserProfile 
-        ?
-        <UserProfile user={user} setShowAuth={setShowAuth} setIsEditingProfile={setIsEditingProfile} showViewedUser={showViewedUser} />
-        :
-        <EmailPassword user={user} setUser={setUser} />}        
+        <div className="account-content">
+          {showUserProfile 
+          ?
+          <UserProfile user={user} setShowAuth={setShowAuth} setIsEditingProfile={setIsEditingProfile} showViewedUser={showViewedUser} />
+          :
+          <EmailPassword user={user} setUser={setUser} />} 
+        </div>               
       </div>
     </div>    
   )
