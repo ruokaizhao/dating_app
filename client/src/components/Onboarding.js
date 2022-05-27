@@ -269,7 +269,7 @@ function Onboarding({ user, showAuth, isEditingProfile, setUser }) {
                 onChange={formik.handleChange}
                 checked={formik.values.show_sexual_orientation}
               />
-              <label htmlFor="show-sexual-orientation">Show sexual orientation on my profile</label>              
+            <label htmlFor="show-sexual-orientation">Show sexual orientation on my profile</label>              
             </div> 
             {formik.touched.show_sexual_orientation && formik.errors.show_sexual_orientation && <div className="errors">{formik.errors.show_sexual_orientation}</div>}  
 

@@ -376,6 +376,10 @@ form .secondary-button:hover {
   margin-right: 15px;
 }
 
+.onboarding .show-sexual-orientation input {
+  margin-right: 15px;
+}
+
 .onboarding form .multiple-input-container input[type="radio"]:checked + label {
   border: solid 2px rgb(221, 39, 22)
 }
