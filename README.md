@@ -100,7 +100,7 @@ The app is optimized for mobile devices, the image and gif below show how the ap
 
 That's all for the app walkthrough, hope you have fun reading this.
 
-### Special Thanks
+## Special Thanks
 
 Big thanks to Ania Kubów for her awesome videos which inspired me with this project and help me set up the starter code. You can check out her video [here](https://www.youtube.com/watch?v=Q70IMS-Qnjk).
 
