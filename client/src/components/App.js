@@ -21,6 +21,17 @@ function App({ cable }) {
     })
   }, [])
 
+  // useEffect(() => {
+  //   async function remainLoggedIn() {
+  //     const response = await fetch('/api/me')
+  //     if (response.ok) {
+  //       const data = await response.json()
+  //       setUser(data)
+  //     }    
+  //   }
+  //   remainLoggedIn()    
+  // }, [])
+
   return (
     <div>
       <Routes>
