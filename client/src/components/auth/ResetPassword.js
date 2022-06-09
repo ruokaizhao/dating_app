@@ -51,6 +51,8 @@ function ResetPassword({ setUser }) {
             navigate('/')
           }, 2000);
         })
+      } else {
+        r.json().then((errors) => formik.setErrors({password2: errors.errors}))
       }
     })
   }

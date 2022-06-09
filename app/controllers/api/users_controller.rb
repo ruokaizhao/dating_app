@@ -48,7 +48,7 @@ class Api::UsersController < ApplicationController
         session[:user_id] = user.id
         render json: {user: user, alerts: ["Your password has been reset."] }, status: :created
       else
-        render json: { errors: ["Token has expired."] }, status: :unprocessable_entity
+        render json: { errors: ["Token doesn't match or it has expired."] }, status: :unprocessable_entity
       end
     else
       render json: { errors: ["Email address not registered."] }, status: :not_found
