@@ -34,7 +34,7 @@ npm start --prefix client
 
 to install all the frontend dependencies and start the application.
 
-Pleas note that you will also need to install redis-server, the installation process depends on your system, it is quite simple to find a tutorial by googling redis-server plus your system name. Do not forget to run the redis-server after installing it.
+Please note that you will also need to install redis-server, the installation process depends on your system, it is quite simple to find a tutorial by googling redis-server plus your system name. Do not forget to run the redis-server after installing it.
 
 ## Project Walkthrough
 
