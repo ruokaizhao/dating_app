@@ -35,7 +35,7 @@ Rails.application.configure do
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
-  config.action_cable.url = "wss://dating-app-react-ruby-on-rails.herokuapp.com/"
+  config.action_cable.url = 'wss://dating-app-m4tz.onrender.com'
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
@@ -85,7 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.delivery_method = :smtp
-  host = 'https://shopping-app-react-ruby.herokuapp.com' #replace with your own url
+  host = 'https://dating-app-m4tz.onrender.com' #replace with your own url
   config.action_mailer.default_url_options = { host: host }
 
   # SMTP settings for gmail
