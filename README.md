@@ -6,7 +6,7 @@ This is a full-stack project using React to build frontend and Ruby on Rails to 
 
 The backend code is in the root directory of this project, and the frontend code is in the client directory.
 
-This project has also been deployed to Heroku at [here](https://dating-app-react-ruby-on-rails.herokuapp.com/).
+This project has also been deployed to Heroku at [here](https://dating-app-m4tz.onrender.com).
 
 ## Installation
 
